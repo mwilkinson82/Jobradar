@@ -24,6 +24,7 @@ import {
   Signal,
   Target,
   Users,
+  X,
   Zap,
 } from "lucide-react";
 
@@ -79,19 +80,19 @@ const metros = ["Dallas, TX", "Nashville, TN", "Charlotte, NC", "Austin, TX"];
 const modes = [
   {
     id: "work",
-    label: "Find work now",
+    label: "Jobs this week",
     icon: Zap,
     note: "Best neighborhoods and campaigns this week.",
   },
   {
     id: "relationships",
-    label: "Find relationships",
+    label: "GCs to call",
     icon: Users,
     note: "Builders, GCs, landlords, and property managers getting active.",
   },
   {
     id: "market",
-    label: "Market opportunity",
+    label: "Markets to watch",
     icon: BarChart3,
     note: "Expansion signals, pressure, and thin competition.",
   },
@@ -289,6 +290,30 @@ const targetHomes = [
   ["6102 Vanderbilt Ave", "1964", "High equity"],
 ];
 
+const scoreSignals = {
+  high: [
+    ["Demand", "High"],
+    ["Timing", "High"],
+    ["Ability to pay", "High"],
+    ["Competition", "Medium"],
+    ["Route efficiency", "High"],
+  ],
+  good: [
+    ["Demand", "Medium"],
+    ["Timing", "Medium"],
+    ["Ability to pay", "Medium"],
+    ["Competition", "Low"],
+    ["Route efficiency", "High"],
+  ],
+  fair: [
+    ["Demand", "Low"],
+    ["Timing", "Medium"],
+    ["Ability to pay", "Medium"],
+    ["Competition", "Medium"],
+    ["Route efficiency", "Medium"],
+  ],
+};
+
 const signalLayers = [
   ["Target homes", "orange"],
   ["Recent permits", "violet"],
@@ -316,7 +341,8 @@ function App() {
   const [layerState, setLayerState] = useState(() =>
     Object.fromEntries(signalLayers.map(([label]) => [label, true])),
   );
-  const [launched, setLaunched] = useState(false);
+  const [pilotModalOpen, setPilotModalOpen] = useState(false);
+  const [pilotSubmitted, setPilotSubmitted] = useState(false);
 
   const trade = trades.find((item) => item.id === tradeId) ?? trades[0];
   const selectedArea = areas.find((item) => item.id === selectedAreaId) ?? areas[0];
@@ -330,7 +356,6 @@ function App() {
       doors,
       radius: selectedArea.rank <= 2 ? "2-mile radius ad" : "1-mile radius ad",
       cost: trade.campaignCost + selectedArea.rank * 26,
-      roi: selectedArea.rank <= 2 ? "44x" : "18x",
     };
   }, [selectedArea, trade]);
 
@@ -398,17 +423,30 @@ function App() {
               setLayerState={setLayerState}
               setSelectedAreaId={setSelectedAreaId}
             />
+            <TodayMove campaign={campaign} selectedArea={selectedArea} trade={trade} />
             <MoneyBrief selectedArea={selectedArea} trade={trade} />
           </section>
           <ExecutionPanel
             campaign={campaign}
             exportRoute={exportRoute}
-            launched={launched}
+            openPilotModal={() => {
+              setPilotSubmitted(false);
+              setPilotModalOpen(true);
+            }}
             selectedArea={selectedArea}
-            setLaunched={setLaunched}
             trade={trade}
           />
         </main>
+        {pilotModalOpen ? (
+          <PilotModal
+            metro={metro}
+            onClose={() => setPilotModalOpen(false)}
+            onSubmit={() => setPilotSubmitted(true)}
+            selectedArea={selectedArea}
+            submitted={pilotSubmitted}
+            trade={trade}
+          />
+        ) : null}
       </div>
     </div>
   );
@@ -447,6 +485,7 @@ function Topbar() {
         <strong>Job Radar</strong>
         <span>Know which neighborhoods to hit before you waste gas.</span>
       </div>
+      <span className="demo-badge">Demo data shown</span>
       <div className="account-row">
         <select aria-label="Selected company" defaultValue="acme">
           <option value="acme">Acme Construction</option>
@@ -633,6 +672,36 @@ function TerritoryMap({ layerState, selectedArea, setLayerState, setSelectedArea
   );
 }
 
+function TodayMove({ campaign, selectedArea, trade }) {
+  return (
+    <section className="today-move" aria-labelledby="today-move-heading">
+      <div className="move-copy">
+        <span className="demo-chip">Prototype using sample data</span>
+        <h2 id="today-move-heading">
+          Today&apos;s move: Hit {selectedArea.name} with a {campaign.doors}-door {trade.label.toLowerCase()} route and {campaign.postcards} postcards.
+        </h2>
+        <p>
+          Why: {permitReason(selectedArea, trade)}, recent sales, older homes, and route density all line up this week.
+        </p>
+      </div>
+      <dl className="move-metrics">
+        <div>
+          <dt>Cost</dt>
+          <dd>{currency(campaign.cost)}</dd>
+        </div>
+        <div>
+          <dt>Goal</dt>
+          <dd>Book 1 inspection</dd>
+        </div>
+        <div>
+          <dt>Area</dt>
+          <dd>ZIP {selectedArea.zip}</dd>
+        </div>
+      </dl>
+    </section>
+  );
+}
+
 function SignalDots({ color, sparse = false, x, y }) {
   const dots = [];
   const rows = sparse ? 4 : 7;
@@ -673,6 +742,9 @@ function RankPin({ rank, tone, x, y }) {
 }
 
 function MoneyBrief({ selectedArea, trade }) {
+  const scoreTier = selectedArea.score >= 70 ? "high" : selectedArea.score >= 48 ? "good" : "fair";
+  const scoreRows = scoreSignals[scoreTier];
+
   return (
     <section className="money-brief" aria-labelledby="money-brief-heading">
       <div className="brief-title">
@@ -706,7 +778,7 @@ function MoneyBrief({ selectedArea, trade }) {
                 <CheckCircle2 aria-hidden="true" />
                 <span>
                   {index === 0
-                    ? reason.replace("roofing permits", trade.signalLabel)
+                    ? permitReason(selectedArea, trade)
                     : index === 2
                       ? reason.replace("25+ years old", trade.cycle)
                       : reason}
@@ -729,11 +801,26 @@ function MoneyBrief({ selectedArea, trade }) {
           </button>
         </article>
       </div>
+      <details className="score-details">
+        <summary>How this score was calculated</summary>
+        <div>
+          <strong>{selectedArea.name} score: {selectedArea.score}</strong>
+          <p>Simple pilot score using sample demand, timing, buyer, competition, and route-efficiency signals.</p>
+          <dl>
+            {scoreRows.map(([label, value]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </details>
     </section>
   );
 }
 
-function ExecutionPanel({ campaign, exportRoute, launched, selectedArea, setLaunched, trade }) {
+function ExecutionPanel({ campaign, exportRoute, openPilotModal, selectedArea, trade }) {
   return (
     <aside className="execution-panel" aria-label="Campaign execution">
       <div className="execution-heading">
@@ -773,13 +860,17 @@ function ExecutionPanel({ campaign, exportRoute, launched, selectedArea, setLaun
             <dd>{trade.jobRange}</dd>
           </div>
           <div>
-            <dt>Potential ROI (1 job)</dt>
-            <dd className="green">{campaign.roi}</dd>
+            <dt>Break-even</dt>
+            <dd>1 booked inspection</dd>
+          </div>
+          <div>
+            <dt>Upside</dt>
+            <dd className="green">One job can pay for 20+ campaigns</dd>
           </div>
         </dl>
-        <button className={`launch-button ${launched ? "launched" : ""}`} type="button" onClick={() => setLaunched(true)}>
-          {launched ? <ShieldCheck aria-hidden="true" /> : <Navigation aria-hidden="true" />}
-          {launched ? "Campaign queued" : "Launch campaign"}
+        <button className="launch-button" type="button" onClick={openPilotModal}>
+          <Navigation aria-hidden="true" />
+          Launch campaign
         </button>
         <button className="secondary-button full-width" type="button" onClick={exportRoute}>
           <Download aria-hidden="true" />
@@ -816,6 +907,91 @@ function ExecutionPanel({ campaign, exportRoute, launched, selectedArea, setLaun
         <button className="view-all" type="button">View all {selectedArea.homes} homes</button>
       </section>
     </aside>
+  );
+}
+
+function PilotModal({ metro, onClose, onSubmit, selectedArea, submitted, trade }) {
+  const [form, setForm] = useState({
+    name: "",
+    company: "Acme Construction",
+    trade: trade.label,
+    metro,
+    spend: "$1,000-$3,000",
+    email: "",
+    phone: "",
+  });
+
+  function updateField(field, value) {
+    setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    onSubmit();
+  }
+
+  return (
+    <div className="modal-backdrop" role="presentation">
+      <section className="pilot-modal" aria-labelledby="pilot-title" role="dialog" aria-modal="true">
+        <button className="modal-close" type="button" aria-label="Close pilot request" onClick={onClose}>
+          <X aria-hidden="true" />
+        </button>
+        {submitted ? (
+          <div className="pilot-success">
+            <ShieldCheck aria-hidden="true" />
+            <h2 id="pilot-title">Pilot request captured</h2>
+            <p>
+              Demo only. In production this would route a real-market pilot request for {form.company || "your company"} in {selectedArea.name}.
+            </p>
+            <button className="launch-button" type="button" onClick={onClose}>Close</button>
+          </div>
+        ) : (
+          <>
+            <div className="modal-heading">
+              <span className="demo-chip">Demo data shown</span>
+              <h2 id="pilot-title">Request real-market pilot</h2>
+              <p>Tell us where you work. We will validate whether real local signals can support this campaign.</p>
+            </div>
+            <form className="pilot-form" onSubmit={handleSubmit}>
+              <label>
+                Name
+                <input value={form.name} onChange={(event) => updateField("name", event.target.value)} placeholder="Marshall Wilkinson" />
+              </label>
+              <label>
+                Company
+                <input value={form.company} onChange={(event) => updateField("company", event.target.value)} />
+              </label>
+              <label>
+                Trade
+                <input value={form.trade} onChange={(event) => updateField("trade", event.target.value)} />
+              </label>
+              <label>
+                Metro
+                <input value={form.metro} onChange={(event) => updateField("metro", event.target.value)} />
+              </label>
+              <label>
+                Monthly marketing spend
+                <select value={form.spend} onChange={(event) => updateField("spend", event.target.value)}>
+                  <option>$0-$1,000</option>
+                  <option>$1,000-$3,000</option>
+                  <option>$3,000-$7,500</option>
+                  <option>$7,500+</option>
+                </select>
+              </label>
+              <label>
+                Email
+                <input value={form.email} onChange={(event) => updateField("email", event.target.value)} placeholder="you@company.com" type="email" />
+              </label>
+              <label>
+                Phone
+                <input value={form.phone} onChange={(event) => updateField("phone", event.target.value)} placeholder="214-555-0199" type="tel" />
+              </label>
+              <button className="launch-button" type="submit">Request real-market pilot</button>
+            </form>
+          </>
+        )}
+      </section>
+    </div>
   );
 }
 
@@ -858,6 +1034,11 @@ function currency(value) {
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(value);
+}
+
+function permitReason(selectedArea, trade) {
+  const permits = selectedArea.stats.find(([label]) => label === "Active permits (30 days)")?.[1] ?? "Several";
+  return `${permits} ${trade.signalLabel} pulled in the last 30 days`;
 }
 
 export default App;

@@ -169,7 +169,7 @@ button {
   font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 900;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -225,6 +225,23 @@ button {
   color: var(--ink);
   font-size: 12px;
   font-weight: 850;
+}
+
+.demo-badge,
+.demo-chip {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f1b487;
+  border-radius: 999px;
+  background: #fff4eb;
+  color: #9b3a00;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1;
+  padding: 7px 10px;
+  white-space: nowrap;
 }
 
 .radar-workspace {
@@ -802,6 +819,71 @@ button {
   fill: var(--blue);
 }
 
+.today-move {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+  gap: 16px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  background: #fffaf6;
+  padding: 16px 20px;
+}
+
+.move-copy {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.move-copy h2 {
+  margin: 0;
+  color: var(--ink-strong);
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+.move-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.move-metrics {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.move-metrics div {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid #f0d3bf;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 8px 10px;
+}
+
+.move-metrics dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.move-metrics dd {
+  margin: 0;
+  color: var(--ink-strong);
+  font-size: 12px;
+  font-weight: 900;
+  text-align: right;
+}
+
 .money-brief {
   padding: 16px 20px 22px;
 }
@@ -972,6 +1054,71 @@ button {
 
 .target-route .text-button {
   margin-top: 13px;
+}
+
+.score-details {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+.score-details summary {
+  cursor: pointer;
+  color: var(--ink-strong);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 900;
+  list-style-position: inside;
+  padding: 13px 15px;
+}
+
+.score-details > div {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding: 0 15px 15px;
+}
+
+.score-details strong {
+  color: var(--ink-strong);
+  font-size: 14px;
+}
+
+.score-details p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.score-details dl {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 4px 0 0;
+}
+
+.score-details dl div {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px;
+}
+
+.score-details dt {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.score-details dd {
+  margin: 0;
+  color: var(--ink-strong);
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .execution-panel {
@@ -1176,6 +1323,118 @@ button {
   font-size: 12px;
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 9, 9, 0.54);
+  padding: 20px;
+}
+
+.pilot-modal {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(7, 9, 9, 0.22);
+  padding: 22px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--ink);
+}
+
+.modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modal-heading {
+  display: grid;
+  gap: 8px;
+  padding-right: 46px;
+}
+
+.modal-heading h2,
+.pilot-success h2 {
+  margin: 0;
+  color: var(--ink-strong);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.modal-heading p,
+.pilot-success p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.pilot-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pilot-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.pilot-form input,
+.pilot-form select {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 0 11px;
+  text-transform: none;
+}
+
+.pilot-form .launch-button {
+  grid-column: 1 / -1;
+  min-height: 42px;
+}
+
+.pilot-success {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  padding-right: 44px;
+}
+
+.pilot-success svg {
+  width: 36px;
+  height: 36px;
+  color: var(--green);
+}
+
 @media (max-width: 1180px) {
   .radar-workspace {
     grid-template-columns: 290px minmax(540px, 1fr);
@@ -1280,6 +1539,18 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .today-move {
+    grid-template-columns: 1fr;
+  }
+
+  .move-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .score-details dl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .brief-columns article {
     border-right: 0;
     border-bottom: 1px solid var(--line);
@@ -1345,6 +1616,10 @@ button {
     padding-left: 0;
   }
 
+  .demo-badge {
+    justify-self: start;
+  }
+
   .account-row select {
     width: 100%;
     min-width: 0;
@@ -1387,6 +1662,31 @@ button {
     grid-column: 2;
     width: fit-content;
     padding: 0 14px;
+  }
+
+  .today-move {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .move-copy h2 {
+    font-size: 18px;
+  }
+
+  .move-metrics,
+  .score-details dl,
+  .pilot-form {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-backdrop {
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .pilot-modal {
+    max-height: calc(100vh - 24px);
+    padding: 18px;
   }
 
   .homes-table {
