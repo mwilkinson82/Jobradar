@@ -42,6 +42,11 @@ select {
   letter-spacing: 0;
 }
 
+textarea {
+  font: inherit;
+  letter-spacing: 0;
+}
+
 button {
   cursor: pointer;
 }
@@ -1406,7 +1411,8 @@ button {
 }
 
 .pilot-form input,
-.pilot-form select {
+.pilot-form select,
+.pilot-form textarea {
   width: 100%;
   min-height: 40px;
   border: 1px solid var(--line-strong);
@@ -1415,6 +1421,16 @@ button {
   color: var(--ink);
   padding: 0 11px;
   text-transform: none;
+}
+
+.pilot-form textarea {
+  min-height: 78px;
+  padding-top: 10px;
+  resize: vertical;
+}
+
+.wide-field {
+  grid-column: 1 / -1;
 }
 
 .pilot-form .launch-button {

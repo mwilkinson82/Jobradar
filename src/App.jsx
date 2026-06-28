@@ -870,7 +870,7 @@ function ExecutionPanel({ campaign, exportRoute, openPilotModal, selectedArea, t
         </dl>
         <button className="launch-button" type="button" onClick={openPilotModal}>
           <Navigation aria-hidden="true" />
-          Launch campaign
+          Request real-market pilot
         </button>
         <button className="secondary-button full-width" type="button" onClick={exportRoute}>
           <Download aria-hidden="true" />
@@ -917,6 +917,9 @@ function PilotModal({ metro, onClose, onSubmit, selectedArea, submitted, trade }
     trade: trade.label,
     metro,
     spend: "$1,000-$3,000",
+    leadSource: "Referrals",
+    runCampaign: "Yes - next week",
+    trustData: "",
     email: "",
     phone: "",
   });
@@ -977,6 +980,34 @@ function PilotModal({ metro, onClose, onSubmit, selectedArea, submitted, trade }
                   <option>$3,000-$7,500</option>
                   <option>$7,500+</option>
                 </select>
+              </label>
+              <label>
+                Primary lead source
+                <select value={form.leadSource} onChange={(event) => updateField("leadSource", event.target.value)}>
+                  <option>Referrals</option>
+                  <option>Google / SEO</option>
+                  <option>Facebook / Instagram</option>
+                  <option>HomeAdvisor / Angi</option>
+                  <option>Door knocking / direct mail</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label>
+                Would you run this campaign if the data was real?
+                <select value={form.runCampaign} onChange={(event) => updateField("runCampaign", event.target.value)}>
+                  <option>Yes - next week</option>
+                  <option>Maybe - need proof</option>
+                  <option>No</option>
+                </select>
+              </label>
+              <label className="wide-field">
+                What data would you need to trust this?
+                <textarea
+                  value={form.trustData}
+                  onChange={(event) => updateField("trustData", event.target.value)}
+                  placeholder="Permits, home age, storm reports, recent sales, proof it booked jobs..."
+                  rows="3"
+                />
               </label>
               <label>
                 Email

@@ -9,4 +9,6 @@ A local Vite/React prototype for a contractor local job radar and marketing exec
 - postcard, radius ad, and door-route execution
 - target homes and route export
 
+The data-source plan for turning the prototype into one real metro/trade pilot lives in [`docs/job-radar-data-source-repository.md`](docs/job-radar-data-source-repository.md).
+
 Design references are saved in `design/`.
