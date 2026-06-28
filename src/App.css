@@ -358,6 +358,39 @@ a:focus-visible {
   text-transform: none;
 }
 
+.conversion-strip {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #ffffff;
+  padding: 9px 10px;
+}
+
+.conversion-strip strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.conversion-strip span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.conversion-strip span::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 7px 1px 0;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
 .hero-shell {
   display: grid;
   grid-template-columns: minmax(320px, 0.95fr) minmax(320px, 1fr);
@@ -1381,6 +1414,76 @@ a:focus-visible {
   border-color: rgba(15, 118, 110, 0.55);
 }
 
+.entity-main-button {
+  display: grid;
+  width: 100%;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  text-align: left;
+}
+
+.workflow-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+
+.workflow-actions button {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fbfcfb;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 850;
+  padding: 0 8px;
+}
+
+.workflow-actions button:hover {
+  border-color: rgba(15, 118, 110, 0.55);
+  background: var(--teal-soft);
+}
+
+.workflow-actions svg {
+  width: 13px;
+  height: 13px;
+  color: var(--teal);
+}
+
+.workflow-actions.compact {
+  gap: 5px;
+}
+
+.workflow-actions.compact button {
+  min-height: 28px;
+  padding: 0 7px;
+}
+
+.inline-workflow-notice {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  gap: 5px;
+  border-radius: 6px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--teal-dark);
+  font-size: 11px;
+  font-weight: 850;
+  padding: 0 8px;
+}
+
+.inline-workflow-notice svg {
+  width: 13px;
+  height: 13px;
+}
+
 .company-row dl,
 .property-row dl,
 .area-tile dl,
@@ -1422,7 +1525,7 @@ a:focus-visible {
 
 .property-row {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(330px, 1.2fr) 170px;
+  grid-template-columns: minmax(220px, 1fr) minmax(300px, 1fr) minmax(220px, 0.8fr);
   gap: 16px;
   align-items: center;
   border-bottom: 1px solid var(--line);
@@ -1430,7 +1533,13 @@ a:focus-visible {
 }
 
 .property-row dl {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.entity-actions-cell {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
 }
 
 .area-grid {
@@ -1456,7 +1565,7 @@ a:focus-visible {
   background: var(--teal-soft);
 }
 
-.area-tile > span {
+.area-main-button > span {
   width: fit-content;
   border-radius: 999px;
   background: var(--nav);
@@ -1470,7 +1579,7 @@ a:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.area-tile em {
+.area-main-button em {
   color: var(--teal);
   font-size: 12px;
   font-style: normal;
@@ -1772,6 +1881,34 @@ a:focus-visible {
   line-height: 1.45;
 }
 
+.packet-includes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.packet-includes-grid article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  padding: 12px;
+}
+
+.packet-includes-grid strong {
+  display: block;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.packet-includes-grid p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .beta-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1979,6 +2116,7 @@ a:focus-visible {
   .area-grid,
   .report-options,
   .money-step-grid,
+  .packet-includes-grid,
   .modal-metrics,
   .detail-grid,
   .beta-form {
@@ -1990,7 +2128,8 @@ a:focus-visible {
   .found-panel,
   .top-discovery-card,
   .money-path-panel,
-  .how-use-strip {
+  .how-use-strip,
+  .conversion-strip {
     grid-column: 1;
     min-width: 0;
   }
@@ -2072,6 +2211,10 @@ a:focus-visible {
     flex-direction: column;
   }
 
+  .entity-actions-cell {
+    justify-items: start;
+  }
+
   .records-table {
     min-width: 1040px;
   }
@@ -2081,8 +2224,13 @@ a:focus-visible {
   .filter-bar,
   .hero-metrics,
   .property-row dl,
-  .area-tile dl {
+  .area-tile dl,
+  .workflow-actions {
     grid-template-columns: 1fr;
+  }
+
+  .workflow-actions {
+    display: grid;
   }
 
   .found-panel {

@@ -17,8 +17,12 @@ import {
   Search,
   ShieldCheck,
   Sparkles,
+  Star,
   Target,
   Users,
+  Bell,
+  ListPlus,
+  Check,
   X,
 } from "lucide-react";
 import maplibregl from "maplibre-gl";
@@ -33,7 +37,7 @@ const navItems = [
   { id: "companies", label: "Companies", icon: Users },
   { id: "properties", label: "Properties", icon: Home },
   { id: "areas", label: "Areas", icon: Layers3 },
-  { id: "reports", label: "Reports", icon: ClipboardList },
+  { id: "reports", label: "Packets", icon: ClipboardList },
 ];
 
 const projectTypeOptions = [
@@ -76,20 +80,20 @@ const moneyPathOptions = [
     mapTitle: "Project leads in the current map view",
     description: "Find active filings, scopes, values, and project players worth bidding or servicing.",
     audience: "Good for GCs, subs, estimators, expediters, and service firms.",
-    action: "Filter by work type, value, status, and date, then unlock the list.",
+    action: "Filter by work type, value, status, and date, then build a source-backed list.",
   },
   {
     id: "companies",
     label: "Find companies to call",
     shortLabel: "Companies to call",
     summaryLabel: "Companies to call",
-    cta: "Unlock company activity packet",
+    cta: "Get company activity packet",
     packetLabel: "Company Activity Packet",
     reportNoun: "company activity packet",
     mapTitle: "Active companies in this area",
     description: "See contractors, applicants, owners, and project players appearing in recent public records.",
     audience: "Good for suppliers, distributors, manufacturers, reps, and B2B service providers.",
-    action: "Start with visible companies, then unlock every related record and source trail.",
+    action: "Start with visible companies, then turn related records into a territory call list.",
   },
   {
     id: "areas",
@@ -102,14 +106,14 @@ const moneyPathOptions = [
     mapTitle: "Neighborhoods heating up",
     description: "Spot where activity, project value, and permit categories are concentrating.",
     audience: "Good for brokers, real estate pros, contractors, suppliers, and local operators.",
-    action: "Use hot zones to focus outreach, canvassing, territory planning, or watchlists.",
+    action: "Use hot zones to focus outreach, territory planning, or watchlists.",
   },
   {
     id: "properties",
     label: "Track repeat properties",
     shortLabel: "Repeat properties",
     summaryLabel: "Repeat properties to watch",
-    cta: "Unlock property activity packet",
+    cta: "Create property activity packet",
     packetLabel: "Property Activity Packet",
     reportNoun: "property activity packet",
     mapTitle: "Properties with repeat activity",
@@ -128,7 +132,7 @@ const moneyPathOptions = [
     mapTitle: "High-value work moving now",
     description: "Find projects with larger declared values and the people attached to them.",
     audience: "Good for commercial subs, suppliers, brokers, developers, lenders, and deal teams.",
-    action: "Prioritize high-value records and unlock the source-backed project list.",
+    action: "Prioritize high-value records and turn them into a source-backed project list.",
   },
 ];
 
@@ -247,6 +251,9 @@ function App() {
   const [minimumValue, setMinimumValue] = useState("0");
   const [borough, setBorough] = useState("all");
   const [moneyPathId, setMoneyPathId] = useState("projects");
+  const [mapResizeSignal, setMapResizeSignal] = useState(0);
+  const mapSectionRef = useRef(null);
+  const tourStartTimeoutRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -272,6 +279,12 @@ function App() {
     loadData();
     return () => {
       cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (tourStartTimeoutRef.current) window.clearTimeout(tourStartTimeoutRef.current);
     };
   }, []);
 
@@ -454,9 +467,16 @@ function App() {
 
   function startHotspotTour() {
     setQuery("");
-    setTourActive(true);
-    const first = areas[0];
-    if (first) selectArea(first, { zoom: 12.8 });
+    setSelectedProject(null);
+    setTourActive(false);
+    mapSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (tourStartTimeoutRef.current) window.clearTimeout(tourStartTimeoutRef.current);
+    tourStartTimeoutRef.current = window.setTimeout(() => {
+      setMapResizeSignal((signal) => signal + 1);
+      const first = areas[0];
+      if (first) selectArea(first, { zoom: 12.8 });
+      setTourActive(true);
+    }, 620);
   }
 
   useEffect(() => {
@@ -518,10 +538,11 @@ function App() {
 
         <div className="workspace-grid">
           <section className="workspace-primary">
-            <section className="section-panel map-section" id="map" aria-labelledby="map-title">
+            <section className="section-panel map-section" id="map" ref={mapSectionRef} aria-labelledby="map-title">
               <MapExplorer
                 areas={areas}
                 focusTarget={mapFocus}
+                mapResizeSignal={mapResizeSignal}
                 moneyPath={moneyPath}
                 onOpenReport={() => setProModalOpen(true)}
                 onProjectClick={selectProject}
@@ -681,7 +702,7 @@ function Hero({
         <h1>Find active NYC construction projects, companies to call, and hot zones before your competitors do.</h1>
         <p>
           We turn public DOB permits, filings, project values, company names, properties, and neighborhood activity
-          into maps, reports, and target lists you can act on.
+          into maps, packets, watchlists, exports, and target lists you can act on.
         </p>
       </div>
       <form className="search-panel" onSubmit={(event) => {
@@ -736,7 +757,7 @@ function Hero({
           <h2>{selectedArea?.name ?? "Chelsea-Hudson Yards"}</h2>
           <p>
             {number(selectedArea?.recordCount)} public construction records, {compactCurrency(selectedArea?.declaredValue)}
-            {" "}declared value, {number(selectedAreaCompanies.length)} companies visible, {number(lockedCount)} locked records.
+            {" "}declared value, {number(selectedAreaCompanies.length)} companies visible, {number(lockedCount)} packet records.
           </p>
           <ul>
             <li>Find active project players</li>
@@ -777,6 +798,12 @@ function Hero({
           <strong>Developers & investors</strong>
           <span>Track filings, high-value projects, repeat properties, and market pressure.</span>
         </article>
+      </div>
+      <div className="conversion-strip">
+        <strong>How this turns into money</strong>
+        <span>1. Find where activity is happening.</span>
+        <span>2. See the projects, companies, and properties behind it.</span>
+        <span>3. Build a list, watch the area, and start outreach.</span>
       </div>
     </header>
   );
@@ -842,6 +869,7 @@ function Filters({
 function MapExplorer({
   areas,
   focusTarget,
+  mapResizeSignal,
   moneyPath,
   onOpenReport,
   onProjectClick,
@@ -883,6 +911,7 @@ function MapExplorer({
         <InteractiveNycMap
           areas={areas}
           focusTarget={focusTarget}
+          mapResizeSignal={mapResizeSignal}
           onProjectClick={onProjectClick}
           onSelectArea={onSelectArea}
           onViewportStats={onViewportStats}
@@ -912,6 +941,7 @@ function MapExplorer({
 function InteractiveNycMap({
   areas,
   focusTarget,
+  mapResizeSignal,
   onProjectClick,
   onSelectArea,
   onViewportStats,
@@ -1023,6 +1053,15 @@ function InteractiveNycMap({
     });
   }, [focusTarget]);
 
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapResizeSignal) return;
+    window.requestAnimationFrame(() => {
+      map.resize();
+      updateViewportStats();
+    });
+  }, [mapResizeSignal, updateViewportStats]);
+
   return (
     <div className="map-shell">
       <div className="map-canvas" ref={containerRef} />
@@ -1035,13 +1074,13 @@ function InteractiveNycMap({
 
 function SelectedReportPreview({ companies, moneyPath, onOpenReport, projects, selectedArea }) {
   if (!selectedArea) return null;
-  const topCompany = companies[0]?.name ?? "Company list locked";
-  const topProperty = projects[0]?.address ?? "Property list locked";
+  const topCompany = companies[0]?.name ?? "Company list available in packet";
+  const topProperty = projects[0]?.address ?? "Property list available in packet";
 
   return (
     <aside className="map-report-panel">
       <span>{selectedArea.name} opportunity preview</span>
-      <h2>Unlock the {selectedArea.name} {moneyPath.packetLabel}.</h2>
+      <h2>Get the {selectedArea.name} {moneyPath.packetLabel}.</h2>
       <dl>
         <div>
           <dt>Records found</dt>
@@ -1097,7 +1136,7 @@ function RecordsDrawer({ lockedCount, moneyPath, onOpenReport, onProjectClick, p
         {projects.slice(0, 8).map((project) => (
           <button key={`${project.project_id}-${project.permit_number}`} type="button" onClick={() => onProjectClick(project)}>
             <strong>{project.address || "Address not provided"}</strong>
-            <span>{categoryLabel(project.trade_category)} · {project.declared_value_label || "N/A"} · {project.contractor_name || "Company locked"}</span>
+            <span>{categoryLabel(project.trade_category)} · {project.declared_value_label || "N/A"} · {project.contractor_name || "Company in packet"}</span>
           </button>
         ))}
       </div>
@@ -1128,7 +1167,7 @@ function PreviewBlock({ areaProjects, lockedCount, moneyPath, onOpenReport, onPr
       </div>
       <div className="preview-proof">
         <PreviewMetric label={`Free preview: ${number(visibleCount || previewRecords.length)} records`} value={`${number(visibleCount || previewRecords.length)} visible`} />
-        <PreviewMetric label="Locked records" value={number(lockedCount)} />
+        <PreviewMetric label="Packet records" value={number(lockedCount)} />
         <PreviewMetric label="Source coverage" value={`${selectedArea.sourceCount || 1} sources`} />
       </div>
       <div className="mini-records">
@@ -1181,13 +1220,13 @@ function ProjectsTable({
       <SectionTitle
         eyebrow="Project / Permit Records"
         title={`Free preview: ${projects.length} of ${number(selectedArea?.recordCount ?? projects.length)} records`}
-        copy={`Sample DOB permit and filing records are visible for free. Full source links, exports, related records, and the complete ${moneyPath.reportNoun} unlock in the packet.`}
+        copy={`Sample DOB permit and filing records are visible for free. The complete ${moneyPath.reportNoun} adds source links, exports, related records, and outreach context.`}
       />
 
       {noAreaMatches ? (
         <div className="source-warning">
           No exact sample rows for {selectedArea?.name} are included in the free preview. Showing latest NYC records.
-          The packet unlocks the selected area&apos;s full record list.
+          The packet includes the selected area&apos;s full record list.
         </div>
       ) : null}
 
@@ -1238,7 +1277,7 @@ function ProjectsTable({
                 <td colSpan="9">
                   <LockKeyhole aria-hidden="true" />
                   {number(lockedCount)} more public records found in this area - {moneyPath.cta.toLowerCase()}.
-                  <button type="button" onClick={onOpenReport}>Unlock</button>
+                  <button type="button" onClick={onOpenReport}>Get packet</button>
                 </td>
               </tr>
             ) : null}
@@ -1255,35 +1294,38 @@ function CompaniesSection({ companies, isAreaSpecific, moneyPath, onCompanyClick
       <SectionTitle
         eyebrow="Sales Targets"
         title={isAreaSpecific ? `Companies to call in ${selectedArea.name}` : "Companies to call in the free NYC preview"}
-        copy="These companies appear in recent public construction records. Unlock the full packet to see all records, source links, activity patterns, and exportable contact research."
+        copy="These companies appear in recent public construction records. The full packet adds source links, activity patterns, exportable contact research, and list-building context."
       />
       <div className="company-grid">
         {companies.slice(0, 6).map((company) => (
-          <button className="company-row" key={company.name} type="button" onClick={() => onCompanyClick(company)}>
-            <div>
-              <strong>{company.name}</strong>
-              <small>{company.role}</small>
-            </div>
-            <dl>
+          <article className="company-row" key={company.name}>
+            <button className="entity-main-button" type="button" onClick={() => onCompanyClick(company)}>
               <div>
-                <dt>Records</dt>
-                <dd>{number(company.records)}</dd>
+                <strong>{company.name}</strong>
+                <small>{company.role}</small>
               </div>
-              <div>
-                <dt>Value</dt>
-                <dd>{compactCurrency(company.value)}</dd>
-              </div>
-              <div>
-                <dt>Trend</dt>
-                <dd>{company.trend}</dd>
-              </div>
-            </dl>
-          </button>
+              <dl>
+                <div>
+                  <dt>Records</dt>
+                  <dd>{number(company.records)}</dd>
+                </div>
+                <div>
+                  <dt>Value</dt>
+                  <dd>{compactCurrency(company.value)}</dd>
+                </div>
+                <div>
+                  <dt>Trend</dt>
+                  <dd>{company.trend}</dd>
+                </div>
+              </dl>
+            </button>
+            <WorkflowActions context={company.name} />
+          </article>
         ))}
       </div>
       {!isAreaSpecific ? (
         <div className="locked-note">
-          Area-specific company ranking for {selectedArea?.name} is locked behind the {moneyPath.packetLabel} when the free preview does not expose enough rows.
+          Area-specific company ranking for {selectedArea?.name} is included in the {moneyPath.packetLabel} when the free preview does not expose enough rows.
           <button type="button" onClick={onOpenReport}>{moneyPath.cta}</button>
         </div>
       ) : null}
@@ -1297,7 +1339,7 @@ function PropertiesSection({ moneyPath, onOpenReport, properties }) {
       <SectionTitle
         eyebrow="Properties"
         title="Repeat-activity property preview"
-        copy="The current public preview shows recent project addresses. BBL/BIN, PLUTO parcel context, related records, and watchlist context unlock in the property activity packet."
+        copy="The current public preview shows recent project addresses. BBL/BIN, PLUTO parcel context, related records, and watchlist context are packaged in the property activity packet."
       />
       <div className="property-list">
         {properties.map((property) => (
@@ -1316,10 +1358,13 @@ function PropertiesSection({ moneyPath, onOpenReport, properties }) {
                 <dd>{compactCurrency(property.value)}</dd>
               </div>
             </dl>
-            <button className="text-action" type="button" onClick={onOpenReport}>
-              {moneyPath.id === "properties" ? moneyPath.cta : "Unlock property activity packet"}
-              <ExternalLink aria-hidden="true" />
-            </button>
+            <div className="entity-actions-cell">
+              <button className="text-action" type="button" onClick={onOpenReport}>
+                {moneyPath.id === "properties" ? moneyPath.cta : "Create property activity packet"}
+                <ExternalLink aria-hidden="true" />
+              </button>
+              <WorkflowActions compact context={property.address} />
+            </div>
           </article>
         ))}
       </div>
@@ -1333,39 +1378,40 @@ function AreasSection({ areas, onSelectArea, selectedArea }) {
       <SectionTitle
         eyebrow="Hot Areas"
         title="Neighborhood and ZIP intelligence"
-        copy="Each hot area has a score, activity volume, declared value, growth, source coverage, and locked report path."
+        copy="Each hot area has a score, activity volume, declared value, growth, source coverage, and a packet/list path."
       />
       <div className="area-grid">
         {areas.slice(0, 8).map((area) => (
-          <button
+          <article
             className={`area-tile ${selectedArea?.id === area.id ? "selected" : ""}`}
             key={area.id}
-            type="button"
-            onClick={() => onSelectArea(area)}
           >
-            <span>#{area.rank}</span>
-            <strong>{area.name}</strong>
-            <small>{area.borough || "NYC"} / ZIP {area.zip}</small>
-            <dl>
-              <div>
-                <dt>Heat</dt>
-                <dd>{area.score}</dd>
-              </div>
-              <div>
-                <dt>Records</dt>
-                <dd>{number(area.recordCount)}</dd>
-              </div>
-              <div>
-                <dt>Value</dt>
-                <dd>{compactCurrency(area.declaredValue)}</dd>
-              </div>
-              <div>
-                <dt>Trend</dt>
-                <dd>{trendText(area.activityGrowth)}</dd>
-              </div>
-            </dl>
-            <em>View intelligence</em>
-          </button>
+            <button className="entity-main-button area-main-button" type="button" onClick={() => onSelectArea(area)}>
+              <span>#{area.rank}</span>
+              <strong>{area.name}</strong>
+              <small>{area.borough || "NYC"} / ZIP {area.zip}</small>
+              <dl>
+                <div>
+                  <dt>Heat</dt>
+                  <dd>{area.score}</dd>
+                </div>
+                <div>
+                  <dt>Records</dt>
+                  <dd>{number(area.recordCount)}</dd>
+                </div>
+                <div>
+                  <dt>Value</dt>
+                  <dd>{compactCurrency(area.declaredValue)}</dd>
+                </div>
+                <div>
+                  <dt>Trend</dt>
+                  <dd>{trendText(area.activityGrowth)}</dd>
+                </div>
+              </dl>
+              <em>View intelligence</em>
+            </button>
+            <WorkflowActions compact context={area.name} />
+          </article>
         ))}
       </div>
     </section>
@@ -1377,7 +1423,7 @@ function MoneyExplainer({ moneyPath }) {
     <section className="section-panel money-explainer" aria-labelledby="money-explainer-title">
       <SectionTitle
         eyebrow="How this turns into money"
-        title="Find the activity, see who is behind it, then unlock the packet."
+        title="Find the activity, see who is behind it, then build the packet."
         copy={`${moneyPath.description} ${moneyPath.audience}`}
       />
       <div className="money-step-grid">
@@ -1390,7 +1436,7 @@ function MoneyExplainer({ moneyPath }) {
           <p>Open project details, preview active companies, and identify properties with recent public construction activity.</p>
         </article>
         <article>
-          <strong>3. Unlock the packet and act</strong>
+          <strong>3. Build the packet and act</strong>
           <p>Export the list, build outreach, create a watchlist, or turn the area into a weekly territory brief.</p>
         </article>
       </div>
@@ -1410,7 +1456,7 @@ function ReportsSection({ moneyPath, onOpenReport, selectedArea }) {
     <section className="section-panel report-section" id="reports" aria-labelledby="reports-title">
       <SectionTitle
         eyebrow="Packets"
-        title={`Unlock the ${selectedArea?.name ?? "NYC"} ${moneyPath.packetLabel}`}
+        title={`Build the ${selectedArea?.name ?? "NYC"} ${moneyPath.packetLabel}`}
         copy={`Start with the ${selectedArea?.name ?? "NYC"} packet, then expand to companies, properties, exports, and weekly watchlists.`}
       />
       <div className="report-options">
@@ -1430,7 +1476,7 @@ function ReportsSection({ moneyPath, onOpenReport, selectedArea }) {
           {moneyPath.cta}
         </button>
         <button className="secondary-action" type="button" onClick={onOpenReport}>
-          Request Pro Beta Access
+          What happens after I pay?
         </button>
       </div>
     </section>
@@ -1481,7 +1527,7 @@ function SelectedAreaPanel({ companies, onOpenArea, onOpenReport, projects, sele
       </dl>
       <div className="panel-actions">
         <button className="secondary-action" type="button" onClick={onOpenArea}>View sample records</button>
-        <button className="primary-action" type="button" onClick={onOpenReport}>Unlock project + company list</button>
+        <button className="primary-action" type="button" onClick={onOpenReport}>Get project + company list</button>
       </div>
     </section>
   );
@@ -1489,8 +1535,8 @@ function SelectedAreaPanel({ companies, onOpenArea, onOpenReport, projects, sele
 
 function UnlockPanel({ onOpenReport, selectedArea }) {
   return (
-    <section className="unlock-card" aria-label="Unlock deeper intelligence">
-      <h2>Unlock the project + company packet</h2>
+    <section className="unlock-card" aria-label="Build deeper intelligence">
+      <h2>Build the project + company packet</h2>
       <p>
         The {selectedArea?.name ?? "NYC"} packet includes all records, company names, CSV export,
         related records, source links, and watchlist alerts.
@@ -1502,8 +1548,8 @@ function UnlockPanel({ onOpenReport, selectedArea }) {
         <li><LockKeyhole aria-hidden="true" /> CSV export</li>
         <li><LockKeyhole aria-hidden="true" /> Weekly NYC money map / heat index</li>
       </ul>
-      <button className="primary-action" type="button" onClick={onOpenReport}>Unlock project + company list</button>
-      <button className="secondary-action" type="button" onClick={onOpenReport}>Request Pro Beta Access</button>
+      <button className="primary-action" type="button" onClick={onOpenReport}>Get project + company list</button>
+      <button className="secondary-action" type="button" onClick={onOpenReport}>What happens after I pay?</button>
     </section>
   );
 }
@@ -1517,6 +1563,7 @@ function AreaModal({ companies, lockedCount, moneyPath, onClose, onOpenReport, o
         <Metric label="Declared value" value={compactCurrency(selectedArea.declaredValue)} />
         <Metric label="Activity trend" value={trendText(selectedArea.activityGrowth)} />
       </div>
+      <WorkflowActions context={selectedArea.name} />
       <div className="ways-to-use modal-way-list">
         <h3>Ways to use this area</h3>
         <ul>
@@ -1568,6 +1615,7 @@ function ProjectModal({ moneyPath, onClose, onOpenReport, project }) {
         <strong>{project.address || NOT_AVAILABLE}</strong>
         <span>{project.borough || NOT_AVAILABLE} {project.zip ? `/ ZIP ${project.zip}` : ""}</span>
       </div>
+      <WorkflowActions context={project.address || project.permit_number || "this project"} />
       <div className="detail-grid">
         <Detail label="Permit / filing number" value={project.permit_number || project.project_id || NOT_AVAILABLE} />
         <Detail label="Work type" value={categoryLabel(project.trade_category)} />
@@ -1585,7 +1633,7 @@ function ProjectModal({ moneyPath, onClose, onOpenReport, project }) {
       </div>
       <div className="detail-grid">
         <Detail label="Money angle" value="Use this record to identify the project, work type, company/applicant, source trail, and nearby activity." />
-        <Detail label="Related records nearby" value={`Unlock the ${moneyPath.packetLabel}`} />
+        <Detail label="Related records nearby" value={`Included in the ${moneyPath.packetLabel}`} />
       </div>
       <div className="modal-actions">
         {project.source_url ? (
@@ -1615,6 +1663,7 @@ function CompanyModal({ company, moneyPath, onClose, onOpenReport }) {
         <Metric label="Active neighborhoods" value={number(company.neighborhoods.length)} />
         <Metric label="Trend" value={company.trend} />
       </div>
+      <WorkflowActions context={company.name} />
       <div className="detail-grid">
         <Detail label="Active neighborhoods" value={company.neighborhoods.join(", ") || NOT_AVAILABLE} />
         <Detail label="Project categories" value={company.categories.map(categoryLabel).join(", ") || NOT_AVAILABLE} />
@@ -1622,7 +1671,7 @@ function CompanyModal({ company, moneyPath, onClose, onOpenReport }) {
       </div>
       <div className="modal-actions">
         <button className="primary-action" type="button" onClick={onOpenReport}>
-          {moneyPath.id === "companies" ? moneyPath.cta : "Unlock company activity packet"}
+          {moneyPath.id === "companies" ? moneyPath.cta : "Get company activity packet"}
         </button>
       </div>
     </Modal>
@@ -1631,13 +1680,39 @@ function CompanyModal({ company, moneyPath, onClose, onOpenReport }) {
 
 function ProAccessModal({ moneyPath, onClose, selectedArea }) {
   return (
-    <Modal onClose={onClose} title="Request Pro Beta Access">
+    <Modal onClose={onClose} title={`${selectedArea?.name ?? "NYC"} ${moneyPath.packetLabel}`}>
       <div className="unlock-intro">
-        <h3>Unlock the {selectedArea?.name ?? "NYC"} {moneyPath.packetLabel}.</h3>
+        <h3>What you get after requesting this packet</h3>
         <p>
-          Includes public records, project values, company/applicant names, source links, repeat-activity properties,
-          CSV export, contact research workflow, and weekly watchlist alerts.
+          This is not just a record preview. It is an organized work product: records, companies, properties,
+          source links, export fields, watchlist setup, and suggested action angles.
         </p>
+      </div>
+      <div className="packet-includes-grid">
+        <article>
+          <strong>Full project list</strong>
+          <p>All public project and permit records, values, work types, dates, statuses, permit IDs, and source links.</p>
+        </article>
+        <article>
+          <strong>Company list</strong>
+          <p>Contractors, applicants, owners, and project players appearing in the records.</p>
+        </article>
+        <article>
+          <strong>Property watchlist</strong>
+          <p>Buildings with repeat activity, high-value filings, or multiple recent public records.</p>
+        </article>
+        <article>
+          <strong>CSV export</strong>
+          <p>Export-ready rows for research, CRM upload, list building, or sales assignment.</p>
+        </article>
+        <article>
+          <strong>Suggested outreach angles</strong>
+          <p>Action ideas by contractor, supplier, real estate, developer, investor, or property use case.</p>
+        </article>
+        <article>
+          <strong>Optional weekly alerts</strong>
+          <p>Updates when new records, companies, high-value filings, or repeat-property activity appears.</p>
+        </article>
       </div>
       <form className="beta-form" onSubmit={(event) => event.preventDefault()}>
         <label>
@@ -1661,7 +1736,7 @@ function ProAccessModal({ moneyPath, onClose, selectedArea }) {
             <option value="watchlist">Weekly NYC money map / heat index</option>
           </select>
         </label>
-        <button className="primary-action" type="submit">Request Pro Beta Access</button>
+        <button className="primary-action" type="submit">Request this packet</button>
       </form>
     </Modal>
   );
@@ -1705,6 +1780,37 @@ function PreviewMetric({ label, value }) {
     <div>
       <span>{label}</span>
       <strong>{value}</strong>
+    </div>
+  );
+}
+
+function WorkflowActions({ compact = false, context }) {
+  const [queuedAction, setQueuedAction] = useState(null);
+  const actions = [
+    ["Save", Star],
+    ["Watch", Bell],
+    ["Add to call list", ListPlus],
+    ["Export preview", Download],
+  ];
+
+  function queueWorkflowAction(label) {
+    setQueuedAction(label);
+  }
+
+  return (
+    <div className={`workflow-actions ${compact ? "compact" : ""}`} aria-label={`Workflow actions for ${context}`}>
+      {actions.map(([label, Icon]) => (
+        <button key={label} type="button" onClick={() => queueWorkflowAction(label)}>
+          <Icon aria-hidden="true" />
+          <span>{label}</span>
+        </button>
+      ))}
+      {queuedAction ? (
+        <span className="inline-workflow-notice">
+          <Check aria-hidden="true" />
+          {queuedAction} queued
+        </span>
+      ) : null}
     </div>
   );
 }
