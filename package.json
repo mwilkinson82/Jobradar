@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "data:nyc": "node scripts/buildNycDataPack.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

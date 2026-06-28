@@ -1,0 +1,149 @@
+{
+  "version": "0.1",
+  "purpose": "Normalized Construction Intelligence schema contract for public permit/property/code sources.",
+  "collections": {
+    "permits": {
+      "primary_key": "permit_id",
+      "fields": {
+        "permit_id": "Stable source permit identifier.",
+        "source_id": "Registry source id.",
+        "source_dataset_id": "Socrata dataset id or source id.",
+        "source_url": "Source record or dataset URL.",
+        "market": "Metro market name.",
+        "jurisdiction": "City/county/agency jurisdiction.",
+        "permit_number": "Permit number when provided.",
+        "project_id": "Related job/project/application id.",
+        "permit_type": "Raw permit type.",
+        "trade_category": "Normalized trade category such as roofing, mechanical, remodel, demolition, solar, electrical, plumbing, exterior, or general.",
+        "status": "Raw permit status.",
+        "date_applied": "Application or filing date.",
+        "date_issued": "Issue/approved date.",
+        "date_completed": "Completion/signoff date.",
+        "declared_value": "Declared or estimated project value.",
+        "description": "Raw work description.",
+        "address": "Normalized display address.",
+        "borough": "NYC borough or market subarea where available.",
+        "zip": "ZIP/postal code.",
+        "lat": "Latitude.",
+        "lon": "Longitude.",
+        "bbl": "NYC borough-block-lot where available.",
+        "bin": "NYC building identification number where available.",
+        "contractor_name": "Contractor/permittee/applicant business where available.",
+        "confidence_score": "Normalization confidence from 0 to 1.",
+        "raw": "Pointer to raw source record in local raw data file."
+      }
+    },
+    "job_filings": {
+      "primary_key": "filing_id",
+      "fields": {
+        "filing_id": "Stable job filing/application identifier.",
+        "source_id": "Registry source id.",
+        "market": "Metro market name.",
+        "jurisdiction": "Agency jurisdiction.",
+        "job_number": "Raw job filing number.",
+        "job_type": "Raw job type.",
+        "trade_category": "Normalized trade category.",
+        "status": "Raw filing/application status.",
+        "date_filed": "Filing/application date.",
+        "date_approved": "Approval date.",
+        "date_first_permit": "First permit date.",
+        "declared_value": "Initial/estimated construction cost.",
+        "description": "Raw job description.",
+        "address": "Normalized display address.",
+        "borough": "NYC borough or market subarea where available.",
+        "zip": "ZIP/postal code.",
+        "bbl": "NYC borough-block-lot where available.",
+        "bin": "NYC building identification number where available.",
+        "owner_name": "Owner business/name where available.",
+        "applicant_name": "Applicant/professional where available.",
+        "confidence_score": "Normalization confidence from 0 to 1."
+      }
+    },
+    "complaints": {
+      "primary_key": "complaint_id",
+      "fields": {
+        "complaint_id": "Stable complaint number.",
+        "source_id": "Registry source id.",
+        "market": "Metro market name.",
+        "status": "Raw complaint status.",
+        "date_entered": "Complaint entry date.",
+        "date_disposition": "Disposition date.",
+        "complaint_category": "Raw complaint category.",
+        "address": "Normalized display address.",
+        "zip": "ZIP/postal code.",
+        "bin": "NYC building identification number where available.",
+        "area_key": "Normalized aggregation key.",
+        "confidence_score": "Normalization confidence from 0 to 1."
+      }
+    },
+    "violations": {
+      "primary_key": "violation_id",
+      "fields": {
+        "violation_id": "Stable violation id or number.",
+        "source_id": "Registry source id.",
+        "market": "Metro market name.",
+        "date_issued": "Violation issue date.",
+        "date_disposition": "Disposition date.",
+        "violation_type": "Raw violation type.",
+        "violation_category": "Raw violation category.",
+        "description": "Raw violation description.",
+        "address": "Normalized display address.",
+        "borough": "NYC borough where available.",
+        "bbl": "NYC borough-block-lot where available.",
+        "bin": "NYC building identification number where available.",
+        "area_key": "Normalized aggregation key.",
+        "confidence_score": "Normalization confidence from 0 to 1."
+      }
+    },
+    "properties": {
+      "primary_key": "property_id",
+      "fields": {
+        "property_id": "BBL, parcel id, or source-specific property key.",
+        "source_id": "Registry source id.",
+        "market": "Metro market name.",
+        "address": "Normalized address.",
+        "borough": "NYC borough or market subarea where available.",
+        "zip": "ZIP/postal code.",
+        "bbl": "NYC borough-block-lot where available.",
+        "lat": "Latitude.",
+        "lon": "Longitude.",
+        "property_type": "Raw or normalized property type.",
+        "land_use": "Land-use code/category.",
+        "year_built": "Year built.",
+        "year_altered_1": "Most recent alteration year if available.",
+        "building_area": "Building square footage.",
+        "lot_area": "Lot square footage.",
+        "assessed_total": "Assessed total value.",
+        "owner_name": "Owner name where legally allowed for display/use.",
+        "confidence_score": "Normalization confidence from 0 to 1."
+      }
+    },
+    "areas": {
+      "primary_key": "area_key",
+      "fields": {
+        "area_key": "Stable aggregation key, usually borough|zip|neighborhood.",
+        "market": "Metro market name.",
+        "borough": "Borough or city subarea.",
+        "zip": "ZIP/postal code.",
+        "neighborhood": "Neighborhood/NTA/community name where available.",
+        "recent_permit_volume": "Recent permits and filings in the scoring window.",
+        "previous_permit_volume": "Previous comparison-period permits and filings.",
+        "recent_activity_growth": "Relative activity growth from previous to recent window.",
+        "complaint_count": "Recent complaint volume.",
+        "violation_count": "Recent violation volume.",
+        "project_value_total": "Total declared/estimated value in scoring window.",
+        "dominant_trade_categories": "Top normalized categories.",
+        "construction_heat_score": "0-100 opportunity/heat score.",
+        "confidence_score": "0-1 confidence based on source coverage and field completeness."
+      }
+    }
+  },
+  "entities": {
+    "permit": "A normalized construction permit or issued permit record.",
+    "project": "A construction job/project inferred from permit/job filing clusters.",
+    "property": "A parcel, building, or addressable property record.",
+    "area": "A market geography such as borough, ZIP, NTA, tract, or neighborhood.",
+    "contractor": "A contractor, permittee, applicant, builder, or professional entity.",
+    "signal": "A scored observation used by the recommendation engine."
+  }
+}

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   BarChart3,
   CheckCircle2,
@@ -74,7 +74,8 @@ const trades = [
   },
 ];
 
-const metros = ["Dallas, TX", "Nashville, TN", "Charlotte, NC", "Austin, TX"];
+const NYC_METRO = "New York City, NY";
+const metros = ["Dallas, TX", NYC_METRO, "Nashville, TN", "Charlotte, NC", "Austin, TX"];
 
 const modes = [
   {
@@ -119,6 +120,13 @@ const signalSources = [
   ["Competition", "sampled weekly", "Contractor density and category saturation"],
 ];
 
+const nycSignalSources = [
+  ["DOB permits", "updated daily", "DOB NOW approved permits + DOB permit issuance"],
+  ["DOB filings", "updated daily", "DOB NOW job application filings"],
+  ["Code activity", "daily / weekday", "DOB complaints and violations"],
+  ["PLUTO", "updated quarterly", "Property, parcel, land use, and year-built context"],
+];
+
 const engineSteps = [
   ["Collect", "Permits, planning, property, weather, sales, and competition signals."],
   ["Normalize", "Messy public records become one trade-aware schema."],
@@ -126,7 +134,7 @@ const engineSteps = [
   ["Recommend", "The app turns the score into a route, campaign, and call list."],
 ];
 
-const areas = [
+const demoAreas = [
   {
     id: "north-oak",
     rank: 1,
@@ -309,7 +317,7 @@ const areas = [
   },
 ];
 
-const targetHomes = [
+const demoTargetHomes = [
   ["6126 Shadycrest Dr", "1961", "Permit filed"],
   ["6135 Wentwood Dr", "1958", "Recent sale"],
   ["6171 Thackery St", "1960", "25+ yrs old"],
@@ -367,6 +375,8 @@ function App() {
   const [mode, setMode] = useState("work");
   const [radarStarted, setRadarStarted] = useState(false);
   const [selectedAreaId, setSelectedAreaId] = useState("north-oak");
+  const [nycData, setNycData] = useState(null);
+  const [nycDataStatus, setNycDataStatus] = useState("idle");
   const [layerState, setLayerState] = useState(() =>
     Object.fromEntries(signalLayers.map(([label]) => [label, true])),
   );
@@ -374,8 +384,55 @@ function App() {
   const [pilotSubmitted, setPilotSubmitted] = useState(false);
 
   const trade = trades.find((item) => item.id === tradeId) ?? trades[0];
-  const selectedArea = areas.find((item) => item.id === selectedAreaId) ?? areas[0];
   const selectedMode = modes.find((item) => item.id === mode) ?? modes[0];
+  const isNycMetro = metro === NYC_METRO;
+  const displayAreas =
+    isNycMetro && nycData?.topAreas?.areas?.length ? nycData.topAreas.areas : demoAreas;
+  const selectedArea = displayAreas.find((item) => item.id === selectedAreaId) ?? displayAreas[0];
+  const targetRows =
+    isNycMetro && nycData?.projects?.target_homes?.length
+      ? nycData.projects.target_homes
+      : demoTargetHomes;
+  const topbarBadge = isNycMetro
+    ? "NYC public-data beta - sources: DOB / NYC Open Data / PLUTO"
+    : "Signal engine demo";
+  const ctaLabel = isNycMetro
+    ? "Request NYC Construction Intelligence beta"
+    : "Request real-market pilot";
+
+  useEffect(() => {
+    if (!isNycMetro) return undefined;
+
+    let cancelled = false;
+    async function loadNycData() {
+      setNycDataStatus("loading");
+      try {
+        const [topAreas, heat, projects] = await Promise.all([
+          fetchPublicJson("/data/nyc_top_areas.json"),
+          fetchPublicJson("/data/nyc_construction_heat.json"),
+          fetchPublicJson("/data/nyc_sample_projects.json"),
+        ]);
+        if (!cancelled) {
+          setNycData({ heat, projects, topAreas });
+          setNycDataStatus("ready");
+        }
+      } catch (error) {
+        console.error("NYC public-data beta failed to load", error);
+        if (!cancelled) setNycDataStatus("error");
+      }
+    }
+
+    loadNycData();
+    return () => {
+      cancelled = true;
+    };
+  }, [isNycMetro]);
+
+  useEffect(() => {
+    if (!displayAreas.some((area) => area.id === selectedAreaId)) {
+      setSelectedAreaId(displayAreas[0]?.id ?? "north-oak");
+    }
+  }, [displayAreas, selectedAreaId]);
 
   const campaign = useMemo(() => {
     const postcards = selectedArea.rank === 1 ? 300 : selectedArea.rank === 2 ? 220 : 160;
@@ -431,10 +488,11 @@ function App() {
         }}
       />
       <div className="product-shell">
-        <Topbar />
+        <Topbar badge={topbarBadge} />
         {radarStarted ? (
           <main className="radar-workspace" aria-label="Job Radar workspace">
             <ControlPanel
+              areas={displayAreas}
               mode={mode}
               metro={metro}
               selectedAreaId={selectedAreaId}
@@ -456,24 +514,37 @@ function App() {
                   Refresh signals
                 </button>
               </div>
-              <DataConfidence />
+              <DataConfidence
+                dataStatus={nycDataStatus}
+                heatCount={nycData?.heat?.areas?.length}
+                isNycMetro={isNycMetro}
+              />
               <TerritoryMap
+                areas={displayAreas}
                 layerState={layerState}
                 selectedArea={selectedArea}
                 setLayerState={setLayerState}
                 setSelectedAreaId={setSelectedAreaId}
               />
-              <TodayMove campaign={campaign} selectedArea={selectedArea} trade={trade} />
-              <MoneyBrief selectedArea={selectedArea} trade={trade} />
+              <TodayMove
+                campaign={campaign}
+                isNycMetro={isNycMetro}
+                selectedArea={selectedArea}
+                trade={trade}
+              />
+              <MoneyBrief isNycMetro={isNycMetro} selectedArea={selectedArea} trade={trade} />
             </section>
             <ExecutionPanel
               campaign={campaign}
+              ctaLabel={ctaLabel}
               exportRoute={exportRoute}
+              isNycMetro={isNycMetro}
               openPilotModal={() => {
                 setPilotSubmitted(false);
                 setPilotModalOpen(true);
               }}
               selectedArea={selectedArea}
+              targetRows={targetRows}
               trade={trade}
             />
           </main>
@@ -482,6 +553,7 @@ function App() {
             metro={metro}
             mode={mode}
             onStart={() => setRadarStarted(true)}
+            isNycMetro={isNycMetro}
             selectedMode={selectedMode}
             setMetro={setMetro}
             setMode={setMode}
@@ -492,6 +564,8 @@ function App() {
         )}
         {pilotModalOpen ? (
           <PilotModal
+            ctaLabel={ctaLabel}
+            isNycMetro={isNycMetro}
             metro={metro}
             onClose={() => setPilotModalOpen(false)}
             onSubmit={() => setPilotSubmitted(true)}
@@ -536,14 +610,14 @@ function Sidebar({ activeView, onNavigate }) {
   );
 }
 
-function Topbar() {
+function Topbar({ badge }) {
   return (
     <header className="topbar">
       <div className="wordmark">
         <strong>Job Radar</strong>
         <span>Know which neighborhoods to hit before you waste gas.</span>
       </div>
-      <span className="demo-badge">Signal engine demo</span>
+      <span className="demo-badge">{badge}</span>
       <div className="account-row">
         <select aria-label="Selected company" defaultValue="acme">
           <option value="acme">Acme Construction</option>
@@ -557,6 +631,7 @@ function Topbar() {
 }
 
 function StartWorkspace({
+  isNycMetro,
   metro,
   mode,
   onStart,
@@ -606,8 +681,9 @@ function StartWorkspace({
             Show {selectedMode.label.toLowerCase()} radar
           </button>
           <p>
-            Current prototype uses sample {trade.label.toLowerCase()} intelligence for {metro}.
-            Real source collection stays on the operator side.
+            {isNycMetro
+              ? "New York City loads a public-data beta from DOB, NYC Open Data, and PLUTO. Real source collection stays on the operator side."
+              : `Current prototype uses sample ${trade.label.toLowerCase()} intelligence for ${metro}. Real source collection stays on the operator side.`}
           </p>
         </div>
 
@@ -658,25 +734,28 @@ function StartWorkspace({
   );
 }
 
-function DataConfidence() {
+function DataConfidence({ dataStatus, heatCount, isNycMetro }) {
+  const sources = isNycMetro ? nycSignalSources : signalSources;
+  const confidenceLabel = isNycMetro ? (dataStatus === "ready" ? "82%" : "Loading") : "84%";
+  const confidenceCopy = isNycMetro
+    ? `NYC public-data beta built from official DOB permits/job filings, complaints, violations, and PLUTO source registry${heatCount ? ` across ${heatCount} scored areas` : ""}.`
+    : "Sample pilot score built from permit momentum, property fit, event triggers, market movement, competition, and route density.";
+
   return (
     <section className="data-confidence" aria-label="Data confidence">
       <div className="confidence-score">
         <ShieldCheck aria-hidden="true" />
         <div>
           <span>Confidence</span>
-          <strong>84%</strong>
+          <strong>{confidenceLabel}</strong>
         </div>
       </div>
       <div className="confidence-copy">
         <h2>Why trust this recommendation?</h2>
-        <p>
-          Sample pilot score built from permit momentum, property fit, event triggers,
-          market movement, competition, and route density.
-        </p>
+        <p>{confidenceCopy}</p>
       </div>
       <div className="source-pill-row">
-        {signalSources.slice(0, 4).map(([label, freshness]) => (
+        {sources.slice(0, 4).map(([label, freshness]) => (
           <span className="source-pill" key={label}>
             <Sparkles aria-hidden="true" />
             {label}: {freshness}
@@ -688,6 +767,7 @@ function DataConfidence() {
 }
 
 function ControlPanel({
+  areas,
   mode,
   metro,
   selectedAreaId,
@@ -754,7 +834,7 @@ function ControlPanel({
               <small>{area.rank === 1 ? "Best area" : `ZIP ${area.zip}`}</small>
               <em>
                 <Home aria-hidden="true" />
-                {area.homes} homes
+                {area.homes} {area.targetLabel ?? "homes"}
                 <Signal aria-hidden="true" />
                 {area.signal}
               </em>
@@ -771,7 +851,9 @@ function ControlPanel({
   );
 }
 
-function TerritoryMap({ layerState, selectedArea, setLayerState, setSelectedAreaId }) {
+function TerritoryMap({ areas, layerState, selectedArea, setLayerState, setSelectedAreaId }) {
+  const [primary, secondary, tertiary] = areas.slice(0, 3);
+
   return (
     <section className="territory-map" aria-label="Territory map">
       <div className="map-tabs">
@@ -809,19 +891,19 @@ function TerritoryMap({ layerState, selectedArea, setLayerState, setSelectedArea
         <path d="M0 335 L910 335" className="road faint" />
 
         <path
-          className={`zone north-oak ${selectedArea.id === "north-oak" ? "selected" : ""}`}
+          className={`zone north-oak ${selectedArea.id === primary?.id ? "selected" : ""}`}
           d="M330 75 L485 45 L570 90 L565 205 L500 245 L380 220 L325 160 Z"
-          onClick={() => setSelectedAreaId("north-oak")}
+          onClick={() => primary && setSelectedAreaId(primary.id)}
         />
         <path
-          className={`zone lakewood ${selectedArea.id === "lakewood" ? "selected" : ""}`}
+          className={`zone lakewood ${selectedArea.id === secondary?.id ? "selected" : ""}`}
           d="M170 215 L290 165 L400 215 L385 325 L245 365 L155 315 Z"
-          onClick={() => setSelectedAreaId("lakewood")}
+          onClick={() => secondary && setSelectedAreaId(secondary.id)}
         />
         <path
-          className={`zone old-lake ${selectedArea.id === "old-lake" ? "selected" : ""}`}
+          className={`zone old-lake ${selectedArea.id === tertiary?.id ? "selected" : ""}`}
           d="M610 205 L750 175 L825 245 L790 345 L650 350 L585 280 Z"
-          onClick={() => setSelectedAreaId("old-lake")}
+          onClick={() => tertiary && setSelectedAreaId(tertiary.id)}
         />
 
         {layerState["Target homes"] && <SignalDots color="orange" x={365} y={78} />}
@@ -845,12 +927,12 @@ function TerritoryMap({ layerState, selectedArea, setLayerState, setSelectedArea
         <circle className="route-stop" cx="548" cy="190" r="8" />
         <circle className="route-stop" cx="430" cy="88" r="8" />
 
-        <MapLabel x={380} y={62} text="North Oak" tone="orange" />
-        <MapLabel x={180} y={225} text="Lakewood" tone="green" />
-        <MapLabel x={652} y={214} text="Old Lake Highlands" tone="blue" />
-        <RankPin x={450} y={135} rank="1" tone="orange" />
-        <RankPin x={260} y={270} rank="2" tone="green" />
-        <RankPin x={690} y={285} rank="3" tone="blue" />
+        <MapLabel x={380} y={62} text={mapLabel(primary?.name ?? "Area 1")} tone="orange" />
+        <MapLabel x={180} y={225} text={mapLabel(secondary?.name ?? "Area 2")} tone="green" />
+        <MapLabel x={652} y={214} text={mapLabel(tertiary?.name ?? "Area 3")} tone="blue" />
+        <RankPin x={450} y={135} rank={String(primary?.rank ?? 1)} tone="orange" />
+        <RankPin x={260} y={270} rank={String(secondary?.rank ?? 2)} tone="green" />
+        <RankPin x={690} y={285} rank={String(tertiary?.rank ?? 3)} tone="blue" />
       </svg>
       <div className="map-controls">
         <button aria-label="Zoom in" type="button">+</button>
@@ -861,17 +943,22 @@ function TerritoryMap({ layerState, selectedArea, setLayerState, setSelectedArea
   );
 }
 
-function TodayMove({ campaign, selectedArea, trade }) {
+function TodayMove({ campaign, isNycMetro, selectedArea, trade }) {
+  const heading = isNycMetro
+    ? `Today's move: Review ${selectedArea.name} and build a ${campaign.doors}-record outreach list.`
+    : `Today's move: Hit ${selectedArea.name} with a ${campaign.doors}-door ${trade.label.toLowerCase()} route and ${campaign.postcards} postcards.`;
+  const why = isNycMetro
+    ? "Why: DOB permits/job filings, activity growth, code signals, and PLUTO parcel context point to above-average construction activity."
+    : `Why: ${permitReason(selectedArea, trade)}, recent sales, older homes, and route density all line up this week.`;
+
   return (
     <section className="today-move" aria-labelledby="today-move-heading">
       <div className="move-copy">
-        <span className="demo-chip">Sample intelligence - operator data pipeline</span>
-        <h2 id="today-move-heading">
-          Today&apos;s move: Hit {selectedArea.name} with a {campaign.doors}-door {trade.label.toLowerCase()} route and {campaign.postcards} postcards.
-        </h2>
-        <p>
-          Why: {permitReason(selectedArea, trade)}, recent sales, older homes, and route density all line up this week.
-        </p>
+        <span className="demo-chip">
+          {isNycMetro ? "NYC public-data beta - DOB / NYC Open Data / PLUTO" : "Sample intelligence - operator data pipeline"}
+        </span>
+        <h2 id="today-move-heading">{heading}</h2>
+        <p>{why}</p>
       </div>
       <dl className="move-metrics">
         <div>
@@ -880,7 +967,7 @@ function TodayMove({ campaign, selectedArea, trade }) {
         </div>
         <div>
           <dt>Goal</dt>
-          <dd>Book 1 inspection</dd>
+          <dd>{isNycMetro ? "Find active projects" : "Book 1 inspection"}</dd>
         </div>
         <div>
           <dt>Area</dt>
@@ -913,9 +1000,11 @@ function SignalDots({ color, sparse = false, x, y }) {
 }
 
 function MapLabel({ text, tone, x, y }) {
+  const width = Math.max(78, Math.min(168, text.length * 7 + 22));
+
   return (
     <g className={`map-label ${tone}`}>
-      <rect x={x} y={y} width={text.length > 10 ? 122 : 78} height="28" rx="4" />
+      <rect x={x} y={y} width={width} height="28" rx="4" />
       <text x={x + 10} y={y + 18}>{text}</text>
     </g>
   );
@@ -930,9 +1019,10 @@ function RankPin({ rank, tone, x, y }) {
   );
 }
 
-function MoneyBrief({ selectedArea, trade }) {
+function MoneyBrief({ isNycMetro, selectedArea, trade }) {
   const scoreTier = selectedArea.score >= 70 ? "high" : selectedArea.score >= 48 ? "good" : "fair";
   const scoreRows = scoreSignals[scoreTier];
+  const targetLabel = selectedArea.targetLabel ?? "likely homes";
 
   return (
     <section className="money-brief" aria-labelledby="money-brief-heading">
@@ -947,7 +1037,7 @@ function MoneyBrief({ selectedArea, trade }) {
             <span className={`rank-badge ${selectedArea.color}`}>{selectedArea.rank}</span>
             <strong>{selectedArea.name} / ZIP {selectedArea.zip}</strong>
           </div>
-          <h4>{selectedArea.homes} likely homes</h4>
+          <h4>{selectedArea.homes} {targetLabel}</h4>
           <p>{selectedArea.summary}</p>
           <dl>
             {selectedArea.stats.map(([label, value]) => (
@@ -957,7 +1047,11 @@ function MoneyBrief({ selectedArea, trade }) {
               </div>
             ))}
           </dl>
-          <p className="green-line">High buyer activity + higher budgets = big opportunity</p>
+          <p className="green-line">
+            {isNycMetro
+              ? "Public DOB activity + PLUTO context = construction intelligence beta"
+              : "High buyer activity + higher budgets = big opportunity"}
+          </p>
         </article>
         <article className="why-here">
           <h3>Why here</h3>
@@ -966,7 +1060,7 @@ function MoneyBrief({ selectedArea, trade }) {
               <li key={reason}>
                 <CheckCircle2 aria-hidden="true" />
                 <span>
-                  {index === 0
+                  {index === 0 && !isNycMetro
                     ? permitReason(selectedArea, trade)
                     : index === 2
                       ? reason.replace("25+ years old", trade.cycle)
@@ -994,7 +1088,11 @@ function MoneyBrief({ selectedArea, trade }) {
         <summary>How this score was calculated</summary>
         <div>
           <strong>{selectedArea.name} score: {selectedArea.score}</strong>
-          <p>Simple pilot score using sample demand, timing, buyer, competition, and route-efficiency signals.</p>
+          <p>
+            {isNycMetro
+              ? "Public-data score using recent DOB activity, growth, complaints/violations, trade mix, declared value, and source coverage."
+              : "Simple pilot score using sample demand, timing, buyer, competition, and route-efficiency signals."}
+          </p>
           <dl>
             {scoreRows.map(([label, value]) => (
               <div key={label}>
@@ -1009,7 +1107,27 @@ function MoneyBrief({ selectedArea, trade }) {
   );
 }
 
-function ExecutionPanel({ campaign, exportRoute, openPilotModal, selectedArea, trade }) {
+function ExecutionPanel({
+  campaign,
+  ctaLabel,
+  exportRoute,
+  isNycMetro,
+  openPilotModal,
+  selectedArea,
+  targetRows,
+  trade,
+}) {
+  const targetLabel = selectedArea.targetLabel ?? "homes";
+  const tableTitle = isNycMetro
+    ? `Sample projects (${targetRows.length})`
+    : `Target homes (${selectedArea.homes})`;
+  const routeTitle = isNycMetro
+    ? `${campaign.doors}-Record Project Packet`
+    : `${campaign.doors}-Door Route`;
+  const routeNote = isNycMetro
+    ? "DOB-backed construction outreach list"
+    : "In-person door knocking";
+
   return (
     <aside className="execution-panel" aria-label="Campaign execution">
       <div className="execution-heading">
@@ -1021,7 +1139,7 @@ function ExecutionPanel({ campaign, exportRoute, openPilotModal, selectedArea, t
         <h3>Recommended campaign</h3>
         <CampaignItem icon={Mail} title={`${campaign.postcards} Postcards`} note="Homeowner offer postcard" />
         <CampaignItem icon={MapPin} title={campaign.radius} note="Google Local Services Ad" />
-        <CampaignItem icon={Route} title={`${campaign.doors}-Door Route`} note="In-person door knocking" />
+        <CampaignItem icon={Route} title={routeTitle} note={routeNote} />
       </section>
 
       <section className="postcard-preview">
@@ -1059,7 +1177,7 @@ function ExecutionPanel({ campaign, exportRoute, openPilotModal, selectedArea, t
         </dl>
         <button className="launch-button" type="button" onClick={openPilotModal}>
           <Navigation aria-hidden="true" />
-          Request real-market pilot
+          {ctaLabel}
         </button>
         <button className="secondary-button full-width" type="button" onClick={exportRoute}>
           <Download aria-hidden="true" />
@@ -1070,20 +1188,20 @@ function ExecutionPanel({ campaign, exportRoute, openPilotModal, selectedArea, t
 
       <section className="homes-table">
         <div>
-          <h3>Target homes ({selectedArea.homes})</h3>
+          <h3>{tableTitle}</h3>
           <button className="text-button" type="button">Export leads</button>
         </div>
         <table>
           <thead>
             <tr>
               <th>Address</th>
-              <th>Year</th>
+              <th>{isNycMetro ? "Date" : "Year"}</th>
               <th>Sig</th>
               <th>Notes</th>
             </tr>
           </thead>
           <tbody>
-            {targetHomes.map(([address, year, note]) => (
+            {targetRows.map(([address, year, note]) => (
               <tr key={address}>
                 <td>{address}</td>
                 <td>{year}</td>
@@ -1093,13 +1211,13 @@ function ExecutionPanel({ campaign, exportRoute, openPilotModal, selectedArea, t
             ))}
           </tbody>
         </table>
-        <button className="view-all" type="button">View all {selectedArea.homes} homes</button>
+        <button className="view-all" type="button">View all {selectedArea.homes} {targetLabel}</button>
       </section>
     </aside>
   );
 }
 
-function PilotModal({ metro, onClose, onSubmit, selectedArea, submitted, trade }) {
+function PilotModal({ ctaLabel, isNycMetro, metro, onClose, onSubmit, selectedArea, submitted, trade }) {
   const [form, setForm] = useState({
     name: "",
     company: "Acme Construction",
@@ -1140,9 +1258,13 @@ function PilotModal({ metro, onClose, onSubmit, selectedArea, submitted, trade }
         ) : (
           <>
             <div className="modal-heading">
-              <span className="demo-chip">Signal engine demo</span>
-              <h2 id="pilot-title">Request real-market pilot</h2>
-              <p>Tell us where you work. We will validate whether real local signals can support this campaign.</p>
+              <span className="demo-chip">{isNycMetro ? "NYC public-data beta" : "Signal engine demo"}</span>
+              <h2 id="pilot-title">{ctaLabel}</h2>
+              <p>
+                {isNycMetro
+                  ? "Tell us what NYC construction intelligence you need. The current pack uses official public DOB, NYC Open Data, and PLUTO sources."
+                  : "Tell us where you work. We will validate whether real local signals can support this campaign."}
+              </p>
             </div>
             <form className="pilot-form" onSubmit={handleSubmit}>
               <label>
@@ -1206,7 +1328,7 @@ function PilotModal({ metro, onClose, onSubmit, selectedArea, submitted, trade }
                 Phone
                 <input value={form.phone} onChange={(event) => updateField("phone", event.target.value)} placeholder="214-555-0199" type="tel" />
               </label>
-              <button className="launch-button" type="submit">Request real-market pilot</button>
+              <button className="launch-button" type="submit">{ctaLabel}</button>
             </form>
           </>
         )}
@@ -1246,6 +1368,19 @@ function Select({ children, onChange, value }) {
       <ChevronDown aria-hidden="true" />
     </span>
   );
+}
+
+async function fetchPublicJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`${url} returned ${response.status}`);
+  }
+  return response.json();
+}
+
+function mapLabel(value) {
+  const text = String(value ?? "Area");
+  return text.length > 18 ? `${text.slice(0, 15)}...` : text;
 }
 
 function currency(value) {

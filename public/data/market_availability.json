@@ -1,0 +1,310 @@
+{
+  "version": "0.1",
+  "generated_at": "2026-06-28T02:27:07.797Z",
+  "connector_priority": "Socrata first",
+  "markets": [
+    {
+      "market_name": "New York City, NY",
+      "launch_grade": "A",
+      "notes": "Flagship market. Multiple official NYC Open Data Socrata sources cover permits, job filings, complaints, violations, PLUTO parcels, and ACRIS transfer/document records.",
+      "sources": [
+        {
+          "dataset_id": "rbx6-tga4",
+          "dataset_name": "DOB NOW: Build – Approved Permits",
+          "agency": "Department of Buildings (DOB)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 46,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "approved_date",
+            "issued_date",
+            "expired_date"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "construction heat",
+            "project search",
+            "trade classification",
+            "recent permit momentum"
+          ]
+        },
+        {
+          "dataset_id": "ipu4-2q9a",
+          "dataset_name": "DOB Permit Issuance",
+          "agency": "Department of Buildings (DOB)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 60,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "filing_date",
+            "issuance_date",
+            "expiration_date",
+            "job_start_date",
+            "dobrundate"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "issued permit timing",
+            "contractor activity",
+            "legacy/current permit history"
+          ]
+        },
+        {
+          "dataset_id": "w9ak-ipjd",
+          "dataset_name": "DOB NOW: Build – Job Application Filings",
+          "agency": "Department of Buildings (DOB)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 95,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "filing_date",
+            "current_status_date",
+            "first_permit_date",
+            "approved_date",
+            "signoff_date"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "pre-permit project momentum",
+            "filing trend",
+            "trade classification",
+            "development pressure"
+          ]
+        },
+        {
+          "dataset_id": "64uk-42ks",
+          "dataset_name": "Primary Land Use Tax Lot Output (PLUTO)",
+          "agency": "Department of City Planning (DCP)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 108,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "appdate",
+            "zoningdate"
+          ],
+          "update_frequency": "Quarterly",
+          "best_use_cases": [
+            "parcel/property fit",
+            "property age",
+            "assessed value",
+            "land use"
+          ]
+        },
+        {
+          "dataset_id": "eabe-havv",
+          "dataset_name": "DOB Complaints Received",
+          "agency": "Department of Buildings (DOB)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 15,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "date_entered",
+            "disposition_date",
+            "inspection_date",
+            "dobrundate"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "code activity",
+            "construction friction",
+            "area confidence",
+            "risk signal"
+          ]
+        },
+        {
+          "dataset_id": "3h2n-5cm9",
+          "dataset_name": "DOB Violations",
+          "agency": "Department of Buildings (DOB)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 18,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "issue_date",
+            "disposition_date"
+          ],
+          "update_frequency": "Every weekday",
+          "best_use_cases": [
+            "code activity",
+            "enforcement heat",
+            "construction friction",
+            "risk signal"
+          ]
+        },
+        {
+          "dataset_id": "bnx9-e6tj",
+          "dataset_name": "ACRIS - Real Property Master",
+          "agency": "Department of Finance (DOF)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 14,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "document_date",
+            "recorded_datetime",
+            "modified_date",
+            "good_through_date"
+          ],
+          "update_frequency": "Monthly",
+          "best_use_cases": [
+            "sale/transfer momentum",
+            "market movement",
+            "property activity enrichment"
+          ]
+        },
+        {
+          "dataset_id": "8h5j-fqxa",
+          "dataset_name": "ACRIS - Real Property Legals",
+          "agency": "Department of Finance (DOF)",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 14,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "good_through_date"
+          ],
+          "update_frequency": "Monthly",
+          "best_use_cases": [
+            "ACRIS-to-BBL join",
+            "property transfer enrichment",
+            "market movement"
+          ]
+        }
+      ]
+    },
+    {
+      "market_name": "Austin, TX",
+      "launch_grade": "A",
+      "notes": "Strong official Socrata source with permit, valuation, address, lat/lon, contractor, and applicant fields.",
+      "sources": [
+        {
+          "dataset_id": "3syk-w9eu",
+          "dataset_name": "Issued Construction Permits",
+          "agency": "City of Austin, Texas - data.austintexas.gov",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 78,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "applieddate",
+            "issue_date",
+            "statusdate",
+            "expiresdate",
+            "completed_date"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "permit heat",
+            "contractor activity",
+            "trade classification",
+            "valuation scoring"
+          ]
+        }
+      ]
+    },
+    {
+      "market_name": "Chicago, IL",
+      "launch_grade": "A-",
+      "notes": "Official daily Socrata source has permits, application/issue dates, work descriptions, contacts, fees, and geography fields.",
+      "sources": [
+        {
+          "dataset_id": "ydr8-5enu",
+          "dataset_name": "Building Permits",
+          "agency": "City of Chicago",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 122,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "application_start_date",
+            "issue_date"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "permit heat",
+            "project search",
+            "work description classification",
+            "fee/permit activity"
+          ]
+        }
+      ]
+    },
+    {
+      "market_name": "Seattle, WA",
+      "launch_grade": "A-",
+      "notes": "Official daily SDCI Socrata source includes permits issued or in progress, estimated project cost, address, lat/lon, and contractor company.",
+      "sources": [
+        {
+          "dataset_id": "76t5-zqzr",
+          "dataset_name": "Building Permits",
+          "agency": "City of Seattle",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 40,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "applieddate",
+            "issueddate",
+            "expiresdate",
+            "completeddate",
+            "readytoissuedate"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "permit heat",
+            "estimated cost scoring",
+            "roof/remodel permit classification"
+          ]
+        }
+      ]
+    },
+    {
+      "market_name": "San Francisco, CA",
+      "launch_grade": "A-",
+      "notes": "Official SF DBI Socrata source updates daily from data that changes multiple times per hour and includes permit cost, status, address, ZIP, neighborhood, and reroof flag.",
+      "sources": [
+        {
+          "dataset_id": "i98e-djp9",
+          "dataset_name": "Building Permits",
+          "agency": "San Francisco Department of Building Inspection",
+          "status": "available",
+          "connector_type": "socrata",
+          "api_available": true,
+          "column_count": 53,
+          "sample_rows": 5,
+          "key_date_fields": [
+            "permit_creation_date",
+            "filed_date",
+            "issued_date",
+            "completed_date",
+            "approved_date",
+            "last_permit_activity_date"
+          ],
+          "update_frequency": "Daily",
+          "best_use_cases": [
+            "permit heat",
+            "cost scoring",
+            "neighborhood scoring",
+            "roof/remodel classification"
+          ]
+        }
+      ]
+    }
+  ]
+}

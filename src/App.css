@@ -249,6 +249,14 @@ button {
   white-space: nowrap;
 }
 
+.topbar .demo-badge {
+  max-width: min(420px, 38vw);
+  flex-shrink: 1;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+}
+
 .radar-workspace {
   display: grid;
   min-width: 0;
@@ -1963,6 +1971,17 @@ button {
   }
 }
 
+@media (max-width: 1400px) and (min-width: 1181px) {
+  .today-move {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .move-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
   .topbar,
   .control-panel,
@@ -1994,6 +2013,10 @@ button {
 
   .demo-badge {
     justify-self: start;
+  }
+
+  .topbar .demo-badge {
+    max-width: 100%;
   }
 
   .account-row select {
