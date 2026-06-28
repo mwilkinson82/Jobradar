@@ -1,15 +1,15 @@
-# Job Radar
+# NYC Construction Intelligence
 
-A local Vite/React prototype for a contractor local job radar and marketing execution engine. The first screen answers the contractor's practical question: where should I go this week to make money?
+A local Vite/React prototype for a public-record construction intelligence product. The current customer-facing experience is NYC-first: users can see hot construction areas, inspect public project/permit previews, identify visible companies and properties, and request deeper intelligence reports.
 
-- ranked neighborhoods
-- a route-focused territory map
-- a weekly money brief
-- why-here demand signals
-- postcard, radius ad, and door-route execution
-- target homes and route export
+- NYC construction heat map preview
+- hot areas ranked by public DOB activity, growth, value, and source coverage
+- visible sample project / permit records
+- clickable area, project, and company intelligence modals
+- company and property preview sections
+- free-preview-to-report unlock flow
 
-The contractor workflow does not ask users to upload data. They pick a trade, metro, and attack plan; the app returns finished intelligence. Data collection belongs on the operator side as a signal engine: public APIs, exports, commercial data, planning documents, and scraping fallbacks are normalized, scored, and published into the product.
+The original Job Radar contractor campaign concept still exists as a possible downstream lens, but the current public demo is not a postcard, route, or roofing dashboard. Data collection belongs on the operator side as a signal engine: public APIs, exports, commercial data, planning documents, and scraping fallbacks are normalized, scored, and published into the product.
 
 The data-source plan for turning the prototype into one real metro/trade pilot lives in [`docs/job-radar-data-source-repository.md`](docs/job-radar-data-source-repository.md). The first public-data foundation lives in [`docs/market-source-registry.md`](docs/market-source-registry.md) and can be regenerated with:
 
