@@ -74,9 +74,9 @@ const moneyPathOptions = [
     label: "Find projects to bid",
     shortLabel: "Project leads",
     summaryLabel: "Project signals in view",
-    cta: "Get project + company list",
-    packetLabel: "Project + Company List",
-    reportNoun: "project + company list",
+    cta: "Build project + company packet",
+    packetLabel: "Project + Company Packet",
+    reportNoun: "project + company packet",
     mapTitle: "Project leads in the current map view",
     description: "Find active filings, scopes, values, and project players worth bidding or servicing.",
     audience: "Good for GCs, subs, estimators, expediters, and service firms.",
@@ -154,6 +154,24 @@ const MAP_STYLE = {
   },
   layers: [{ id: "osm", type: "raster", source: "osm" }],
 };
+
+const packetProducts = [
+  ["Project + Company List", "Projects, values, companies, and source records"],
+  ["Company Activity Packet", "Who is active, where, and in what categories"],
+  ["Property Activity Packet", "Repeat buildings, related filings, and watchlists"],
+  ["Territory Packet", "Area-level records, targets, exports, and actions"],
+  ["Weekly Money Map / Heat Index", "Recurring changes, alerts, and hot zones"],
+];
+
+const workspaceItems = [
+  ["My Packets", "Requested area, company, and property packets"],
+  ["Saved Companies", "Contractors, applicants, owners, and project players"],
+  ["Saved Properties", "Buildings with repeat or high-value activity"],
+  ["Watchlist", "Areas, companies, properties, and project types to monitor"],
+  ["Call List", "Outreach-ready project and company targets"],
+  ["Exports", "CSV files and packet downloads"],
+  ["Alerts", "New filings, repeat activity, and weekly heat changes"],
+];
 
 const BOROUGH_CENTERS = {
   Bronx: [-73.8801, 40.8448],
@@ -410,7 +428,6 @@ function App() {
   const lockedCount = selectedArea
     ? Math.max(0, selectedArea.recordCount - selectedAreaProjects.length)
     : 0;
-  const topDiscovery = selectedArea ?? areas[0];
   const moneyPath = moneyPathOptions.find((path) => path.id === moneyPathId) ?? moneyPathOptions[0];
   const querySummary = useMemo(
     () => buildQuerySummary(query, filteredProjects, areas),
@@ -519,21 +536,7 @@ function App() {
           onTour={startHotspotTour}
           query={query}
           querySummary={querySummary}
-          selectedArea={selectedArea}
-          selectedAreaCompanies={selectedAreaCompanies}
           tourActive={tourActive}
-        />
-
-        <Filters
-          borough={borough}
-          boroughOptions={boroughOptions}
-          minimumValue={minimumValue}
-          projectType={projectType}
-          setBorough={setBorough}
-          setMinimumValue={setMinimumValue}
-          setProjectType={setProjectType}
-          setTimeframe={setTimeframe}
-          timeframe={timeframe}
         />
 
         <div className="workspace-grid">
@@ -557,6 +560,20 @@ function App() {
                 viewportStats={viewportStats}
               />
             </section>
+
+            <Filters
+              borough={borough}
+              boroughOptions={boroughOptions}
+              minimumValue={minimumValue}
+              projectType={projectType}
+              setBorough={setBorough}
+              setMinimumValue={setMinimumValue}
+              setProjectType={setProjectType}
+              setTimeframe={setTimeframe}
+              timeframe={timeframe}
+            />
+
+            <WorkspacePreview />
 
             <PreviewBlock
               areaProjects={selectedAreaProjects}
@@ -683,26 +700,21 @@ function Sidebar({ activeSection, onNavigate }) {
 
 function Hero({
   citySummary,
-  lockedCount,
   moneyPath,
   onMoneyPathChange,
-  onOpenReport,
   onQueryChange,
   onSearch,
   onTour,
   query,
   querySummary,
-  selectedArea,
-  selectedAreaCompanies,
   tourActive,
 }) {
   return (
     <header className="intel-header">
       <div className="header-copy">
-        <h1>Find active NYC construction projects, companies to call, and hot zones before your competitors do.</h1>
+        <h1>Find NYC construction projects, companies to call, and hot zones.</h1>
         <p>
-          We turn public DOB permits, filings, project values, company names, properties, and neighborhood activity
-          into maps, packets, watchlists, exports, and target lists you can act on.
+          Use the map to find activity, see who is behind it, and build source-backed project/company/property packets.
         </p>
       </div>
       <form className="search-panel" onSubmit={(event) => {
@@ -727,10 +739,10 @@ function Hero({
         ) : null}
       </form>
       <div className="found-panel" aria-label="What we found">
-        <Metric label="Project signals found" value={number(citySummary.records)} />
+        <Metric label="Project signals" value={number(citySummary.records)} />
         <Metric label="Money moving" value={compactCurrency(citySummary.value)} />
-        <Metric label="Companies to investigate" value={number(citySummary.companyCount)} />
-        <Metric label="Hot zones to explore" value={number(citySummary.areaCount)} />
+        <Metric label="Companies" value={number(citySummary.companyCount)} />
+        <Metric label="Hot zones" value={number(citySummary.areaCount)} />
       </div>
       <div className="money-path-panel" aria-label="Choose your money path">
         <div className="money-path-heading">
@@ -751,59 +763,26 @@ function Hero({
           ))}
         </div>
       </div>
-      <div className="top-discovery-card">
-        <div>
-          <span>Top opportunity found</span>
-          <h2>{selectedArea?.name ?? "Chelsea-Hudson Yards"}</h2>
-          <p>
-            {number(selectedArea?.recordCount)} public construction records, {compactCurrency(selectedArea?.declaredValue)}
-            {" "}declared value, {number(selectedAreaCompanies.length)} companies visible, {number(lockedCount)} packet records.
-          </p>
-          <ul>
-            <li>Find active project players</li>
-            <li>Build a call list</li>
-            <li>Spot repeat-activity properties</li>
-            <li>Track high-value filings</li>
-          </ul>
-        </div>
-        <div className="discovery-actions">
-          <button className="secondary-action" type="button" onClick={onTour}>
-            <Play aria-hidden="true" />
-            {tourActive ? "Touring hotspots" : "Tour this week's hotspots"}
-          </button>
-          <button className="secondary-action" type="button" onClick={onSearch}>
-            <Target aria-hidden="true" />
-            View on map
-          </button>
-          <button className="primary-action" type="button" onClick={onOpenReport}>
-            <LockKeyhole aria-hidden="true" />
-            {moneyPath.cta}
-          </button>
-        </div>
+      <div className="packet-product-strip" aria-label="Packet products">
+        {packetProducts.map(([label, copy]) => (
+          <article key={label}>
+            <CheckCircle2 aria-hidden="true" />
+            <div>
+              <strong>{label}</strong>
+              <span>{copy}</span>
+            </div>
+          </article>
+        ))}
       </div>
-      <div className="how-use-strip">
-        <article>
-          <strong>Contractors & subs</strong>
-          <span>Find active projects, GCs, owners, and properties worth calling.</span>
-        </article>
-        <article>
-          <strong>Suppliers & distributors</strong>
-          <span>See which contractors are active and where reps should focus.</span>
-        </article>
-        <article>
-          <strong>Real estate pros</strong>
-          <span>Spot neighborhoods and properties with rising construction activity.</span>
-        </article>
-        <article>
-          <strong>Developers & investors</strong>
-          <span>Track filings, high-value projects, repeat properties, and market pressure.</span>
-        </article>
-      </div>
-      <div className="conversion-strip">
-        <strong>How this turns into money</strong>
-        <span>1. Find where activity is happening.</span>
-        <span>2. See the projects, companies, and properties behind it.</span>
-        <span>3. Build a list, watch the area, and start outreach.</span>
+      <div className="command-actions">
+        <button className="secondary-action" type="button" onClick={onTour}>
+          <Play aria-hidden="true" />
+          {tourActive ? "Touring hotspots" : "Tour this week's hotspots"}
+        </button>
+        <button className="secondary-action" type="button" onClick={onSearch}>
+          <Target aria-hidden="true" />
+          View current search on map
+        </button>
       </div>
     </header>
   );
@@ -890,6 +869,12 @@ function MapExplorer({
 
   return (
     <div className="map-explorer">
+      <div className="map-loop-strip">
+        <strong>How this turns into money</strong>
+        <span>Find activity</span>
+        <span>See who is behind it</span>
+        <span>Build the packet and act</span>
+      </div>
       <div className="map-toolbar">
         <div>
           <span>Live money map</span>
@@ -1079,8 +1064,8 @@ function SelectedReportPreview({ companies, moneyPath, onOpenReport, projects, s
 
   return (
     <aside className="map-report-panel">
-      <span>{selectedArea.name} opportunity preview</span>
-      <h2>Get the {selectedArea.name} {moneyPath.packetLabel}.</h2>
+      <span>Selected opportunity</span>
+      <h2>{selectedArea.name}</h2>
       <dl>
         <div>
           <dt>Records found</dt>
@@ -1446,9 +1431,10 @@ function MoneyExplainer({ moneyPath }) {
 
 function ReportsSection({ moneyPath, onOpenReport, selectedArea }) {
   const reports = [
-    ["Project Packet", "All records, values, descriptions, source links, and project details for the area."],
-    ["Company Packet", "Active companies, where they are working, work categories, source records, and trend direction."],
-    ["Property Packet", "Buildings with repeat activity, permits, values, source links, and related records."],
+    ["Project + Company List", "All records, values, descriptions, source links, and active companies for the area."],
+    ["Company Activity Packet", "Active companies, where they are working, work categories, source records, and trend direction."],
+    ["Property Activity Packet", "Buildings with repeat activity, permits, values, source links, and related records."],
+    ["Territory Packet", "Area-level records, companies, properties, exports, watchlists, and outreach context."],
     ["Weekly NYC Money Map / Heat Index", "Recurring monitor for hot zones, record spikes, high-value filings, and watchlist changes."],
   ];
 
@@ -1483,73 +1469,25 @@ function ReportsSection({ moneyPath, onOpenReport, selectedArea }) {
   );
 }
 
-function SelectedAreaPanel({ companies, onOpenArea, onOpenReport, projects, selectedArea }) {
-  if (!selectedArea) return null;
-  const topCompany = companies[0]?.name ?? NOT_AVAILABLE;
-  const topProperty = projects[0]?.address ?? NOT_AVAILABLE;
-
+function WorkspacePreview() {
   return (
-    <section className="side-panel" aria-label="Selected area intelligence">
-      <div className="panel-heading">
-        <span>Selected Area Intelligence</span>
-        <h2>{selectedArea.name}</h2>
-        <p>{selectedArea.borough || "NYC"} / ZIP {selectedArea.zip}</p>
+    <section className="section-panel workspace-preview" aria-labelledby="workspace-preview-title">
+      <div className="workspace-preview-copy">
+        <span>Action workspace preview</span>
+        <h2 id="workspace-preview-title">Build the packet, then work the list.</h2>
+        <p>After a packet is requested, the same intelligence becomes saved lists, watchlists, exports, and alerts.</p>
       </div>
-      <dl className="intelligence-list">
-        <div>
-          <dt>Heat Score</dt>
-          <dd>{selectedArea.score}</dd>
-        </div>
-        <div>
-          <dt>Records found</dt>
-          <dd>{number(selectedArea.recordCount)}</dd>
-        </div>
-        <div>
-          <dt>Total declared value</dt>
-          <dd>{compactCurrency(selectedArea.declaredValue)}</dd>
-        </div>
-        <div>
-          <dt>Activity trend</dt>
-          <dd>{trendText(selectedArea.activityGrowth)}</dd>
-        </div>
-        <div>
-          <dt>Top category</dt>
-          <dd>{categorySentence(selectedArea.topCategories)}</dd>
-        </div>
-        <div>
-          <dt>Top company in preview</dt>
-          <dd>{topCompany}</dd>
-        </div>
-        <div>
-          <dt>Top property in preview</dt>
-          <dd>{topProperty}</dd>
-        </div>
-      </dl>
-      <div className="panel-actions">
-        <button className="secondary-action" type="button" onClick={onOpenArea}>View sample records</button>
-        <button className="primary-action" type="button" onClick={onOpenReport}>Get project + company list</button>
+      <div className="workspace-preview-grid">
+        {workspaceItems.map(([label, copy]) => (
+          <article key={label}>
+            <CheckCircle2 aria-hidden="true" />
+            <div>
+              <strong>{label}</strong>
+              <span>{copy}</span>
+            </div>
+          </article>
+        ))}
       </div>
-    </section>
-  );
-}
-
-function UnlockPanel({ onOpenReport, selectedArea }) {
-  return (
-    <section className="unlock-card" aria-label="Build deeper intelligence">
-      <h2>Build the project + company packet</h2>
-      <p>
-        The {selectedArea?.name ?? "NYC"} packet includes all records, company names, CSV export,
-        related records, source links, and watchlist alerts.
-      </p>
-      <ul>
-        <li><LockKeyhole aria-hidden="true" /> Area intelligence packet</li>
-        <li><LockKeyhole aria-hidden="true" /> Project + company list</li>
-        <li><LockKeyhole aria-hidden="true" /> Company activity packet</li>
-        <li><LockKeyhole aria-hidden="true" /> CSV export</li>
-        <li><LockKeyhole aria-hidden="true" /> Weekly NYC money map / heat index</li>
-      </ul>
-      <button className="primary-action" type="button" onClick={onOpenReport}>Get project + company list</button>
-      <button className="secondary-action" type="button" onClick={onOpenReport}>What happens after I pay?</button>
     </section>
   );
 }
@@ -1706,12 +1644,20 @@ function ProAccessModal({ moneyPath, onClose, selectedArea }) {
           <p>Export-ready rows for research, CRM upload, list building, or sales assignment.</p>
         </article>
         <article>
+          <strong>Source links</strong>
+          <p>DOB and public-record source trails attached to the records in the packet.</p>
+        </article>
+        <article>
           <strong>Suggested outreach angles</strong>
           <p>Action ideas by contractor, supplier, real estate, developer, investor, or property use case.</p>
         </article>
         <article>
           <strong>Optional weekly alerts</strong>
           <p>Updates when new records, companies, high-value filings, or repeat-property activity appears.</p>
+        </article>
+        <article>
+          <strong>Saved workspace access</strong>
+          <p>Save the packet into My Packets, watchlists, call lists, exports, and alert views.</p>
         </article>
       </div>
       <form className="beta-form" onSubmit={(event) => event.preventDefault()}>
@@ -1732,7 +1678,7 @@ function ProAccessModal({ moneyPath, onClose, selectedArea }) {
           <select defaultValue="area">
             <option value="area">Neighborhood intelligence packet</option>
             <option value="company">Company activity packet</option>
-            <option value="project">Project + company list</option>
+            <option value="project">Project + company packet</option>
             <option value="watchlist">Weekly NYC money map / heat index</option>
           </select>
         </label>
