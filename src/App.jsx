@@ -1,27 +1,26 @@
 import { useMemo, useState } from "react";
 import {
   BarChart3,
-  Building2,
-  CalendarDays,
   CheckCircle2,
   ChevronDown,
   ClipboardList,
+  Compass,
+  Database,
   Download,
   ExternalLink,
   Home,
   Layers3,
   Mail,
-  Map,
   MapPin,
   Megaphone,
   Navigation,
   Radar,
   RefreshCcw,
   Route,
-  Search,
   Settings,
   ShieldCheck,
   Signal,
+  Sparkles,
   Target,
   Users,
   X,
@@ -82,20 +81,49 @@ const modes = [
     id: "work",
     label: "Jobs this week",
     icon: Zap,
+    question: "Where should I go this week?",
     note: "Best neighborhoods and campaigns this week.",
+    startCopy: "Show me the highest-probability areas to market right now.",
   },
   {
     id: "relationships",
     label: "GCs to call",
     icon: Users,
+    question: "Which GCs should I call?",
     note: "Builders, GCs, landlords, and property managers getting active.",
+    startCopy: "Find active builders, remodelers, developers, and property managers.",
+  },
+  {
+    id: "canvas",
+    label: "Door-knock routes",
+    icon: Route,
+    question: "Which neighborhoods should I door knock?",
+    note: "Dense routes where nearby signals make a cold canvass worth the gas.",
+    startCopy: "Give me a tight route with the reasons each area is worth walking.",
   },
   {
     id: "market",
     label: "Markets to watch",
     icon: BarChart3,
+    question: "Which markets are heating up?",
     note: "Expansion signals, pressure, and thin competition.",
+    startCopy: "Forecast where demand is building before everyone chases it.",
   },
+];
+
+const signalSources = [
+  ["Permits", "updated 2 days ago", "Public portal + normalized trade class"],
+  ["Property fit", "updated 21 days ago", "Home age, value, ownership, parcel match"],
+  ["Storm / event triggers", "updated 1 day ago", "NOAA/NWS hail, wind, heat, cold"],
+  ["Market momentum", "updated monthly", "Sales, price movement, buyer activity"],
+  ["Competition", "sampled weekly", "Contractor density and category saturation"],
+];
+
+const engineSteps = [
+  ["Collect", "Permits, planning, property, weather, sales, and competition signals."],
+  ["Normalize", "Messy public records become one trade-aware schema."],
+  ["Score", "Each trade gets a different demand, timing, and route-density model."],
+  ["Recommend", "The app turns the score into a route, campaign, and call list."],
 ];
 
 const areas = [
@@ -324,19 +352,20 @@ const signalLayers = [
 ];
 
 const navItems = [
-  { label: "Radar", icon: Radar, active: true },
-  { label: "Map", icon: Map },
-  { label: "Campaigns", icon: Megaphone },
-  { label: "Leads", icon: Users },
-  { label: "Calendar", icon: CalendarDays },
-  { label: "Reports", icon: BarChart3 },
-  { label: "Settings", icon: Settings },
+  { id: "start", label: "Start", icon: Compass },
+  { id: "radar", label: "Radar", icon: Radar },
+  { id: "campaigns", label: "Campaigns", icon: Megaphone },
+  { id: "routes", label: "Routes", icon: Route },
+  { id: "leads", label: "Leads", icon: Users },
+  { id: "reports", label: "Reports", icon: BarChart3 },
+  { id: "settings", label: "Settings", icon: Settings },
 ];
 
 function App() {
   const [tradeId, setTradeId] = useState("roofing");
   const [metro, setMetro] = useState("Dallas, TX");
   const [mode, setMode] = useState("work");
+  const [radarStarted, setRadarStarted] = useState(false);
   const [selectedAreaId, setSelectedAreaId] = useState("north-oak");
   const [layerState, setLayerState] = useState(() =>
     Object.fromEntries(signalLayers.map(([label]) => [label, true])),
@@ -391,52 +420,76 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Sidebar />
+      <Sidebar
+        activeView={radarStarted ? "radar" : "start"}
+        onNavigate={(itemId) => {
+          if (itemId === "start") {
+            setRadarStarted(false);
+            return;
+          }
+          setRadarStarted(true);
+        }}
+      />
       <div className="product-shell">
         <Topbar />
-        <main className="radar-workspace" aria-label="Job Radar workspace">
-          <ControlPanel
-            mode={mode}
+        {radarStarted ? (
+          <main className="radar-workspace" aria-label="Job Radar workspace">
+            <ControlPanel
+              mode={mode}
+              metro={metro}
+              selectedAreaId={selectedAreaId}
+              selectedMode={selectedMode}
+              setMode={setMode}
+              setMetro={setMetro}
+              setSelectedAreaId={setSelectedAreaId}
+              setTradeId={setTradeId}
+              tradeId={tradeId}
+            />
+            <section className="map-and-brief" aria-label="Money brief and territory map">
+              <div className="question-row">
+                <div>
+                  <h1>{selectedMode.question}</h1>
+                  <p>Week of June 29 - July 5, 2026</p>
+                </div>
+                <button className="secondary-button" type="button">
+                  <RefreshCcw aria-hidden="true" />
+                  Refresh signals
+                </button>
+              </div>
+              <DataConfidence />
+              <TerritoryMap
+                layerState={layerState}
+                selectedArea={selectedArea}
+                setLayerState={setLayerState}
+                setSelectedAreaId={setSelectedAreaId}
+              />
+              <TodayMove campaign={campaign} selectedArea={selectedArea} trade={trade} />
+              <MoneyBrief selectedArea={selectedArea} trade={trade} />
+            </section>
+            <ExecutionPanel
+              campaign={campaign}
+              exportRoute={exportRoute}
+              openPilotModal={() => {
+                setPilotSubmitted(false);
+                setPilotModalOpen(true);
+              }}
+              selectedArea={selectedArea}
+              trade={trade}
+            />
+          </main>
+        ) : (
+          <StartWorkspace
             metro={metro}
-            selectedAreaId={selectedAreaId}
+            mode={mode}
+            onStart={() => setRadarStarted(true)}
             selectedMode={selectedMode}
-            setMode={setMode}
             setMetro={setMetro}
-            setSelectedAreaId={setSelectedAreaId}
+            setMode={setMode}
             setTradeId={setTradeId}
+            trade={trade}
             tradeId={tradeId}
           />
-          <section className="map-and-brief" aria-label="Money brief and territory map">
-            <div className="question-row">
-              <div>
-                <h1>Where should I go this week?</h1>
-                <p>Week of June 29 - July 5, 2026</p>
-              </div>
-              <button className="secondary-button" type="button">
-                <RefreshCcw aria-hidden="true" />
-                Refresh signals
-              </button>
-            </div>
-            <TerritoryMap
-              layerState={layerState}
-              selectedArea={selectedArea}
-              setLayerState={setLayerState}
-              setSelectedAreaId={setSelectedAreaId}
-            />
-            <TodayMove campaign={campaign} selectedArea={selectedArea} trade={trade} />
-            <MoneyBrief selectedArea={selectedArea} trade={trade} />
-          </section>
-          <ExecutionPanel
-            campaign={campaign}
-            exportRoute={exportRoute}
-            openPilotModal={() => {
-              setPilotSubmitted(false);
-              setPilotModalOpen(true);
-            }}
-            selectedArea={selectedArea}
-            trade={trade}
-          />
-        </main>
+        )}
         {pilotModalOpen ? (
           <PilotModal
             metro={metro}
@@ -452,7 +505,7 @@ function App() {
   );
 }
 
-function Sidebar() {
+function Sidebar({ activeView, onNavigate }) {
   return (
     <aside className="sidebar" aria-label="Primary navigation">
       <div className="side-brand">
@@ -463,7 +516,12 @@ function Sidebar() {
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
-            <button className={`nav-item ${item.active ? "active" : ""}`} key={item.label} type="button">
+            <button
+              className={`nav-item ${activeView === item.id ? "active" : ""}`}
+              key={item.id}
+              type="button"
+              onClick={() => onNavigate(item.id)}
+            >
               <Icon aria-hidden="true" />
               <span>{item.label}</span>
             </button>
@@ -485,7 +543,7 @@ function Topbar() {
         <strong>Job Radar</strong>
         <span>Know which neighborhoods to hit before you waste gas.</span>
       </div>
-      <span className="demo-badge">Demo data shown</span>
+      <span className="demo-badge">Signal engine demo</span>
       <div className="account-row">
         <select aria-label="Selected company" defaultValue="acme">
           <option value="acme">Acme Construction</option>
@@ -495,6 +553,137 @@ function Topbar() {
         <span className="avatar">AC</span>
       </div>
     </header>
+  );
+}
+
+function StartWorkspace({
+  metro,
+  mode,
+  onStart,
+  selectedMode,
+  setMetro,
+  setMode,
+  setTradeId,
+  trade,
+  tradeId,
+}) {
+  return (
+    <main className="start-workspace" aria-label="Job Radar start">
+      <section className="start-hero" aria-labelledby="start-title">
+        <div className="start-copy">
+          <span className="demo-chip">Forecasting tool, not a scraper dashboard</span>
+          <h1 id="start-title">What are you trying to attack?</h1>
+          <p>
+            Pick the trade, market, and job-to-be-done. Job Radar turns permits, property records,
+            weather, market movement, and competition signals into a weekly action plan.
+          </p>
+        </div>
+
+        <div className="start-controls" aria-label="Start controls">
+          <Field label="Trade">
+            <Select value={tradeId} onChange={(event) => setTradeId(event.target.value)}>
+              {trades.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.label}
+                </option>
+              ))}
+            </Select>
+          </Field>
+          <Field label="Metro">
+            <Select value={metro} onChange={(event) => setMetro(event.target.value)}>
+              {metros.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </Select>
+          </Field>
+        </div>
+
+        <div className="start-action-row">
+          <button className="launch-button start-button" type="button" onClick={onStart}>
+            <Radar aria-hidden="true" />
+            Show {selectedMode.label.toLowerCase()} radar
+          </button>
+          <p>
+            Current prototype uses sample {trade.label.toLowerCase()} intelligence for {metro}.
+            Real source collection stays on the operator side.
+          </p>
+        </div>
+
+        <div className="mission-grid" aria-label="Choose an attack plan">
+          {modes.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                className={`mission-card ${mode === item.id ? "selected" : ""}`}
+                key={item.id}
+                type="button"
+                onClick={() => setMode(item.id)}
+              >
+                <span><Icon aria-hidden="true" /></span>
+                <strong>{item.label}</strong>
+                <small>{item.startCopy}</small>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      <aside className="signal-engine-panel" aria-label="Signal engine preview">
+        <div className="engine-heading">
+          <span className="operator-badge">Operator side</span>
+          <h2>Signal engine</h2>
+          <p>Your team connects sources, runs collectors, normalizes records, and publishes scored recommendations.</p>
+        </div>
+        <div className="engine-steps">
+          {engineSteps.map(([label, copy], index) => (
+            <div key={label}>
+              <span>{index + 1}</span>
+              <strong>{label}</strong>
+              <p>{copy}</p>
+            </div>
+          ))}
+        </div>
+        <div className="engine-source-box">
+          <h3>Source types</h3>
+          <ul>
+            <li><Database aria-hidden="true" /> Socrata, ArcGIS, Accela, OpenGov, CSV exports</li>
+            <li><ClipboardList aria-hidden="true" /> Planning agendas, permits, code, demolitions</li>
+            <li><Layers3 aria-hidden="true" /> Parcels, home age, sales, storms, competition</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+  );
+}
+
+function DataConfidence() {
+  return (
+    <section className="data-confidence" aria-label="Data confidence">
+      <div className="confidence-score">
+        <ShieldCheck aria-hidden="true" />
+        <div>
+          <span>Confidence</span>
+          <strong>84%</strong>
+        </div>
+      </div>
+      <div className="confidence-copy">
+        <h2>Why trust this recommendation?</h2>
+        <p>
+          Sample pilot score built from permit momentum, property fit, event triggers,
+          market movement, competition, and route density.
+        </p>
+      </div>
+      <div className="source-pill-row">
+        {signalSources.slice(0, 4).map(([label, freshness]) => (
+          <span className="source-pill" key={label}>
+            <Sparkles aria-hidden="true" />
+            {label}: {freshness}
+          </span>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -676,7 +865,7 @@ function TodayMove({ campaign, selectedArea, trade }) {
   return (
     <section className="today-move" aria-labelledby="today-move-heading">
       <div className="move-copy">
-        <span className="demo-chip">Prototype using sample data</span>
+        <span className="demo-chip">Sample intelligence - operator data pipeline</span>
         <h2 id="today-move-heading">
           Today&apos;s move: Hit {selectedArea.name} with a {campaign.doors}-door {trade.label.toLowerCase()} route and {campaign.postcards} postcards.
         </h2>
@@ -951,7 +1140,7 @@ function PilotModal({ metro, onClose, onSubmit, selectedArea, submitted, trade }
         ) : (
           <>
             <div className="modal-heading">
-              <span className="demo-chip">Demo data shown</span>
+              <span className="demo-chip">Signal engine demo</span>
               <h2 id="pilot-title">Request real-market pilot</h2>
               <p>Tell us where you work. We will validate whether real local signals can support this campaign.</p>
             </div>
