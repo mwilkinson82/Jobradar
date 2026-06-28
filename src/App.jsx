@@ -346,10 +346,14 @@ function App() {
     if (options.openModal) setAreaModalOpen(true);
   }, []);
 
-  function selectProject(project) {
+  const selectProject = useCallback((project) => {
     setSelectedProject(project);
     setMapFocus({ type: "project", id: project.project_id, coordinates: project.coordinates, zoom: 15.4 });
-  }
+  }, []);
+
+  const handleViewportStats = useCallback((stats) => {
+    setViewportStats((current) => (sameViewportStats(current, stats) ? current : stats));
+  }, []);
 
   function runSearch() {
     const queryText = query.trim().toLowerCase();
@@ -449,7 +453,7 @@ function App() {
                 onProjectClick={selectProject}
                 onSelectArea={(area) => selectArea(area)}
                 onTour={startHotspotTour}
-                onViewportStats={setViewportStats}
+                onViewportStats={handleViewportStats}
                 projects={filteredProjects}
                 selectedArea={selectedArea}
                 selectedAreaCompanies={selectedAreaCompanies}
@@ -1733,6 +1737,14 @@ function buildQuerySummary(query, projects, areas) {
 function latestProjectDate(projects) {
   const dates = projects.map((project) => project.date).filter(Boolean).sort();
   return dates[dates.length - 1] ?? new Date().toISOString().slice(0, 10);
+}
+
+function sameViewportStats(current, next) {
+  if (!current || !next) return false;
+  return current.records === next.records
+    && current.value === next.value
+    && current.companies === next.companies
+    && current.hottestArea?.id === next.hottestArea?.id;
 }
 
 function hashString(value) {
