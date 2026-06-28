@@ -4,9 +4,12 @@
   "badge": "NYC public-data beta",
   "source_badge": "sources: DOB / NYC Open Data / PLUTO",
   "cta": "Request NYC Construction Intelligence beta",
-  "generated_at": "2026-06-28T02:27:07.797Z",
+  "generated_at": "2026-06-28T04:52:27.483Z",
   "areas": [
     {
+      "area_key": "zip:10018",
+      "area_name": "Chelsea-Hudson Yards",
+      "borough": "Manhattan",
       "id": "chelsea-hudson-yards-10018",
       "rank": 1,
       "name": "Chelsea-Hudson Yards",
@@ -61,6 +64,9 @@
       "betaBadge": "NYC public-data beta"
     },
     {
+      "area_key": "zip:10001",
+      "area_name": "Chelsea-Hudson Yards",
+      "borough": "Manhattan",
       "id": "chelsea-hudson-yards-10001",
       "rank": 2,
       "name": "Chelsea-Hudson Yards",
@@ -73,7 +79,7 @@
       "signal": "High public signals",
       "color": "green",
       "headline": "Public-data construction signal",
-      "summary": "95 DOB permits/job filings in the last 180 days, with +4% activity versus the prior window.",
+      "summary": "95 DOB permits/job filings in the last 180 days, with +8% activity versus the prior window.",
       "stats": [
         [
           "Recent DOB records",
@@ -81,7 +87,7 @@
         ],
         [
           "Activity growth",
-          "+4% activity"
+          "+8% activity"
         ],
         [
           "DOB complaints",
@@ -98,7 +104,7 @@
       ],
       "reasons": [
         "95 recent DOB permits/job filings in the scoring window",
-        "+4% activity versus the previous 180-day window",
+        "+8% activity versus the previous 180-day window",
         "0 DOB complaint/violation records add code-activity context",
         "remodel/alteration is the dominant detected work category",
         "Source-backed by NYC Open Data records, with PLUTO ready for parcel enrichment"
@@ -115,6 +121,9 @@
       "betaBadge": "NYC public-data beta"
     },
     {
+      "area_key": "zip:10017",
+      "area_name": "Murray Hill-Kips Bay",
+      "borough": "Manhattan",
       "id": "murray-hill-kips-bay-10017",
       "rank": 3,
       "name": "Murray Hill-Kips Bay",
@@ -127,7 +136,7 @@
       "signal": "Moderate public signals",
       "color": "blue",
       "headline": "Public-data construction signal",
-      "summary": "47 DOB permits/job filings in the last 180 days, with +57% activity versus the prior window.",
+      "summary": "47 DOB permits/job filings in the last 180 days, with +62% activity versus the prior window.",
       "stats": [
         [
           "Recent DOB records",
@@ -135,7 +144,7 @@
         ],
         [
           "Activity growth",
-          "+57% activity"
+          "+62% activity"
         ],
         [
           "DOB complaints",
@@ -152,7 +161,7 @@
       ],
       "reasons": [
         "47 recent DOB permits/job filings in the scoring window",
-        "+57% activity versus the previous 180-day window",
+        "+62% activity versus the previous 180-day window",
         "0 DOB complaint/violation records add code-activity context",
         "remodel/alteration is the dominant detected work category",
         "Source-backed by NYC Open Data records, with PLUTO ready for parcel enrichment"
@@ -169,27 +178,30 @@
       "betaBadge": "NYC public-data beta"
     },
     {
+      "area_key": "zip:10306",
+      "area_name": "Oakwood-Richmondtown",
+      "borough": "Staten Island",
       "id": "oakwood-richmondtown-10306",
       "rank": 4,
       "name": "Oakwood-Richmondtown",
       "zip": "10306",
       "score": 50,
       "grade": "Watch",
-      "homes": 36,
+      "homes": 37,
       "targetLabel": "active public records",
-      "avgJob": "$8K",
+      "avgJob": "$9K",
       "signal": "Moderate public signals",
       "color": "gray",
       "headline": "Public-data construction signal",
-      "summary": "36 DOB permits/job filings in the last 180 days, with +300% activity versus the prior window.",
+      "summary": "37 DOB permits/job filings in the last 180 days, with +311% activity versus the prior window.",
       "stats": [
         [
           "Recent DOB records",
-          "36"
+          "37"
         ],
         [
           "Activity growth",
-          "+300% activity"
+          "+311% activity"
         ],
         [
           "DOB complaints",
@@ -201,28 +213,31 @@
         ],
         [
           "Avg declared cost",
-          "$8K"
+          "$9K"
         ]
       ],
       "reasons": [
-        "36 recent DOB permits/job filings in the scoring window",
-        "+300% activity versus the previous 180-day window",
+        "37 recent DOB permits/job filings in the scoring window",
+        "+311% activity versus the previous 180-day window",
         "0 DOB complaint/violation records add code-activity context",
         "new construction is the dominant detected work category",
         "Source-backed by NYC Open Data records, with PLUTO ready for parcel enrichment"
       ],
       "route": [
         "Focus: Oakwood-Richmondtown / ZIP 10306",
-        "Pull the DOB project packet for 36 sampled records",
+        "Pull the DOB project packet for 37 sampled records",
         "Sort by new construction and declared cost",
         "Build outreach list from permits, job filings, and parcel matches",
         "Use this as intelligence, not a purchased lead list"
       ],
-      "routeMeta": "36 public records - 2 source types - generated 2026-06-28",
+      "routeMeta": "37 public records - 2 source types - generated 2026-06-28",
       "dataSource": "NYC Open Data",
       "betaBadge": "NYC public-data beta"
     },
     {
+      "area_key": "zip:10022",
+      "area_name": "Midtown-Times Square",
+      "borough": "Manhattan",
       "id": "midtown-times-square-10022",
       "rank": 5,
       "name": "Midtown-Times Square",
@@ -235,7 +250,7 @@
       "signal": "Moderate public signals",
       "color": "gray",
       "headline": "Public-data construction signal",
-      "summary": "37 DOB permits/job filings in the last 180 days, with +429% activity versus the prior window.",
+      "summary": "37 DOB permits/job filings in the last 180 days, with +270% activity versus the prior window.",
       "stats": [
         [
           "Recent DOB records",
@@ -243,7 +258,7 @@
         ],
         [
           "Activity growth",
-          "+429% activity"
+          "+270% activity"
         ],
         [
           "DOB complaints",
@@ -260,7 +275,7 @@
       ],
       "reasons": [
         "37 recent DOB permits/job filings in the scoring window",
-        "+429% activity versus the previous 180-day window",
+        "+270% activity versus the previous 180-day window",
         "0 DOB complaint/violation records add code-activity context",
         "plumbing is the dominant detected work category",
         "Source-backed by NYC Open Data records, with PLUTO ready for parcel enrichment"
@@ -277,6 +292,9 @@
       "betaBadge": "NYC public-data beta"
     },
     {
+      "area_key": "zip:10065",
+      "area_name": "Upper East Side-Lenox Hill-Roosevelt Island",
+      "borough": "Manhattan",
       "id": "upper-east-side-lenox-hill-roosevelt-island-10065",
       "rank": 6,
       "name": "Upper East Side-Lenox Hill-Roosevelt Island",
@@ -331,6 +349,9 @@
       "betaBadge": "NYC public-data beta"
     },
     {
+      "area_key": "zip:10023",
+      "area_name": "Upper West Side-Lincoln Square",
+      "borough": "Manhattan",
       "id": "upper-west-side-lincoln-square-10023",
       "rank": 7,
       "name": "Upper West Side-Lincoln Square",
@@ -385,6 +406,9 @@
       "betaBadge": "NYC public-data beta"
     },
     {
+      "area_key": "zip:11354",
+      "area_name": "Murray Hill-Broadway Flushing",
+      "borough": "Queens",
       "id": "murray-hill-broadway-flushing-11354",
       "rank": 8,
       "name": "Murray Hill-Broadway Flushing",

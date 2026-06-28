@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  BarChart3,
   Building2,
   CheckCircle2,
   ChevronDown,
@@ -13,13 +12,17 @@ import {
   Layers3,
   LockKeyhole,
   Map as MapIcon,
-  MapPin,
+  Navigation,
+  Play,
   Search,
   ShieldCheck,
   Sparkles,
+  Target,
   Users,
   X,
 } from "lucide-react";
+import maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 import "./App.css";
 
 const NOT_AVAILABLE = "Not available in public source";
@@ -61,27 +64,97 @@ const minimumValueOptions = [
   ["1000000", "$1M+"],
 ];
 
-const mapPositions = [
-  { x: 46, y: 26 },
-  { x: 42, y: 34 },
-  { x: 53, y: 42 },
-  { x: 72, y: 68 },
-  { x: 50, y: 30 },
-  { x: 58, y: 24 },
-  { x: 39, y: 31 },
-  { x: 65, y: 39 },
+const NYC_CENTER = [-73.975, 40.715];
+const NYC_BOUNDS = [
+  [-74.28, 40.47],
+  [-73.68, 40.94],
 ];
 
-const projectPointPositions = [
-  { x: 28, y: 62 },
-  { x: 34, y: 48 },
-  { x: 41, y: 36 },
-  { x: 53, y: 29 },
-  { x: 61, y: 44 },
-  { x: 72, y: 59 },
-  { x: 66, y: 72 },
-  { x: 48, y: 70 },
-];
+const MAP_STYLE = {
+  version: 8,
+  sources: {
+    osm: {
+      type: "raster",
+      tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+      tileSize: 256,
+      attribution: "© OpenStreetMap contributors",
+    },
+  },
+  layers: [{ id: "osm", type: "raster", source: "osm" }],
+};
+
+const BOROUGH_CENTERS = {
+  Bronx: [-73.8801, 40.8448],
+  Brooklyn: [-73.9442, 40.6782],
+  Manhattan: [-73.9712, 40.7831],
+  Queens: [-73.7949, 40.7282],
+  "Staten Island": [-74.1502, 40.5795],
+};
+
+const ZIP_CENTERS = {
+  "10001": [-73.9967, 40.7506],
+  "10002": [-73.9874, 40.7159],
+  "10003": [-73.9893, 40.7319],
+  "10006": [-74.0132, 40.7084],
+  "10007": [-74.0071, 40.7131],
+  "10009": [-73.9786, 40.7264],
+  "10011": [-74.0006, 40.742],
+  "10013": [-74.0047, 40.7219],
+  "10016": [-73.9782, 40.7466],
+  "10017": [-73.9718, 40.7527],
+  "10018": [-73.9925, 40.7547],
+  "10019": [-73.9851, 40.7658],
+  "10021": [-73.9588, 40.769],
+  "10022": [-73.9687, 40.7585],
+  "10023": [-73.9826, 40.7763],
+  "10024": [-73.9763, 40.7864],
+  "10025": [-73.9698, 40.7985],
+  "10027": [-73.9532, 40.8116],
+  "10029": [-73.9442, 40.7918],
+  "10036": [-73.9895, 40.759],
+  "10037": [-73.9371, 40.8134],
+  "10038": [-74.0036, 40.7093],
+  "10065": [-73.9631, 40.7651],
+  "10128": [-73.9519, 40.7813],
+  "10301": [-74.0944, 40.6318],
+  "10304": [-74.0874, 40.6114],
+  "10306": [-74.1179, 40.5691],
+  "10307": [-74.2447, 40.5087],
+  "10452": [-73.9217, 40.8372],
+  "10457": [-73.8985, 40.8467],
+  "10462": [-73.8616, 40.8436],
+  "10465": [-73.8196, 40.8266],
+  "10467": [-73.8711, 40.8732],
+  "10473": [-73.8577, 40.8199],
+  "10475": [-73.8274, 40.875],
+  "11101": [-73.9396, 40.7447],
+  "11102": [-73.9262, 40.7729],
+  "11201": [-73.9903, 40.6955],
+  "11204": [-73.9845, 40.618],
+  "11208": [-73.8756, 40.676],
+  "11209": [-74.031, 40.6264],
+  "11215": [-73.9867, 40.6653],
+  "11217": [-73.9799, 40.6824],
+  "11218": [-73.9769, 40.6424],
+  "11219": [-73.9966, 40.6338],
+  "11226": [-73.9567, 40.6464],
+  "11228": [-74.0112, 40.6177],
+  "11230": [-73.9654, 40.622],
+  "11354": [-73.827, 40.7675],
+  "11355": [-73.8227, 40.7513],
+  "11357": [-73.8062, 40.7857],
+  "11358": [-73.7963, 40.7609],
+  "11361": [-73.7747, 40.7623],
+  "11364": [-73.7583, 40.7477],
+  "11366": [-73.7956, 40.7289],
+  "11377": [-73.9062, 40.7449],
+  "11385": [-73.8896, 40.7026],
+  "11417": [-73.8441, 40.6777],
+  "11418": [-73.8359, 40.6997],
+  "11432": [-73.7949, 40.715],
+  "11691": [-73.7623, 40.6006],
+  "11694": [-73.8429, 40.5766],
+};
 
 function App() {
   const [dataState, setDataState] = useState({
@@ -97,6 +170,9 @@ function App() {
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [areaModalOpen, setAreaModalOpen] = useState(false);
   const [proModalOpen, setProModalOpen] = useState(false);
+  const [mapFocus, setMapFocus] = useState(null);
+  const [viewportStats, setViewportStats] = useState(null);
+  const [tourActive, setTourActive] = useState(false);
   const [query, setQuery] = useState("");
   const [timeframe, setTimeframe] = useState("180");
   const [projectType, setProjectType] = useState("all");
@@ -132,7 +208,9 @@ function App() {
 
   const heatAreas = dataState.heat?.areas ?? [];
   const rawTopAreas = dataState.topAreas?.areas ?? [];
-  const allProjects = dataState.projects?.projects ?? [];
+  const rawProjects = dataState.projects?.projects ?? [];
+
+  const projectCentroids = useMemo(() => buildProjectCentroids(rawProjects), [rawProjects]);
 
   const heatByArea = useMemo(() => {
     const map = new Map();
@@ -160,9 +238,28 @@ function App() {
         topCategories: heat.dominant_trade_categories ?? [],
         sourceCount: heat.source_count ?? 0,
         confidence: heat.confidence_score,
+        coordinates: coordinateForArea({ ...area, ...heat }, index, projectCentroids),
       };
     });
-  }, [heatByArea, rawTopAreas]);
+  }, [heatByArea, projectCentroids, rawTopAreas]);
+
+  const areaLookup = useMemo(() => {
+    const lookup = new Map();
+    areas.forEach((area) => {
+      if (area.area_key) lookup.set(area.area_key, area);
+      if (area.zip) lookup.set(`zip:${area.zip}`, area);
+      if (area.name) lookup.set(`name:${area.name}`, area);
+    });
+    return lookup;
+  }, [areas]);
+
+  const allProjects = useMemo(
+    () => rawProjects.map((project, index) => ({
+      ...project,
+      coordinates: coordinateForProject(project, index, areaLookup),
+    })),
+    [areaLookup, rawProjects],
+  );
 
   useEffect(() => {
     if (!selectedAreaId && areas.length) {
@@ -180,11 +277,15 @@ function App() {
   const filteredProjects = useMemo(() => {
     const minValue = Number(minimumValue);
     const queryText = query.trim().toLowerCase();
+    const maxProjectDate = latestProjectDate(allProjects);
+    const sinceDate = new Date(maxProjectDate);
+    sinceDate.setUTCDate(sinceDate.getUTCDate() - Number(timeframe));
 
     return allProjects.filter((project) => {
       const matchesType = projectType === "all" || project.trade_category === projectType;
       const matchesValue = (project.declared_value ?? 0) >= minValue;
       const matchesBorough = borough === "all" || project.borough === borough;
+      const matchesTimeframe = !project.date || new Date(project.date) >= sinceDate;
       const matchesQuery =
         !queryText ||
         [
@@ -203,9 +304,9 @@ function App() {
           .toLowerCase()
           .includes(queryText);
 
-      return matchesType && matchesValue && matchesBorough && matchesQuery;
+      return matchesType && matchesValue && matchesBorough && matchesTimeframe && matchesQuery;
     });
-  }, [allProjects, borough, minimumValue, projectType, query]);
+  }, [allProjects, borough, minimumValue, projectType, query, timeframe]);
 
   const selectedAreaProjects = useMemo(() => {
     if (!selectedArea) return [];
@@ -227,16 +328,79 @@ function App() {
   const lockedCount = selectedArea
     ? Math.max(0, selectedArea.recordCount - selectedAreaProjects.length)
     : 0;
+  const topDiscovery = selectedArea ?? areas[0];
+  const querySummary = useMemo(
+    () => buildQuerySummary(query, filteredProjects, areas),
+    [areas, filteredProjects, query],
+  );
 
   function viewSection(sectionId) {
     setActiveSection(sectionId);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function selectArea(area, openModal = false) {
+  const selectArea = useCallback((area, options = {}) => {
     setSelectedAreaId(area.id);
-    if (openModal) setAreaModalOpen(true);
+    setSelectedProject(null);
+    setMapFocus({ type: "area", id: area.id, coordinates: area.coordinates, zoom: options.zoom ?? 13.2 });
+    if (options.openModal) setAreaModalOpen(true);
+  }, []);
+
+  function selectProject(project) {
+    setSelectedProject(project);
+    setMapFocus({ type: "project", id: project.project_id, coordinates: project.coordinates, zoom: 15.4 });
   }
+
+  function runSearch() {
+    const queryText = query.trim().toLowerCase();
+    if (!queryText) {
+      if (selectedArea) setMapFocus({ type: "area", id: selectedArea.id, coordinates: selectedArea.coordinates, zoom: 12.8 });
+      return;
+    }
+
+    const areaMatch = areas.find((area) => [
+      area.name,
+      area.zip,
+      area.borough,
+      categorySentence(area.topCategories),
+    ].filter(Boolean).join(" ").toLowerCase().includes(queryText));
+
+    if (areaMatch) {
+      selectArea(areaMatch, { zoom: 13.2 });
+      return;
+    }
+
+    const projectMatch = filteredProjects[0];
+    if (projectMatch) {
+      selectProject(projectMatch);
+      const areaMatchForProject = areas.find((area) => projectMatchesArea(projectMatch, area));
+      if (areaMatchForProject) setSelectedAreaId(areaMatchForProject.id);
+    }
+  }
+
+  function startHotspotTour() {
+    setQuery("");
+    setTourActive(true);
+    const first = areas[0];
+    if (first) selectArea(first, { zoom: 12.8 });
+  }
+
+  useEffect(() => {
+    if (!tourActive || !areas.length) return undefined;
+    let index = 0;
+    const tourAreas = areas.slice(0, 5);
+    const timer = window.setInterval(() => {
+      index += 1;
+      if (index >= tourAreas.length) {
+        setTourActive(false);
+        window.clearInterval(timer);
+        return;
+      }
+      selectArea(tourAreas[index], { zoom: 13.1 });
+    }, 1700);
+
+    return () => window.clearInterval(timer);
+  }, [areas, selectArea, tourActive]);
 
   if (dataState.status === "loading") {
     return <LoadingScreen />;
@@ -252,8 +416,15 @@ function App() {
       <main className="ci-main">
         <Hero
           citySummary={citySummary}
+          lockedCount={lockedCount}
           onQueryChange={setQuery}
+          onSearch={runSearch}
+          onTour={startHotspotTour}
           query={query}
+          querySummary={querySummary}
+          selectedArea={selectedArea}
+          selectedAreaCompanies={selectedAreaCompanies}
+          tourActive={tourActive}
         />
 
         <Filters
@@ -271,17 +442,20 @@ function App() {
         <div className="workspace-grid">
           <section className="workspace-primary">
             <section className="section-panel map-section" id="map" aria-labelledby="map-title">
-              <SectionTitle
-                eyebrow="Heat map preview"
-                title="NYC construction heat map"
-                copy="Click a hot zone or project point to inspect the public-record intelligence behind it."
-              />
-              <HeatMapPreview
+              <MapExplorer
                 areas={areas}
-                onProjectClick={setSelectedProject}
-                onSelectArea={(area) => selectArea(area, true)}
-                projects={previewProjects}
+                focusTarget={mapFocus}
+                onOpenReport={() => setProModalOpen(true)}
+                onProjectClick={selectProject}
+                onSelectArea={(area) => selectArea(area)}
+                onTour={startHotspotTour}
+                onViewportStats={setViewportStats}
+                projects={filteredProjects}
                 selectedArea={selectedArea}
+                selectedAreaCompanies={selectedAreaCompanies}
+                selectedAreaProjects={selectedAreaProjects}
+                tourActive={tourActive}
+                viewportStats={viewportStats}
               />
             </section>
 
@@ -289,7 +463,7 @@ function App() {
               areaProjects={selectedAreaProjects}
               lockedCount={lockedCount}
               onOpenReport={() => setProModalOpen(true)}
-              onProjectClick={setSelectedProject}
+              onProjectClick={selectProject}
               projects={previewProjects}
               selectedArea={selectedArea}
             />
@@ -298,7 +472,7 @@ function App() {
               lockedCount={lockedCount}
               noAreaMatches={!selectedAreaProjects.length}
               onOpenReport={() => setProModalOpen(true)}
-              onProjectClick={setSelectedProject}
+              onProjectClick={selectProject}
               projects={previewProjects}
               selectedArea={selectedArea}
               totalFiltered={filteredProjects.length}
@@ -319,23 +493,12 @@ function App() {
 
             <AreasSection
               areas={areas}
-              onSelectArea={(area) => selectArea(area, true)}
+              onSelectArea={(area) => selectArea(area, { openModal: true })}
               selectedArea={selectedArea}
             />
 
             <ReportsSection onOpenReport={() => setProModalOpen(true)} selectedArea={selectedArea} />
           </section>
-
-          <aside className="workspace-aside" aria-label="Selected intelligence">
-            <SelectedAreaPanel
-              companies={selectedAreaCompanies}
-              onOpenArea={() => setAreaModalOpen(true)}
-              onOpenReport={() => setProModalOpen(true)}
-              projects={selectedAreaProjects}
-              selectedArea={selectedArea}
-            />
-            <UnlockPanel onOpenReport={() => setProModalOpen(true)} selectedArea={selectedArea} />
-          </aside>
         </div>
 
         <TrustFooter generatedAt={dataState.heat?.generated_at} />
@@ -410,33 +573,81 @@ function Sidebar({ activeSection, onNavigate }) {
   );
 }
 
-function Hero({ citySummary, onQueryChange, query }) {
+function Hero({
+  citySummary,
+  lockedCount,
+  onQueryChange,
+  onSearch,
+  onTour,
+  query,
+  querySummary,
+  selectedArea,
+  selectedAreaCompanies,
+  tourActive,
+}) {
   return (
-    <header className="hero-shell">
-      <div className="hero-copy">
-        <h1>NYC construction activity, mapped and scored.</h1>
+    <header className="intel-header">
+      <div className="header-copy">
+        <h1>Find active NYC construction projects, companies, and hot zones.</h1>
         <p>
-          Track permits, filings, project values, companies, properties, and neighborhood activity
-          across New York City.
+          We found {compactCurrency(citySummary.value)} in declared construction activity from {number(citySummary.records)}
+          {" "}public NYC records, with {number(citySummary.companyCount)} companies identified and {number(citySummary.areaCount)} hot zones mapped.
         </p>
       </div>
-      <div className="search-panel">
-        <label htmlFor="intel-search">Search any neighborhood, address, company, permit, or ZIP.</label>
+      <form className="search-panel" onSubmit={(event) => {
+        event.preventDefault();
+        onSearch();
+      }}>
+        <label htmlFor="intel-search">Search address, company, ZIP, neighborhood, permit ID...</label>
         <div className="search-box">
           <Search aria-hidden="true" />
           <input
             id="intel-search"
-            placeholder="Search Chelsea, 10018, SOLAR CONTRACTING, permit number..."
+            placeholder="Chelsea, 10018, BR Construction Group, permit number..."
             value={query}
             onChange={(event) => onQueryChange(event.target.value)}
           />
+          <button type="submit">Search</button>
+        </div>
+        {querySummary ? (
+          <div className="search-result-line">
+            We found {number(querySummary.records)} records matching “{querySummary.query}”.
+          </div>
+        ) : null}
+      </form>
+      <div className="found-panel" aria-label="What we found">
+        <Metric label="Construction records found" value={number(citySummary.records)} />
+        <Metric label="Declared value found" value={compactCurrency(citySummary.value)} />
+        <Metric label="Companies identified" value={number(citySummary.companyCount)} />
+        <Metric label="Hot zones mapped" value={number(citySummary.areaCount)} />
+      </div>
+      <div className="top-discovery-card">
+        <div>
+          <span>Top discovery</span>
+          <h2>{selectedArea?.name ?? "Chelsea-Hudson Yards"} report preview</h2>
+          <p>
+            Hottest area: {number(selectedArea?.recordCount)} records, {compactCurrency(selectedArea?.declaredValue)},{" "}
+            {number(selectedAreaCompanies.length)} companies visible, {number(lockedCount)} locked records.
+          </p>
+        </div>
+        <div className="discovery-actions">
+          <button className="secondary-action" type="button" onClick={onTour}>
+            <Play aria-hidden="true" />
+            {tourActive ? "Touring hotspots" : "Tour this week's hotspots"}
+          </button>
+          <button className="primary-action" type="button" onClick={onSearch}>
+            <Target aria-hidden="true" />
+            View on map
+          </button>
         </div>
       </div>
-      <div className="hero-metrics" aria-label="NYC public data summary">
-        <Metric label="Public records scored" value={number(citySummary.records)} />
-        <Metric label="Declared value found" value={compactCurrency(citySummary.value)} />
-        <Metric label="Companies in preview" value={number(citySummary.companyCount)} />
-        <Metric label="Scored hot zones" value={number(citySummary.areaCount)} />
+      <div className="use-strip">
+        <span>Use this to find:</span>
+        <strong>active projects</strong>
+        <strong>companies to call</strong>
+        <strong>hot neighborhoods</strong>
+        <strong>repeat-activity properties</strong>
+        <strong>high-value filings</strong>
       </div>
     </header>
   );
@@ -499,66 +710,260 @@ function Filters({
   );
 }
 
-function HeatMapPreview({ areas, onProjectClick, onSelectArea, projects, selectedArea }) {
-  return (
-    <div className="heat-map-layout">
-      <div className="nyc-map" aria-label="Heat map preview">
-        <div className="borough-shape manhattan" />
-        <div className="borough-shape queens" />
-        <div className="borough-shape brooklyn" />
-        <div className="borough-shape bronx" />
-        <div className="borough-shape staten" />
-        {areas.slice(0, 8).map((area, index) => {
-          const position = mapPositions[index] ?? mapPositions[0];
-          return (
-            <button
-              className={`heat-zone ${selectedArea?.id === area.id ? "selected" : ""}`}
-              key={area.id}
-              style={{ left: `${position.x}%`, top: `${position.y}%` }}
-              type="button"
-              onClick={() => onSelectArea(area)}
-            >
-              <span>{area.rank}</span>
-              <strong>{area.score}</strong>
-            </button>
-          );
-        })}
-        {projects.slice(0, 8).map((project, index) => {
-          const position = projectPointPositions[index] ?? projectPointPositions[0];
-          return (
-            <button
-              className="project-dot"
-              key={`${project.project_id}-${index}`}
-              style={{ left: `${position.x}%`, top: `${position.y}%` }}
-              title={project.address}
-              type="button"
-              onClick={() => onProjectClick(project)}
-            />
-          );
-        })}
-        <div className="map-note">
-          Heat map preview. Full map tiles, parcel boundaries, and export layers unlock in the full report.
-        </div>
-      </div>
+function MapExplorer({
+  areas,
+  focusTarget,
+  onOpenReport,
+  onProjectClick,
+  onSelectArea,
+  onTour,
+  onViewportStats,
+  projects,
+  selectedArea,
+  selectedAreaCompanies,
+  selectedAreaProjects,
+  tourActive,
+  viewportStats,
+}) {
+  const recordsInView = viewportStats?.records ?? projects.length;
+  const valueInView = viewportStats?.value ?? projects.reduce((sum, project) => sum + (project.declared_value ?? 0), 0);
+  const hottestArea = viewportStats?.hottestArea ?? selectedArea;
+  const companiesInView = viewportStats?.companies ?? new Set(projects.map((project) => project.contractor_name).filter(Boolean)).size;
 
-      <div className="hot-area-list">
-        <h3>This week&apos;s hottest construction areas</h3>
-        {areas.slice(0, 5).map((area) => (
-          <button
-            className={`hot-area-row ${selectedArea?.id === area.id ? "selected" : ""}`}
-            key={area.id}
-            type="button"
-            onClick={() => onSelectArea(area)}
-          >
-            <span>{area.rank}</span>
-            <div>
-              <strong>{area.name}</strong>
-              <small>{area.borough || "NYC"} / ZIP {area.zip}</small>
-            </div>
-            <em>{area.score}</em>
+  return (
+    <div className="map-explorer">
+      <div className="map-toolbar">
+        <div>
+          <span>Live map view</span>
+          <h2>Explore NYC construction activity</h2>
+        </div>
+        <button className="secondary-action" type="button" onClick={onTour}>
+          <Navigation aria-hidden="true" />
+          {tourActive ? "Tour running" : "Tour this week's hotspots"}
+        </button>
+      </div>
+      <div className="map-live-summary">
+        <PreviewMetric label="Records in view" value={number(recordsInView)} />
+        <PreviewMetric label="Declared value in view" value={compactCurrency(valueInView)} />
+        <PreviewMetric label="Companies found" value={number(companiesInView)} />
+        <PreviewMetric label="Hottest area in view" value={hottestArea?.name ?? "NYC"} />
+      </div>
+      <div className="map-stage">
+        <InteractiveNycMap
+          areas={areas}
+          focusTarget={focusTarget}
+          onProjectClick={onProjectClick}
+          onSelectArea={onSelectArea}
+          onViewportStats={onViewportStats}
+          projects={projects}
+          selectedArea={selectedArea}
+        />
+        <SelectedReportPreview
+          companies={selectedAreaCompanies}
+          onOpenReport={onOpenReport}
+          projects={selectedAreaProjects}
+          selectedArea={selectedArea}
+        />
+      </div>
+      <RecordsDrawer
+        lockedCount={selectedArea ? Math.max(0, selectedArea.recordCount - selectedAreaProjects.length) : 0}
+        onOpenReport={onOpenReport}
+        onProjectClick={onProjectClick}
+        projects={selectedAreaProjects.length ? selectedAreaProjects : projects.slice(0, 12)}
+        selectedArea={selectedArea}
+      />
+    </div>
+  );
+}
+
+function InteractiveNycMap({
+  areas,
+  focusTarget,
+  onProjectClick,
+  onSelectArea,
+  onViewportStats,
+  projects,
+  selectedArea,
+}) {
+  const containerRef = useRef(null);
+  const mapRef = useRef(null);
+  const markersRef = useRef([]);
+  const latestDataRef = useRef({ areas: [], projects: [] });
+
+  useEffect(() => {
+    latestDataRef.current = { areas, projects };
+  }, [areas, projects]);
+
+  const updateViewportStats = useCallback(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    const bounds = map.getBounds();
+    const { areas: currentAreas, projects: currentProjects } = latestDataRef.current;
+    const projectsInView = currentProjects.filter((project) => coordinateInBounds(project.coordinates, bounds));
+    const areasInView = currentAreas.filter((area) => coordinateInBounds(area.coordinates, bounds));
+    const hottestArea = areasInView.sort((a, b) => b.score - a.score)[0] ?? currentAreas[0];
+    const companies = new Set(projectsInView.map((project) => project.contractor_name).filter(Boolean));
+    onViewportStats({
+      companies: companies.size,
+      hottestArea,
+      records: projectsInView.length,
+      value: projectsInView.reduce((sum, project) => sum + (project.declared_value ?? 0), 0),
+    });
+  }, [onViewportStats]);
+
+  useEffect(() => {
+    if (!containerRef.current || mapRef.current) return undefined;
+
+    const map = new maplibregl.Map({
+      attributionControl: false,
+      center: NYC_CENTER,
+      container: containerRef.current,
+      maxBounds: NYC_BOUNDS,
+      maxZoom: 17,
+      minZoom: 9,
+      pitch: 0,
+      style: MAP_STYLE,
+      zoom: 10.2,
+    });
+
+    map.addControl(new maplibregl.NavigationControl({ visualizePitch: false }), "top-right");
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
+    map.on("load", updateViewportStats);
+    map.on("moveend", updateViewportStats);
+    mapRef.current = map;
+
+    return () => {
+      markersRef.current.forEach((marker) => marker.remove());
+      markersRef.current = [];
+      map.remove();
+      mapRef.current = null;
+    };
+  }, [updateViewportStats]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = [];
+
+    areas.slice(0, 35).forEach((area) => {
+      if (!area.coordinates) return;
+      const markerElement = document.createElement("button");
+      markerElement.type = "button";
+      markerElement.className = `area-map-marker ${selectedArea?.id === area.id ? "selected" : ""}`;
+      markerElement.style.setProperty("--marker-size", `${Math.max(34, Math.min(72, area.score))}px`);
+      markerElement.innerHTML = `<span>${area.score}</span>`;
+      const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 18 })
+        .setHTML(`<strong>${escapeHtml(area.name)}</strong><br>${number(area.recordCount)} records · ${compactCurrency(area.declaredValue)}`);
+      markerElement.addEventListener("mouseenter", () => popup.setLngLat(area.coordinates).addTo(map));
+      markerElement.addEventListener("mouseleave", () => popup.remove());
+      markerElement.addEventListener("click", () => onSelectArea(area));
+      markersRef.current.push(new maplibregl.Marker({ element: markerElement }).setLngLat(area.coordinates).addTo(map));
+    });
+
+    projects.slice(0, 120).forEach((project) => {
+      if (!project.coordinates) return;
+      const markerElement = document.createElement("button");
+      markerElement.type = "button";
+      markerElement.className = `project-map-marker ${project.trade_category || "general"}`;
+      markerElement.title = project.address || "Project record";
+      const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 14 })
+        .setHTML(`<strong>${escapeHtml(project.address || "Project record")}</strong><br>${escapeHtml(categoryLabel(project.trade_category))} · ${project.declared_value_label || "N/A"}`);
+      markerElement.addEventListener("mouseenter", () => popup.setLngLat(project.coordinates).addTo(map));
+      markerElement.addEventListener("mouseleave", () => popup.remove());
+      markerElement.addEventListener("click", () => onProjectClick(project));
+      markersRef.current.push(new maplibregl.Marker({ element: markerElement }).setLngLat(project.coordinates).addTo(map));
+    });
+
+    updateViewportStats();
+  }, [areas, onProjectClick, onSelectArea, projects, selectedArea, updateViewportStats]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !focusTarget?.coordinates) return;
+    map.flyTo({
+      center: focusTarget.coordinates,
+      duration: 850,
+      essential: true,
+      zoom: focusTarget.zoom ?? 13,
+    });
+  }, [focusTarget]);
+
+  return (
+    <div className="map-shell">
+      <div className="map-canvas" ref={containerRef} />
+      <div className="map-disclaimer">
+        Map positions use DOB coordinates when available; otherwise ZIP/neighborhood centroids are used for this public preview.
+      </div>
+    </div>
+  );
+}
+
+function SelectedReportPreview({ companies, onOpenReport, projects, selectedArea }) {
+  if (!selectedArea) return null;
+  const topCompany = companies[0]?.name ?? "Company list locked";
+  const topProperty = projects[0]?.address ?? "Property list locked";
+
+  return (
+    <aside className="map-report-panel">
+      <span>{selectedArea.name} report preview</span>
+      <h2>Unlock the {number(selectedArea.recordCount)}-record {selectedArea.name} report.</h2>
+      <dl>
+        <div>
+          <dt>Records found</dt>
+          <dd>{number(selectedArea.recordCount)}</dd>
+        </div>
+        <div>
+          <dt>Declared value</dt>
+          <dd>{compactCurrency(selectedArea.declaredValue)}</dd>
+        </div>
+        <div>
+          <dt>Companies visible</dt>
+          <dd>{number(companies.length)}</dd>
+        </div>
+        <div>
+          <dt>Top categories</dt>
+          <dd>{categorySentence(selectedArea.topCategories)}</dd>
+        </div>
+        <div>
+          <dt>Top company</dt>
+          <dd>{topCompany}</dd>
+        </div>
+        <div>
+          <dt>Top property</dt>
+          <dd>{topProperty}</dd>
+        </div>
+      </dl>
+      <button className="primary-action" type="button" onClick={onOpenReport}>
+        <LockKeyhole aria-hidden="true" />
+        Unlock full {selectedArea.name} report
+      </button>
+    </aside>
+  );
+}
+
+function RecordsDrawer({ lockedCount, onOpenReport, onProjectClick, projects, selectedArea }) {
+  return (
+    <div className="records-drawer">
+      <div>
+        <span>Records in current map view</span>
+        <h3>Free preview: {projects.slice(0, 8).length} of {number(selectedArea?.recordCount ?? projects.length)} records</h3>
+      </div>
+      <div className="drawer-records">
+        {projects.slice(0, 8).map((project) => (
+          <button key={`${project.project_id}-${project.permit_number}`} type="button" onClick={() => onProjectClick(project)}>
+            <strong>{project.address || "Address not provided"}</strong>
+            <span>{categoryLabel(project.trade_category)} · {project.declared_value_label || "N/A"} · {project.contractor_name || "Company locked"}</span>
           </button>
         ))}
       </div>
+      {lockedCount > 0 ? (
+        <button className="drawer-lock" type="button" onClick={onOpenReport}>
+          <LockKeyhole aria-hidden="true" />
+          {number(lockedCount)} more records found - unlock full report
+        </button>
+      ) : null}
     </div>
   );
 }
@@ -578,7 +983,7 @@ function PreviewBlock({ areaProjects, lockedCount, onOpenReport, onProjectClick,
         </p>
       </div>
       <div className="preview-proof">
-        <PreviewMetric label="Free records visible" value={number(visibleCount || previewRecords.length)} />
+        <PreviewMetric label={`Free preview: ${number(visibleCount || previewRecords.length)} records`} value={`${number(visibleCount || previewRecords.length)} visible`} />
         <PreviewMetric label="Locked records" value={number(lockedCount)} />
         <PreviewMetric label="Source coverage" value={`${selectedArea.sourceCount || 1} sources`} />
       </div>
@@ -592,7 +997,7 @@ function PreviewBlock({ areaProjects, lockedCount, onOpenReport, onProjectClick,
       </div>
       <button className="primary-action" type="button" onClick={onOpenReport}>
         <LockKeyhole aria-hidden="true" />
-        Unlock full {selectedArea.name} report
+        Unlock the {number(selectedArea.recordCount)}-record {selectedArea.name} report
       </button>
     </section>
   );
@@ -611,7 +1016,7 @@ function ProjectsTable({
     <section className="section-panel" id="projects" aria-labelledby="projects-title">
       <SectionTitle
         eyebrow="Project / Permit Records"
-        title="Visible public-record preview"
+        title={`Free preview: ${projects.length} of ${number(selectedArea?.recordCount ?? projects.length)} records`}
         copy="Sample DOB permit and filing records are visible for free. Full source links, exports, related records, and all area records unlock in the report."
       />
 
@@ -637,6 +1042,7 @@ function ProjectsTable({
               <th>Status</th>
               <th>Declared value</th>
               <th>Company / applicant / contractor</th>
+              <th>Permit / filing ID</th>
               <th>Source</th>
               <th>Details</th>
             </tr>
@@ -653,6 +1059,7 @@ function ProjectsTable({
                 <td>{project.status || NOT_AVAILABLE}</td>
                 <td>{project.declared_value_label || NOT_AVAILABLE}</td>
                 <td>{project.contractor_name || NOT_AVAILABLE}</td>
+                <td>{project.permit_number || project.project_id || NOT_AVAILABLE}</td>
                 <td>{project.source_name || NOT_AVAILABLE}</td>
                 <td>
                   <button className="text-action" type="button" onClick={() => onProjectClick(project)}>
@@ -664,7 +1071,7 @@ function ProjectsTable({
             ))}
             {lockedCount > 0 ? (
               <tr className="locked-row">
-                <td colSpan="8">
+                <td colSpan="9">
                   <LockKeyhole aria-hidden="true" />
                   {number(lockedCount)} more public records found in this area - unlock full report.
                   <button type="button" onClick={onOpenReport}>Unlock</button>
@@ -683,7 +1090,7 @@ function CompaniesSection({ companies, isAreaSpecific, onCompanyClick, onOpenRep
     <section className="section-panel" id="companies" aria-labelledby="companies-title">
       <SectionTitle
         eyebrow="Companies"
-        title={isAreaSpecific ? `Companies visible in ${selectedArea.name}` : "Top companies in the free NYC preview"}
+        title={isAreaSpecific ? `Companies identified in ${selectedArea.name}` : "Top companies in the free NYC preview"}
         copy="Company roles are inferred from public permit/applicant fields. Full company matching, aliases, and source trails unlock in the report."
       />
       <div className="company-grid">
@@ -743,10 +1150,6 @@ function PropertiesSection({ onOpenReport, properties }) {
               <div>
                 <dt>Declared value</dt>
                 <dd>{compactCurrency(property.value)}</dd>
-              </div>
-              <div>
-                <dt>BBL / BIN</dt>
-                <dd>{NOT_AVAILABLE}</dd>
               </div>
             </dl>
             <button className="text-action" type="button" onClick={onOpenReport}>
@@ -817,7 +1220,7 @@ function ReportsSection({ onOpenReport, selectedArea }) {
     <section className="section-panel report-section" id="reports" aria-labelledby="reports-title">
       <SectionTitle
         eyebrow="Reports"
-        title="Unlock deeper intelligence"
+        title={`Unlock full ${selectedArea?.name ?? "NYC"} report`}
         copy={`Start with the ${selectedArea?.name ?? "NYC"} report, then expand to companies, properties, and weekly watchlists.`}
       />
       <div className="report-options">
@@ -973,7 +1376,7 @@ function ProjectModal({ onClose, onOpenReport, project }) {
         <Detail label="Issued date" value={project.date || NOT_AVAILABLE} />
         <Detail label="Declared value" value={project.declared_value_label || NOT_AVAILABLE} />
         <Detail label="Owner / applicant / contractor" value={project.contractor_name || NOT_AVAILABLE} />
-        <Detail label="BBL / BIN" value={NOT_AVAILABLE} />
+        <Detail label="BBL / BIN" value={[project.bbl, project.bin].filter(Boolean).join(" / ") || NOT_AVAILABLE} />
         <Detail label="Source dataset" value={`${project.source_name || NOT_AVAILABLE} (${project.source_dataset_id || "no id"})`} />
       </div>
       <div className="description-box">
@@ -1237,6 +1640,116 @@ function deriveProperties(projects) {
 function projectMatchesArea(project, area) {
   if (!project || !area) return false;
   return project.zip === area.zip || project.area_key === area.area_key || project.area_name === area.name;
+}
+
+function buildProjectCentroids(projects) {
+  const groups = new Map();
+
+  projects.forEach((project) => {
+    const coordinate = rawProjectCoordinate(project);
+    if (!coordinate) return;
+    const keys = [project.area_key, project.zip ? `zip:${project.zip}` : null, project.area_name ? `name:${project.area_name}` : null].filter(Boolean);
+    keys.forEach((key) => {
+      const current = groups.get(key) ?? { count: 0, lat: 0, lon: 0 };
+      current.count += 1;
+      current.lon += coordinate[0];
+      current.lat += coordinate[1];
+      groups.set(key, current);
+    });
+  });
+
+  const centroids = new Map();
+  groups.forEach((value, key) => {
+    centroids.set(key, [value.lon / value.count, value.lat / value.count]);
+  });
+  return centroids;
+}
+
+function coordinateForArea(area, index = 0, projectCentroids = new Map()) {
+  const centroid = projectCentroids.get(area.area_key)
+    ?? (area.zip ? projectCentroids.get(`zip:${area.zip}`) : null)
+    ?? (area.name ? projectCentroids.get(`name:${area.name}`) : null);
+  const base = centroid
+    ?? (area.zip ? ZIP_CENTERS[area.zip] : null)
+    ?? BOROUGH_CENTERS[area.borough]
+    ?? NYC_CENTER;
+  return offsetCoordinate(base, `area:${area.area_key || area.id || index}`, 0.006);
+}
+
+function coordinateForProject(project, index = 0, areaLookup = new Map()) {
+  const coordinate = rawProjectCoordinate(project);
+  if (coordinate) return coordinate;
+  const area = areaLookup.get(project.area_key)
+    ?? (project.zip ? areaLookup.get(`zip:${project.zip}`) : null)
+    ?? (project.area_name ? areaLookup.get(`name:${project.area_name}`) : null);
+  const base = area?.coordinates
+    ?? (project.zip ? ZIP_CENTERS[project.zip] : null)
+    ?? BOROUGH_CENTERS[project.borough]
+    ?? NYC_CENTER;
+  return offsetCoordinate(base, `project:${project.project_id || project.address || index}`, 0.004);
+}
+
+function rawProjectCoordinate(project) {
+  const lat = Number(project.lat);
+  const lon = Number(project.lon);
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+  if (lat < 40.45 || lat > 40.95 || lon < -74.3 || lon > -73.65) return null;
+  return [lon, lat];
+}
+
+function offsetCoordinate(coordinate, seed, maxOffset) {
+  const hash = hashString(seed);
+  const angle = (hash % 360) * (Math.PI / 180);
+  const radius = ((hash % 100) / 100) * maxOffset;
+  return [
+    coordinate[0] + Math.cos(angle) * radius,
+    coordinate[1] + Math.sin(angle) * radius * 0.78,
+  ];
+}
+
+function coordinateInBounds(coordinate, bounds) {
+  if (!coordinate || !bounds) return false;
+  const [lon, lat] = coordinate;
+  return lon >= bounds.getWest() && lon <= bounds.getEast() && lat >= bounds.getSouth() && lat <= bounds.getNorth();
+}
+
+function buildQuerySummary(query, projects, areas) {
+  const queryText = query.trim();
+  if (!queryText) return null;
+  const lower = queryText.toLowerCase();
+  const matchingAreas = areas.filter((area) => [
+    area.name,
+    area.zip,
+    area.borough,
+    categorySentence(area.topCategories),
+  ].filter(Boolean).join(" ").toLowerCase().includes(lower));
+  return {
+    areas: matchingAreas.length,
+    query: queryText,
+    records: projects.length || matchingAreas.reduce((sum, area) => sum + (area.recordCount ?? 0), 0),
+  };
+}
+
+function latestProjectDate(projects) {
+  const dates = projects.map((project) => project.date).filter(Boolean).sort();
+  return dates[dates.length - 1] ?? new Date().toISOString().slice(0, 10);
+}
+
+function hashString(value) {
+  let hash = 0;
+  for (let index = 0; index < String(value).length; index += 1) {
+    hash = (hash << 5) - hash + String(value).charCodeAt(index);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function categoryLabel(category) {

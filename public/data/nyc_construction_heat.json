@@ -3,7 +3,7 @@
   "market": "New York City, NY",
   "badge": "NYC public-data beta",
   "source_badge": "sources: DOB / NYC Open Data / PLUTO",
-  "generated_at": "2026-06-28T02:27:07.797Z",
+  "generated_at": "2026-06-28T04:52:27.483Z",
   "scoring_window": {
     "recent_days": 180,
     "previous_days": 180,
@@ -195,7 +195,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 95,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -207,8 +207,8 @@
       "neighborhood": "Chelsea-Hudson Yards",
       "area_name": "Chelsea-Hudson Yards",
       "recent_permit_volume": 95,
-      "previous_permit_volume": 91,
-      "recent_activity_growth": 0.04,
+      "previous_permit_volume": 88,
+      "recent_activity_growth": 0.08,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 12000990,
@@ -235,7 +235,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 95,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -247,8 +247,8 @@
       "neighborhood": "Murray Hill-Kips Bay",
       "area_name": "Murray Hill-Kips Bay",
       "recent_permit_volume": 47,
-      "previous_permit_volume": 30,
-      "recent_activity_growth": 0.57,
+      "previous_permit_volume": 29,
+      "recent_activity_growth": 0.62,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 31749864,
@@ -275,7 +275,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 47,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -286,13 +286,13 @@
       "zip": "10306",
       "neighborhood": "Oakwood-Richmondtown",
       "area_name": "Oakwood-Richmondtown",
-      "recent_permit_volume": 36,
+      "recent_permit_volume": 37,
       "previous_permit_volume": 9,
-      "recent_activity_growth": 3,
+      "recent_activity_growth": 3.11,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 282450,
-      "average_declared_value": 7846,
+      "project_value_total": 322450,
+      "average_declared_value": 8715,
       "dominant_trade_categories": [
         [
           "new_build",
@@ -314,8 +314,8 @@
       "construction_heat_score": 50,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 36,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 37,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -327,8 +327,8 @@
       "neighborhood": "Midtown-Times Square",
       "area_name": "Midtown-Times Square",
       "recent_permit_volume": 37,
-      "previous_permit_volume": 7,
-      "recent_activity_growth": 4.29,
+      "previous_permit_volume": 10,
+      "recent_activity_growth": 2.7,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 12707950,
@@ -355,7 +355,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 37,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -395,7 +395,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 35,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -435,7 +435,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 32,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -475,87 +475,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 56,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11101",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11101",
-      "neighborhood": "Long Island City-Hunters Point",
-      "area_name": "Long Island City-Hunters Point",
-      "recent_permit_volume": 56,
-      "previous_permit_volume": 71,
-      "recent_activity_growth": -0.21,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 9873777,
-      "average_declared_value": 176317,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          18
-        ],
-        [
-          "remodel",
-          12
-        ],
-        [
-          "plumbing",
-          8
-        ],
-        [
-          "mechanical",
-          7
-        ]
-      ],
-      "construction_heat_score": 47,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 56,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10003",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10003",
-      "neighborhood": "Midtown South-Flatiron-Union Square",
-      "area_name": "Midtown South-Flatiron-Union Square",
-      "recent_permit_volume": 39,
-      "previous_permit_volume": 24,
-      "recent_activity_growth": 0.63,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 32985001,
-      "average_declared_value": 845769,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          13
-        ],
-        [
-          "plumbing",
-          8
-        ],
-        [
-          "exterior",
-          8
-        ],
-        [
-          "mechanical",
-          5
-        ]
-      ],
-      "construction_heat_score": 47,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 39,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -567,8 +487,8 @@
       "neighborhood": "Downtown Brooklyn-DUMBO-Boerum Hill",
       "area_name": "Downtown Brooklyn-DUMBO-Boerum Hill",
       "recent_permit_volume": 46,
-      "previous_permit_volume": 37,
-      "recent_activity_growth": 0.24,
+      "previous_permit_volume": 34,
+      "recent_activity_growth": 0.35,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 11096831,
@@ -591,11 +511,51 @@
           6
         ]
       ],
-      "construction_heat_score": 46,
+      "construction_heat_score": 47,
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 46,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11101",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11101",
+      "neighborhood": "Long Island City-Hunters Point",
+      "area_name": "Long Island City-Hunters Point",
+      "recent_permit_volume": 57,
+      "previous_permit_volume": 74,
+      "recent_activity_growth": -0.23,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 10373777,
+      "average_declared_value": 181996,
+      "dominant_trade_categories": [
+        [
+          "exterior",
+          18
+        ],
+        [
+          "remodel",
+          12
+        ],
+        [
+          "plumbing",
+          9
+        ],
+        [
+          "mechanical",
+          7
+        ]
+      ],
+      "construction_heat_score": 47,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 57,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -635,7 +595,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 50,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -675,7 +635,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 26,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10003",
+      "market": "New York City, NY",
+      "borough": "Manhattan",
+      "zip": "10003",
+      "neighborhood": "Midtown South-Flatiron-Union Square",
+      "area_name": "Midtown South-Flatiron-Union Square",
+      "recent_permit_volume": 38,
+      "previous_permit_volume": 25,
+      "recent_activity_growth": 0.52,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 32973001,
+      "average_declared_value": 867711,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          13
+        ],
+        [
+          "exterior",
+          8
+        ],
+        [
+          "plumbing",
+          7
+        ],
+        [
+          "mechanical",
+          5
+        ]
+      ],
+      "construction_heat_score": 46,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 38,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -715,7 +715,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 28,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11361",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11361",
+      "neighborhood": "Bayside",
+      "area_name": "Bayside",
+      "recent_permit_volume": 34,
+      "previous_permit_volume": 21,
+      "recent_activity_growth": 0.62,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 2399801,
+      "average_declared_value": 70582,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          14
+        ],
+        [
+          "plumbing",
+          6
+        ],
+        [
+          "exterior",
+          5
+        ],
+        [
+          "mechanical",
+          4
+        ]
+      ],
+      "construction_heat_score": 45,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 34,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -726,17 +766,17 @@
       "zip": "10024",
       "neighborhood": "Upper West Side (Central)",
       "area_name": "Upper West Side (Central)",
-      "recent_permit_volume": 29,
+      "recent_permit_volume": 30,
       "previous_permit_volume": 12,
-      "recent_activity_growth": 1.42,
+      "recent_activity_growth": 1.5,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 12029186,
-      "average_declared_value": 414800,
+      "project_value_total": 13160152,
+      "average_declared_value": 438672,
       "dominant_trade_categories": [
         [
           "remodel",
-          10
+          11
         ],
         [
           "exterior",
@@ -754,8 +794,8 @@
       "construction_heat_score": 45,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 29,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 30,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -795,47 +835,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 26,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11361",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11361",
-      "neighborhood": "Bayside",
-      "area_name": "Bayside",
-      "recent_permit_volume": 34,
-      "previous_permit_volume": 22,
-      "recent_activity_growth": 0.55,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 2399801,
-      "average_declared_value": 70582,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          14
-        ],
-        [
-          "plumbing",
-          6
-        ],
-        [
-          "exterior",
-          5
-        ],
-        [
-          "mechanical",
-          4
-        ]
-      ],
-      "construction_heat_score": 44,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 34,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -847,8 +847,8 @@
       "neighborhood": "Tribeca-Civic Center",
       "area_name": "Tribeca-Civic Center",
       "recent_permit_volume": 37,
-      "previous_permit_volume": 28,
-      "recent_activity_growth": 0.32,
+      "previous_permit_volume": 27,
+      "recent_activity_growth": 0.37,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 35871391,
@@ -875,7 +875,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 37,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11215",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11215",
+      "neighborhood": "Sunset Park (West)",
+      "area_name": "Sunset Park (West)",
+      "recent_permit_volume": 37,
+      "previous_permit_volume": 23,
+      "recent_activity_growth": 0.61,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 5646394,
+      "average_declared_value": 152605,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          12
+        ],
+        [
+          "exterior",
+          11
+        ],
+        [
+          "plumbing",
+          7
+        ],
+        [
+          "mechanical",
+          6
+        ]
+      ],
+      "construction_heat_score": 44,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 37,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -915,47 +955,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 23,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11432",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11432",
-      "neighborhood": "Jamaica",
-      "area_name": "Jamaica",
-      "recent_permit_volume": 39,
-      "previous_permit_volume": 45,
-      "recent_activity_growth": -0.13,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 236775728,
-      "average_declared_value": 6071173,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          10
-        ],
-        [
-          "mechanical",
-          7
-        ],
-        [
-          "plumbing",
-          7
-        ],
-        [
-          "general",
-          6
-        ]
-      ],
-      "construction_heat_score": 43,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 39,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -967,8 +967,8 @@
       "neighborhood": "Astoria (North)-Ditmars-Steinway",
       "area_name": "Astoria (North)-Ditmars-Steinway",
       "recent_permit_volume": 20,
-      "previous_permit_volume": 6,
-      "recent_activity_growth": 2.33,
+      "previous_permit_volume": 5,
+      "recent_activity_growth": 3,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 906020,
@@ -995,7 +995,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 20,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1006,13 +1006,13 @@
       "zip": "10128",
       "neighborhood": "Upper East Side-Yorkville",
       "area_name": "Upper East Side-Yorkville",
-      "recent_permit_volume": 24,
+      "recent_permit_volume": 23,
       "previous_permit_volume": 3,
-      "recent_activity_growth": 7,
+      "recent_activity_growth": 6.67,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 1070878,
-      "average_declared_value": 44620,
+      "project_value_total": 1061878,
+      "average_declared_value": 46169,
       "dominant_trade_categories": [
         [
           "plumbing",
@@ -1020,7 +1020,7 @@
         ],
         [
           "exterior",
-          7
+          6
         ],
         [
           "remodel",
@@ -1034,37 +1034,37 @@
       "construction_heat_score": 42,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 24,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 23,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11215",
+      "area_key": "zip:11432",
       "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11215",
-      "neighborhood": "Sunset Park (West)",
-      "area_name": "Sunset Park (West)",
-      "recent_permit_volume": 36,
-      "previous_permit_volume": 25,
-      "recent_activity_growth": 0.44,
+      "borough": "Queens",
+      "zip": "11432",
+      "neighborhood": "Jamaica",
+      "area_name": "Jamaica",
+      "recent_permit_volume": 38,
+      "previous_permit_volume": 45,
+      "recent_activity_growth": -0.16,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 5646394,
-      "average_declared_value": 156844,
+      "project_value_total": 236725732,
+      "average_declared_value": 6229625,
       "dominant_trade_categories": [
         [
           "remodel",
-          12
-        ],
-        [
-          "exterior",
           10
         ],
         [
           "plumbing",
           7
+        ],
+        [
+          "general",
+          6
         ],
         [
           "mechanical",
@@ -1074,48 +1074,8 @@
       "construction_heat_score": 42,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 36,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11417",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11417",
-      "neighborhood": "Ozone Park",
-      "area_name": "Ozone Park",
-      "recent_permit_volume": 20,
-      "previous_permit_volume": 5,
-      "recent_activity_growth": 3,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 5455140,
-      "average_declared_value": 272757,
-      "dominant_trade_categories": [
-        [
-          "general",
-          4
-        ],
-        [
-          "remodel",
-          4
-        ],
-        [
-          "mechanical",
-          3
-        ],
-        [
-          "roofing",
-          3
-        ]
-      ],
-      "construction_heat_score": 42,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 20,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 38,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1155,7 +1115,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 19,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1167,8 +1127,8 @@
       "neighborhood": "Tribeca-Civic Center",
       "area_name": "Tribeca-Civic Center",
       "recent_permit_volume": 29,
-      "previous_permit_volume": 22,
-      "recent_activity_growth": 0.32,
+      "previous_permit_volume": 21,
+      "recent_activity_growth": 0.38,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 2989360,
@@ -1195,47 +1155,87 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 29,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11209",
+      "area_key": "zip:10016",
       "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11209",
-      "neighborhood": "Bay Ridge",
-      "area_name": "Bay Ridge",
-      "recent_permit_volume": 17,
-      "previous_permit_volume": 9,
-      "recent_activity_growth": 0.89,
+      "borough": "Manhattan",
+      "zip": "10016",
+      "neighborhood": "Murray Hill-Kips Bay",
+      "area_name": "Murray Hill-Kips Bay",
+      "recent_permit_volume": 36,
+      "previous_permit_volume": 36,
+      "recent_activity_growth": 0,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 2778834,
-      "average_declared_value": 163461,
+      "project_value_total": 11300859,
+      "average_declared_value": 313913,
       "dominant_trade_categories": [
         [
           "remodel",
+          11
+        ],
+        [
+          "exterior",
+          10
+        ],
+        [
+          "plumbing",
           6
+        ],
+        [
+          "new_build",
+          3
+        ]
+      ],
+      "construction_heat_score": 41,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 36,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11417",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11417",
+      "neighborhood": "Ozone Park",
+      "area_name": "Ozone Park",
+      "recent_permit_volume": 19,
+      "previous_permit_volume": 5,
+      "recent_activity_growth": 2.8,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 4905140,
+      "average_declared_value": 258165,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          4
+        ],
+        [
+          "general",
+          3
         ],
         [
           "mechanical",
           3
         ],
         [
-          "exterior",
+          "roofing",
           3
-        ],
-        [
-          "plumbing",
-          2
         ]
       ],
       "construction_heat_score": 41,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 17,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 19,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1275,47 +1275,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 30,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10038",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10038",
-      "neighborhood": "Financial District-Battery Park City",
-      "area_name": "Financial District-Battery Park City",
-      "recent_permit_volume": 24,
-      "previous_permit_volume": 13,
-      "recent_activity_growth": 0.85,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 21397761,
-      "average_declared_value": 891573,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          7
-        ],
-        [
-          "plumbing",
-          7
-        ],
-        [
-          "mechanical",
-          5
-        ],
-        [
-          "remodel",
-          5
-        ]
-      ],
-      "construction_heat_score": 40,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 24,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1326,17 +1286,17 @@
       "zip": "11364",
       "neighborhood": "Oakland Gardens-Hollis Hills",
       "area_name": "Oakland Gardens-Hollis Hills",
-      "recent_permit_volume": 22,
+      "recent_permit_volume": 21,
       "previous_permit_volume": 6,
-      "recent_activity_growth": 2.67,
+      "recent_activity_growth": 2.5,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 11982720,
-      "average_declared_value": 544669,
+      "project_value_total": 11629099,
+      "average_declared_value": 553767,
       "dominant_trade_categories": [
         [
           "general",
-          9
+          8
         ],
         [
           "remodel",
@@ -1354,8 +1314,8 @@
       "construction_heat_score": 40,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 22,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 21,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1395,7 +1355,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 17,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1435,47 +1395,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 16,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10016",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10016",
-      "neighborhood": "Murray Hill-Kips Bay",
-      "area_name": "Murray Hill-Kips Bay",
-      "recent_permit_volume": 36,
-      "previous_permit_volume": 37,
-      "recent_activity_growth": -0.03,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 11300859,
-      "average_declared_value": 313913,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          11
-        ],
-        [
-          "exterior",
-          10
-        ],
-        [
-          "plumbing",
-          6
-        ],
-        [
-          "new_build",
-          3
-        ]
-      ],
-      "construction_heat_score": 40,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 36,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1515,7 +1435,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1526,25 +1446,25 @@
       "zip": "10019",
       "neighborhood": "Midtown-Times Square",
       "area_name": "Midtown-Times Square",
-      "recent_permit_volume": 35,
-      "previous_permit_volume": 37,
-      "recent_activity_growth": -0.05,
+      "recent_permit_volume": 34,
+      "previous_permit_volume": 35,
+      "recent_activity_growth": -0.03,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 13717422,
-      "average_declared_value": 391926,
+      "project_value_total": 13326672,
+      "average_declared_value": 391961,
       "dominant_trade_categories": [
         [
           "mechanical",
           9
         ],
         [
-          "remodel",
+          "plumbing",
           9
         ],
         [
-          "plumbing",
-          9
+          "remodel",
+          8
         ],
         [
           "exterior",
@@ -1554,8 +1474,48 @@
       "construction_heat_score": 39,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 35,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 34,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10038",
+      "market": "New York City, NY",
+      "borough": "Manhattan",
+      "zip": "10038",
+      "neighborhood": "Financial District-Battery Park City",
+      "area_name": "Financial District-Battery Park City",
+      "recent_permit_volume": 23,
+      "previous_permit_volume": 13,
+      "recent_activity_growth": 0.77,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 19397761,
+      "average_declared_value": 843381,
+      "dominant_trade_categories": [
+        [
+          "exterior",
+          7
+        ],
+        [
+          "plumbing",
+          7
+        ],
+        [
+          "mechanical",
+          5
+        ],
+        [
+          "remodel",
+          4
+        ]
+      ],
+      "construction_heat_score": 39,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 23,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1595,7 +1555,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1607,8 +1567,8 @@
       "neighborhood": "Tottenville-Charleston",
       "area_name": "Tottenville-Charleston",
       "recent_permit_volume": 13,
-      "previous_permit_volume": 2,
-      "recent_activity_growth": 5.5,
+      "previous_permit_volume": 3,
+      "recent_activity_growth": 3.33,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 48975,
@@ -1635,7 +1595,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1647,8 +1607,8 @@
       "neighborhood": "East Harlem (South)",
       "area_name": "East Harlem (South)",
       "recent_permit_volume": 17,
-      "previous_permit_volume": 8,
-      "recent_activity_growth": 1.13,
+      "previous_permit_volume": 6,
+      "recent_activity_growth": 1.83,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 3579733,
@@ -1675,47 +1635,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 17,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11418",
+      "area_key": "zip:10012",
       "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11418",
-      "neighborhood": "Richmond Hill",
-      "area_name": "Richmond Hill",
-      "recent_permit_volume": 10,
-      "previous_permit_volume": 5,
-      "recent_activity_growth": 1,
+      "borough": "Manhattan",
+      "zip": "10012",
+      "neighborhood": "Greenwich Village",
+      "area_name": "Greenwich Village",
+      "recent_permit_volume": 27,
+      "previous_permit_volume": 25,
+      "recent_activity_growth": 0.08,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 1549351,
-      "average_declared_value": 154935,
+      "project_value_total": 13045576,
+      "average_declared_value": 483169,
       "dominant_trade_categories": [
         [
-          "new_build",
-          5
-        ],
-        [
-          "solar",
-          1
-        ],
-        [
-          "general",
-          1
+          "remodel",
+          9
         ],
         [
           "mechanical",
-          1
+          6
+        ],
+        [
+          "exterior",
+          4
+        ],
+        [
+          "roofing",
+          3
         ]
       ],
       "construction_heat_score": 38,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 10,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 27,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1755,87 +1715,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10467",
-      "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10467",
-      "neighborhood": "Norwood",
-      "area_name": "Norwood",
-      "recent_permit_volume": 19,
-      "previous_permit_volume": 12,
-      "recent_activity_growth": 0.58,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 7281881,
-      "average_declared_value": 383257,
-      "dominant_trade_categories": [
-        [
-          "general",
-          6
-        ],
-        [
-          "plumbing",
-          6
-        ],
-        [
-          "remodel",
-          2
-        ],
-        [
-          "exterior",
-          2
-        ]
-      ],
-      "construction_heat_score": 37,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 19,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11222",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11222",
-      "neighborhood": "Greenpoint",
-      "area_name": "Greenpoint",
-      "recent_permit_volume": 17,
-      "previous_permit_volume": 13,
-      "recent_activity_growth": 0.31,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 771108,
-      "average_declared_value": 45359,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          4
-        ],
-        [
-          "roofing",
-          3
-        ],
-        [
-          "general",
-          2
-        ],
-        [
-          "new_build",
-          2
-        ]
-      ],
-      "construction_heat_score": 37,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 17,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1875,7 +1755,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 19,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1915,7 +1795,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 26,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1955,7 +1835,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -1995,47 +1875,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 19,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:10012",
+      "area_key": "zip:11209",
       "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10012",
-      "neighborhood": "Greenwich Village",
-      "area_name": "Greenwich Village",
-      "recent_permit_volume": 27,
-      "previous_permit_volume": 27,
-      "recent_activity_growth": 0,
+      "borough": "Brooklyn",
+      "zip": "11209",
+      "neighborhood": "Bay Ridge",
+      "area_name": "Bay Ridge",
+      "recent_permit_volume": 15,
+      "previous_permit_volume": 9,
+      "recent_activity_growth": 0.67,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 13045576,
-      "average_declared_value": 483169,
+      "project_value_total": 2674234,
+      "average_declared_value": 178282,
       "dominant_trade_categories": [
         [
           "remodel",
-          9
+          5
         ],
         [
           "mechanical",
-          6
+          3
         ],
         [
           "exterior",
-          4
+          3
         ],
         [
-          "roofing",
-          3
+          "plumbing",
+          2
         ]
       ],
       "construction_heat_score": 37,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 27,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 15,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2075,47 +1955,87 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 17,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:10011",
+      "area_key": "zip:10014",
       "market": "New York City, NY",
       "borough": "Manhattan",
-      "zip": "10011",
-      "neighborhood": "Chelsea-Hudson Yards",
-      "area_name": "Chelsea-Hudson Yards",
+      "zip": "10014",
+      "neighborhood": "West Village",
+      "area_name": "West Village",
       "recent_permit_volume": 26,
-      "previous_permit_volume": 28,
-      "recent_activity_growth": -0.07,
+      "previous_permit_volume": 23,
+      "recent_activity_growth": 0.13,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 11263927,
-      "average_declared_value": 433228,
+      "project_value_total": 2273238,
+      "average_declared_value": 87432,
       "dominant_trade_categories": [
         [
-          "remodel",
-          7
-        ],
-        [
-          "roofing",
-          5
-        ],
-        [
           "exterior",
-          5
+          13
         ],
         [
           "plumbing",
+          6
+        ],
+        [
+          "remodel",
           4
+        ],
+        [
+          "mechanical",
+          2
         ]
       ],
       "construction_heat_score": 36,
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 26,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11222",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11222",
+      "neighborhood": "Greenpoint",
+      "area_name": "Greenpoint",
+      "recent_permit_volume": 17,
+      "previous_permit_volume": 15,
+      "recent_activity_growth": 0.13,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 771108,
+      "average_declared_value": 45359,
+      "dominant_trade_categories": [
+        [
+          "exterior",
+          4
+        ],
+        [
+          "roofing",
+          3
+        ],
+        [
+          "general",
+          2
+        ],
+        [
+          "new_build",
+          2
+        ]
+      ],
+      "construction_heat_score": 36,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 17,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2155,7 +2075,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 29,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2195,7 +2115,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 10,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2235,47 +2155,127 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 28,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:10468",
+      "area_key": "zip:11418",
       "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10468",
-      "neighborhood": "Bedford Park",
-      "area_name": "Bedford Park",
-      "recent_permit_volume": 9,
-      "previous_permit_volume": 4,
-      "recent_activity_growth": 1.25,
+      "borough": "Queens",
+      "zip": "11418",
+      "neighborhood": "Richmond Hill",
+      "area_name": "Richmond Hill",
+      "recent_permit_volume": 10,
+      "previous_permit_volume": 6,
+      "recent_activity_growth": 0.67,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 4093220,
-      "average_declared_value": 454802,
+      "project_value_total": 1549351,
+      "average_declared_value": 154935,
       "dominant_trade_categories": [
         [
-          "remodel",
-          4
+          "new_build",
+          5
         ],
         [
-          "plumbing",
-          3
-        ],
-        [
-          "mechanical",
+          "solar",
           1
         ],
         [
-          "roofing",
+          "general",
+          1
+        ],
+        [
+          "mechanical",
           1
         ]
       ],
       "construction_heat_score": 35,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 9,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 10,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10011",
+      "market": "New York City, NY",
+      "borough": "Manhattan",
+      "zip": "10011",
+      "neighborhood": "Chelsea-Hudson Yards",
+      "area_name": "Chelsea-Hudson Yards",
+      "recent_permit_volume": 26,
+      "previous_permit_volume": 30,
+      "recent_activity_growth": -0.13,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 11263927,
+      "average_declared_value": 433228,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          7
+        ],
+        [
+          "roofing",
+          5
+        ],
+        [
+          "exterior",
+          5
+        ],
+        [
+          "plumbing",
+          4
+        ]
+      ],
+      "construction_heat_score": 35,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 26,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11373",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11373",
+      "neighborhood": "Elmhurst",
+      "area_name": "Elmhurst",
+      "recent_permit_volume": 17,
+      "previous_permit_volume": 13,
+      "recent_activity_growth": 0.31,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 1936684,
+      "average_declared_value": 113923,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          5
+        ],
+        [
+          "roofing",
+          4
+        ],
+        [
+          "plumbing",
+          4
+        ],
+        [
+          "exterior",
+          2
+        ]
+      ],
+      "construction_heat_score": 35,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 17,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2307,7 +2307,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2319,8 +2319,8 @@
       "neighborhood": "Morningside Heights",
       "area_name": "Morningside Heights",
       "recent_permit_volume": 21,
-      "previous_permit_volume": 16,
-      "recent_activity_growth": 0.31,
+      "previous_permit_volume": 17,
+      "recent_activity_growth": 0.24,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 3284037,
@@ -2347,7 +2347,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 21,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2387,47 +2387,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10014",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10014",
-      "neighborhood": "West Village",
-      "area_name": "West Village",
-      "recent_permit_volume": 25,
-      "previous_permit_volume": 26,
-      "recent_activity_growth": -0.04,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 1523237,
-      "average_declared_value": 60929,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          13
-        ],
-        [
-          "plumbing",
-          6
-        ],
-        [
-          "remodel",
-          3
-        ],
-        [
-          "mechanical",
-          2
-        ]
-      ],
-      "construction_heat_score": 34,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 25,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2439,8 +2399,8 @@
       "neighborhood": "Brighton Beach",
       "area_name": "Brighton Beach",
       "recent_permit_volume": 22,
-      "previous_permit_volume": 23,
-      "recent_activity_growth": -0.04,
+      "previous_permit_volume": 22,
+      "recent_activity_growth": 0,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 703810,
@@ -2467,47 +2427,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 22,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11373",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11373",
-      "neighborhood": "Elmhurst",
-      "area_name": "Elmhurst",
-      "recent_permit_volume": 17,
-      "previous_permit_volume": 14,
-      "recent_activity_growth": 0.21,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 1936684,
-      "average_declared_value": 113923,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          5
-        ],
-        [
-          "roofing",
-          4
-        ],
-        [
-          "plumbing",
-          4
-        ],
-        [
-          "exterior",
-          2
-        ]
-      ],
-      "construction_heat_score": 34,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 17,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2547,7 +2467,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2587,7 +2507,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 22,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2627,7 +2547,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 16,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2667,47 +2587,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 17,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11225",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11225",
-      "neighborhood": "Prospect Lefferts Gardens-Wingate",
-      "area_name": "Prospect Lefferts Gardens-Wingate",
-      "recent_permit_volume": 5,
-      "previous_permit_volume": 2,
-      "recent_activity_growth": 1.5,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 31000,
-      "average_declared_value": 6200,
-      "dominant_trade_categories": [
-        [
-          "general",
-          2
-        ],
-        [
-          "exterior",
-          1
-        ],
-        [
-          "demolition",
-          1
-        ],
-        [
-          "new_build",
-          1
-        ]
-      ],
-      "construction_heat_score": 33,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2747,7 +2627,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2783,7 +2663,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2823,7 +2703,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11238",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11238",
+      "neighborhood": "Fort Greene",
+      "area_name": "Fort Greene",
+      "recent_permit_volume": 18,
+      "previous_permit_volume": 19,
+      "recent_activity_growth": -0.05,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 6365353,
+      "average_declared_value": 353631,
+      "dominant_trade_categories": [
+        [
+          "plumbing",
+          6
+        ],
+        [
+          "exterior",
+          6
+        ],
+        [
+          "remodel",
+          2
+        ],
+        [
+          "general",
+          2
+        ]
+      ],
+      "construction_heat_score": 32,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 18,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2835,8 +2755,8 @@
       "neighborhood": "Fort Greene",
       "area_name": "Fort Greene",
       "recent_permit_volume": 19,
-      "previous_permit_volume": 22,
-      "recent_activity_growth": -0.14,
+      "previous_permit_volume": 21,
+      "recent_activity_growth": -0.1,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 266800,
@@ -2863,7 +2783,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 19,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2903,7 +2823,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 11,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2915,8 +2835,8 @@
       "neighborhood": "Sunset Park (Central)",
       "area_name": "Sunset Park (Central)",
       "recent_permit_volume": 21,
-      "previous_permit_volume": 25,
-      "recent_activity_growth": -0.16,
+      "previous_permit_volume": 26,
+      "recent_activity_growth": -0.19,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 2769210,
@@ -2943,7 +2863,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 21,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -2983,7 +2903,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 11,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3019,7 +2939,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 7,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3059,7 +2979,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3095,47 +3015,75 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11238",
+      "area_key": "zip:11237",
       "market": "New York City, NY",
       "borough": "Brooklyn",
-      "zip": "11238",
-      "neighborhood": "Clinton Hill",
-      "area_name": "Clinton Hill",
-      "recent_permit_volume": 18,
-      "previous_permit_volume": 20,
-      "recent_activity_growth": -0.1,
+      "zip": "11237",
+      "neighborhood": "Bushwick (East)",
+      "area_name": "Bushwick (East)",
+      "recent_permit_volume": 14,
+      "previous_permit_volume": 9,
+      "recent_activity_growth": 0.56,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 6365353,
-      "average_declared_value": 353631,
+      "project_value_total": 417701,
+      "average_declared_value": 29836,
       "dominant_trade_categories": [
         [
           "exterior",
-          6
-        ],
-        [
-          "plumbing",
-          6
+          7
         ],
         [
           "remodel",
-          2
+          4
         ],
         [
-          "general",
+          "roofing",
+          3
+        ]
+      ],
+      "construction_heat_score": 32,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 14,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10020",
+      "market": "New York City, NY",
+      "borough": "Manhattan",
+      "zip": "10020",
+      "neighborhood": "Midtown-Times Square",
+      "area_name": "Midtown-Times Square",
+      "recent_permit_volume": 5,
+      "previous_permit_volume": 2,
+      "recent_activity_growth": 1.5,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 7852120,
+      "average_declared_value": 1570424,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          3
+        ],
+        [
+          "mechanical",
           2
         ]
       ],
       "construction_heat_score": 32,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 18,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 5,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3171,7 +3119,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3207,7 +3155,87 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11434",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11434",
+      "neighborhood": "Springfield Gardens (South)-Brookville",
+      "area_name": "Springfield Gardens (South)-Brookville",
+      "recent_permit_volume": 15,
+      "previous_permit_volume": 19,
+      "recent_activity_growth": -0.21,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 60380944,
+      "average_declared_value": 4025396,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          5
+        ],
+        [
+          "roofing",
+          3
+        ],
+        [
+          "general",
+          3
+        ],
+        [
+          "demolition",
+          2
+        ]
+      ],
+      "construction_heat_score": 31,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 15,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11210",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11210",
+      "neighborhood": "East Flatbush-Farragut",
+      "area_name": "East Flatbush-Farragut",
+      "recent_permit_volume": 12,
+      "previous_permit_volume": 9,
+      "recent_activity_growth": 0.33,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 2330080,
+      "average_declared_value": 194173,
+      "dominant_trade_categories": [
+        [
+          "plumbing",
+          4
+        ],
+        [
+          "exterior",
+          4
+        ],
+        [
+          "roofing",
+          2
+        ],
+        [
+          "remodel",
+          2
+        ]
+      ],
+      "construction_heat_score": 31,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 12,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3219,8 +3247,8 @@
       "neighborhood": "Williamsburg",
       "area_name": "Williamsburg",
       "recent_permit_volume": 25,
-      "previous_permit_volume": 38,
-      "recent_activity_growth": -0.34,
+      "previous_permit_volume": 40,
+      "recent_activity_growth": -0.38,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 4048315,
@@ -3247,43 +3275,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 25,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11237",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11237",
-      "neighborhood": "Bushwick (East)",
-      "area_name": "Bushwick (East)",
-      "recent_permit_volume": 14,
-      "previous_permit_volume": 10,
-      "recent_activity_growth": 0.4,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 417701,
-      "average_declared_value": 29836,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          7
-        ],
-        [
-          "remodel",
-          4
-        ],
-        [
-          "roofing",
-          3
-        ]
-      ],
-      "construction_heat_score": 31,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3323,7 +3315,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3355,7 +3347,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3383,7 +3375,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3411,7 +3403,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3451,7 +3443,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10457",
+      "market": "New York City, NY",
+      "borough": "Bronx",
+      "zip": "10457",
+      "neighborhood": null,
+      "area_name": "Bronx ZIP 10457",
+      "recent_permit_volume": 16,
+      "previous_permit_volume": 17,
+      "recent_activity_growth": -0.06,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 16746839,
+      "average_declared_value": 1046677,
+      "dominant_trade_categories": [
+        [
+          "plumbing",
+          5
+        ],
+        [
+          "mechanical",
+          4
+        ],
+        [
+          "remodel",
+          3
+        ],
+        [
+          "exterior",
+          3
+        ]
+      ],
+      "construction_heat_score": 30,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 16,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3463,8 +3495,8 @@
       "neighborhood": "Pelham Gardens",
       "area_name": "Pelham Gardens",
       "recent_permit_volume": 14,
-      "previous_permit_volume": 15,
-      "recent_activity_growth": -0.07,
+      "previous_permit_volume": 14,
+      "recent_activity_growth": 0,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 3492968,
@@ -3491,7 +3523,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3531,47 +3563,47 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 10,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11434",
+      "area_key": "zip:11225",
       "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11434",
-      "neighborhood": "Springfield Gardens (North)-Rochdale Village",
-      "area_name": "Springfield Gardens (North)-Rochdale Village",
-      "recent_permit_volume": 15,
-      "previous_permit_volume": 21,
-      "recent_activity_growth": -0.29,
+      "borough": "Brooklyn",
+      "zip": "11225",
+      "neighborhood": "Prospect Lefferts Gardens-Wingate",
+      "area_name": "Prospect Lefferts Gardens-Wingate",
+      "recent_permit_volume": 5,
+      "previous_permit_volume": 3,
+      "recent_activity_growth": 0.67,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 60380944,
-      "average_declared_value": 4025396,
+      "project_value_total": 31000,
+      "average_declared_value": 6200,
       "dominant_trade_categories": [
         [
-          "remodel",
-          5
-        ],
-        [
-          "roofing",
-          3
-        ],
-        [
           "general",
-          3
+          2
+        ],
+        [
+          "exterior",
+          1
         ],
         [
           "demolition",
-          2
+          1
+        ],
+        [
+          "new_build",
+          1
         ]
       ],
       "construction_heat_score": 30,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 15,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 5,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3603,39 +3635,47 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:10020",
+      "area_key": "zip:10467",
       "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10020",
-      "neighborhood": "Midtown-Times Square",
-      "area_name": "Midtown-Times Square",
-      "recent_permit_volume": 5,
-      "previous_permit_volume": 3,
-      "recent_activity_growth": 0.67,
+      "borough": "Bronx",
+      "zip": "10467",
+      "neighborhood": "Norwood",
+      "area_name": "Norwood",
+      "recent_permit_volume": 19,
+      "previous_permit_volume": 25,
+      "recent_activity_growth": -0.24,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 7852120,
-      "average_declared_value": 1570424,
+      "project_value_total": 7281881,
+      "average_declared_value": 383257,
       "dominant_trade_categories": [
         [
-          "remodel",
-          3
+          "general",
+          6
         ],
         [
-          "mechanical",
+          "plumbing",
+          6
+        ],
+        [
+          "remodel",
+          2
+        ],
+        [
+          "exterior",
           2
         ]
       ],
-      "construction_heat_score": 30,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "construction_heat_score": 29,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 19,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3675,47 +3715,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 15,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11210",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11210",
-      "neighborhood": "Flatlands",
-      "area_name": "Flatlands",
-      "recent_permit_volume": 11,
-      "previous_permit_volume": 10,
-      "recent_activity_growth": 0.1,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 2329080,
-      "average_declared_value": 211735,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          4
-        ],
-        [
-          "plumbing",
-          3
-        ],
-        [
-          "roofing",
-          2
-        ],
-        [
-          "remodel",
-          2
-        ]
-      ],
-      "construction_heat_score": 29,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 11,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3755,43 +3755,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 16,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11236",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11236",
-      "neighborhood": "Canarsie",
-      "area_name": "Canarsie",
-      "recent_permit_volume": 5,
-      "previous_permit_volume": 3,
-      "recent_activity_growth": 0.67,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 1120126,
-      "average_declared_value": 224025,
-      "dominant_trade_categories": [
-        [
-          "mechanical",
-          2
-        ],
-        [
-          "remodel",
-          2
-        ],
-        [
-          "roofing",
-          1
-        ]
-      ],
-      "construction_heat_score": 29,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3827,7 +3791,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3863,7 +3827,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3895,7 +3859,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3931,7 +3895,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -3971,127 +3935,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 9,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11218",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11218",
-      "neighborhood": "Borough Park",
-      "area_name": "Borough Park",
-      "recent_permit_volume": 14,
-      "previous_permit_volume": 20,
-      "recent_activity_growth": -0.3,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 572900,
-      "average_declared_value": 40921,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          4
-        ],
-        [
-          "mechanical",
-          3
-        ],
-        [
-          "plumbing",
-          2
-        ],
-        [
-          "demolition",
-          2
-        ]
-      ],
-      "construction_heat_score": 28,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10002",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10002",
-      "neighborhood": "Lower East Side",
-      "area_name": "Lower East Side",
-      "recent_permit_volume": 13,
-      "previous_permit_volume": 17,
-      "recent_activity_growth": -0.24,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 2380142,
-      "average_declared_value": 183088,
-      "dominant_trade_categories": [
-        [
-          "mechanical",
-          4
-        ],
-        [
-          "plumbing",
-          3
-        ],
-        [
-          "roofing",
-          2
-        ],
-        [
-          "remodel",
-          2
-        ]
-      ],
-      "construction_heat_score": 28,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10457",
-      "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10457",
-      "neighborhood": null,
-      "area_name": "Bronx ZIP 10457",
-      "recent_permit_volume": 16,
-      "previous_permit_volume": 20,
-      "recent_activity_growth": -0.2,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 16746839,
-      "average_declared_value": 1046677,
-      "dominant_trade_categories": [
-        [
-          "plumbing",
-          5
-        ],
-        [
-          "mechanical",
-          4
-        ],
-        [
-          "remodel",
-          3
-        ],
-        [
-          "exterior",
-          3
-        ]
-      ],
-      "construction_heat_score": 28,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 16,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4131,7 +3975,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4171,7 +4015,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 16,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4211,7 +4055,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4251,7 +4095,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 7,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4283,7 +4127,87 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 12,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11218",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11218",
+      "neighborhood": "Borough Park",
+      "area_name": "Borough Park",
+      "recent_permit_volume": 14,
+      "previous_permit_volume": 21,
+      "recent_activity_growth": -0.33,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 572900,
+      "average_declared_value": 40921,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          4
+        ],
+        [
+          "mechanical",
+          3
+        ],
+        [
+          "plumbing",
+          2
+        ],
+        [
+          "demolition",
+          2
+        ]
+      ],
+      "construction_heat_score": 27,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 14,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10002",
+      "market": "New York City, NY",
+      "borough": "Manhattan",
+      "zip": "10002",
+      "neighborhood": "Lower East Side",
+      "area_name": "Lower East Side",
+      "recent_permit_volume": 12,
+      "previous_permit_volume": 18,
+      "recent_activity_growth": -0.33,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 2230142,
+      "average_declared_value": 185845,
+      "dominant_trade_categories": [
+        [
+          "mechanical",
+          4
+        ],
+        [
+          "roofing",
+          2
+        ],
+        [
+          "remodel",
+          2
+        ],
+        [
+          "plumbing",
+          2
+        ]
+      ],
+      "construction_heat_score": 27,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 12,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4323,47 +4247,87 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11365",
+      "area_key": "zip:11249",
       "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11365",
-      "neighborhood": "Pomonok-Electchester-Hillcrest",
-      "area_name": "Pomonok-Electchester-Hillcrest",
-      "recent_permit_volume": 12,
-      "previous_permit_volume": 14,
-      "recent_activity_growth": -0.14,
+      "borough": "Brooklyn",
+      "zip": "11249",
+      "neighborhood": "Williamsburg",
+      "area_name": "Williamsburg",
+      "recent_permit_volume": 16,
+      "previous_permit_volume": 24,
+      "recent_activity_growth": -0.33,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 1730968,
-      "average_declared_value": 144247,
+      "project_value_total": 1281384,
+      "average_declared_value": 80087,
       "dominant_trade_categories": [
         [
-          "remodel",
-          5
+          "exterior",
+          7
         ],
         [
-          "new_build",
+          "remodel",
           4
         ],
         [
-          "exterior",
-          2
+          "plumbing",
+          3
         ],
         [
-          "plumbing",
+          "mechanical",
           1
         ]
       ],
       "construction_heat_score": 27,
       "confidence_score": 0.81,
       "source_count": 2,
-      "record_count": 12,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 16,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10468",
+      "market": "New York City, NY",
+      "borough": "Bronx",
+      "zip": "10468",
+      "neighborhood": "Bedford Park",
+      "area_name": "Bedford Park",
+      "recent_permit_volume": 9,
+      "previous_permit_volume": 9,
+      "recent_activity_growth": 0,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 4093220,
+      "average_declared_value": 454802,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          4
+        ],
+        [
+          "plumbing",
+          3
+        ],
+        [
+          "mechanical",
+          1
+        ],
+        [
+          "roofing",
+          1
+        ]
+      ],
+      "construction_heat_score": 27,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 9,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4403,7 +4367,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4435,7 +4399,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4467,7 +4431,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4495,7 +4459,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4535,7 +4499,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4571,7 +4535,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4607,7 +4571,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4647,7 +4611,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 7,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4675,39 +4639,47 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:10460",
+      "area_key": "zip:10119",
       "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10460",
-      "neighborhood": "West Farms",
-      "area_name": "West Farms",
-      "recent_permit_volume": 3,
-      "previous_permit_volume": 2,
-      "recent_activity_growth": 0.5,
+      "borough": "Manhattan",
+      "zip": "10119",
+      "neighborhood": "Midtown-Times Square",
+      "area_name": "Midtown-Times Square",
+      "recent_permit_volume": 7,
+      "previous_permit_volume": 9,
+      "recent_activity_growth": -0.22,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 54500,
-      "average_declared_value": 18167,
+      "project_value_total": 9171960,
+      "average_declared_value": 1310280,
       "dominant_trade_categories": [
         [
-          "exterior",
-          2
+          "mechanical",
+          3
         ],
         [
-          "mechanical",
+          "remodel",
+          1
+        ],
+        [
+          "general",
+          1
+        ],
+        [
+          "exterior",
           1
         ]
       ],
       "construction_heat_score": 26,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 7,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4747,7 +4719,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4775,7 +4747,47 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11365",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11365",
+      "neighborhood": "Pomonok-Electchester-Hillcrest",
+      "area_name": "Pomonok-Electchester-Hillcrest",
+      "recent_permit_volume": 12,
+      "previous_permit_volume": 15,
+      "recent_activity_growth": -0.2,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 1730968,
+      "average_declared_value": 144247,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          5
+        ],
+        [
+          "new_build",
+          4
+        ],
+        [
+          "exterior",
+          2
+        ],
+        [
+          "plumbing",
+          1
+        ]
+      ],
+      "construction_heat_score": 26,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 12,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4786,72 +4798,32 @@
       "zip": "11233",
       "neighborhood": "Bedford-Stuyvesant (East)",
       "area_name": "Bedford-Stuyvesant (East)",
-      "recent_permit_volume": 7,
-      "previous_permit_volume": 6,
-      "recent_activity_growth": 0.17,
+      "recent_permit_volume": 9,
+      "previous_permit_volume": 8,
+      "recent_activity_growth": 0.13,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 70501,
-      "average_declared_value": 10072,
+      "project_value_total": 127201,
+      "average_declared_value": 14133,
       "dominant_trade_categories": [
+        [
+          "remodel",
+          3
+        ],
         [
           "plumbing",
           3
         ],
         [
-          "remodel",
-          2
-        ],
-        [
           "exterior",
-          2
+          3
         ]
       ],
       "construction_heat_score": 26,
       "confidence_score": 0.77,
       "source_count": 1,
-      "record_count": 7,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10004",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10004",
-      "neighborhood": "Financial District-Battery Park City",
-      "area_name": "Financial District-Battery Park City",
-      "recent_permit_volume": 13,
-      "previous_permit_volume": 23,
-      "recent_activity_growth": -0.43,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 5346736,
-      "average_declared_value": 411287,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          4
-        ],
-        [
-          "plumbing",
-          3
-        ],
-        [
-          "demolition",
-          2
-        ],
-        [
-          "exterior",
-          2
-        ]
-      ],
-      "construction_heat_score": 26,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 13,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 9,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4891,7 +4863,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4919,7 +4891,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4947,7 +4919,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -4975,7 +4947,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5003,7 +4975,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5039,7 +5011,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5075,7 +5047,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5115,7 +5087,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5151,7 +5123,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5187,7 +5159,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5199,8 +5171,8 @@
       "neighborhood": "Bensonhurst",
       "area_name": "Bensonhurst",
       "recent_permit_volume": 12,
-      "previous_permit_volume": 17,
-      "recent_activity_growth": -0.29,
+      "previous_permit_volume": 16,
+      "recent_activity_growth": -0.25,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 3077152,
@@ -5227,7 +5199,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 12,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5267,7 +5239,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 16,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5307,47 +5279,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 15,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10009",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10009",
-      "neighborhood": "East Village",
-      "area_name": "East Village",
-      "recent_permit_volume": 5,
-      "previous_permit_volume": 5,
-      "recent_activity_growth": 0,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 113811,
-      "average_declared_value": 22762,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          2
-        ],
-        [
-          "plumbing",
-          1
-        ],
-        [
-          "mechanical",
-          1
-        ],
-        [
-          "exterior",
-          1
-        ]
-      ],
-      "construction_heat_score": 25,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5387,7 +5319,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5423,87 +5355,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10119",
-      "market": "New York City, NY",
-      "borough": "Manhattan",
-      "zip": "10119",
-      "neighborhood": "Midtown-Times Square",
-      "area_name": "Midtown-Times Square",
-      "recent_permit_volume": 7,
-      "previous_permit_volume": 10,
-      "recent_activity_growth": -0.3,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 9171960,
-      "average_declared_value": 1310280,
-      "dominant_trade_categories": [
-        [
-          "mechanical",
-          3
-        ],
-        [
-          "remodel",
-          1
-        ],
-        [
-          "general",
-          1
-        ],
-        [
-          "exterior",
-          1
-        ]
-      ],
-      "construction_heat_score": 25,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 7,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11249",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11249",
-      "neighborhood": "Williamsburg",
-      "area_name": "Williamsburg",
-      "recent_permit_volume": 16,
-      "previous_permit_volume": 33,
-      "recent_activity_growth": -0.52,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 1281384,
-      "average_declared_value": 80087,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          7
-        ],
-        [
-          "remodel",
-          4
-        ],
-        [
-          "plumbing",
-          3
-        ],
-        [
-          "mechanical",
-          1
-        ]
-      ],
-      "construction_heat_score": 25,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 16,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5543,87 +5395,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 11,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10466",
-      "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10466",
-      "neighborhood": "Wakefield-Woodlawn",
-      "area_name": "Wakefield-Woodlawn",
-      "recent_permit_volume": 7,
-      "previous_permit_volume": 8,
-      "recent_activity_growth": -0.13,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 676650,
-      "average_declared_value": 96664,
-      "dominant_trade_categories": [
-        [
-          "new_build",
-          3
-        ],
-        [
-          "roofing",
-          1
-        ],
-        [
-          "exterior",
-          1
-        ],
-        [
-          "solar",
-          1
-        ]
-      ],
-      "construction_heat_score": 25,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 7,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11203",
-      "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11203",
-      "neighborhood": "East Flatbush-Farragut",
-      "area_name": "East Flatbush-Farragut",
-      "recent_permit_volume": 11,
-      "previous_permit_volume": 17,
-      "recent_activity_growth": -0.35,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 1899987,
-      "average_declared_value": 172726,
-      "dominant_trade_categories": [
-        [
-          "plumbing",
-          3
-        ],
-        [
-          "mechanical",
-          3
-        ],
-        [
-          "exterior",
-          2
-        ],
-        [
-          "remodel",
-          2
-        ]
-      ],
-      "construction_heat_score": 25,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 11,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5663,7 +5435,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 19,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10004",
+      "market": "New York City, NY",
+      "borough": "Manhattan",
+      "zip": "10004",
+      "neighborhood": "The Battery-Governors Island-Ellis Island-Liberty Island",
+      "area_name": "The Battery-Governors Island-Ellis Island-Liberty Island",
+      "recent_permit_volume": 12,
+      "previous_permit_volume": 22,
+      "recent_activity_growth": -0.45,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 5196736,
+      "average_declared_value": 433061,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          3
+        ],
+        [
+          "plumbing",
+          3
+        ],
+        [
+          "demolition",
+          2
+        ],
+        [
+          "exterior",
+          2
+        ]
+      ],
+      "construction_heat_score": 25,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 12,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5699,7 +5511,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 11,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5731,7 +5543,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5763,7 +5575,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5803,7 +5615,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5839,7 +5651,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5871,7 +5683,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5903,7 +5715,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5935,7 +5747,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -5975,7 +5787,83 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 10,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11236",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11236",
+      "neighborhood": "Canarsie",
+      "area_name": "Canarsie",
+      "recent_permit_volume": 5,
+      "previous_permit_volume": 5,
+      "recent_activity_growth": 0,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 1120126,
+      "average_declared_value": 224025,
+      "dominant_trade_categories": [
+        [
+          "mechanical",
+          2
+        ],
+        [
+          "remodel",
+          2
+        ],
+        [
+          "roofing",
+          1
+        ]
+      ],
+      "construction_heat_score": 24,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 5,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11203",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11203",
+      "neighborhood": "East Flatbush-Farragut",
+      "area_name": "East Flatbush-Farragut",
+      "recent_permit_volume": 11,
+      "previous_permit_volume": 19,
+      "recent_activity_growth": -0.42,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 1899987,
+      "average_declared_value": 172726,
+      "dominant_trade_categories": [
+        [
+          "plumbing",
+          3
+        ],
+        [
+          "mechanical",
+          3
+        ],
+        [
+          "exterior",
+          2
+        ],
+        [
+          "remodel",
+          2
+        ]
+      ],
+      "construction_heat_score": 24,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 11,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6011,7 +5899,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6043,7 +5931,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6075,7 +5963,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6111,7 +5999,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6143,7 +6031,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6175,7 +6063,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6207,7 +6095,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6235,7 +6123,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6267,7 +6155,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6295,7 +6183,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6327,47 +6215,47 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11230",
+      "area_key": "zip:10009",
       "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11230",
-      "neighborhood": "Mapleton-Midwood (West)",
-      "area_name": "Mapleton-Midwood (West)",
-      "recent_permit_volume": 12,
-      "previous_permit_volume": 28,
-      "recent_activity_growth": -0.57,
+      "borough": "Manhattan",
+      "zip": "10009",
+      "neighborhood": "East Village",
+      "area_name": "East Village",
+      "recent_permit_volume": 5,
+      "previous_permit_volume": 6,
+      "recent_activity_growth": -0.17,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 943482,
-      "average_declared_value": 78623,
+      "project_value_total": 113811,
+      "average_declared_value": 22762,
       "dominant_trade_categories": [
         [
           "remodel",
-          5
-        ],
-        [
-          "mechanical",
-          3
-        ],
-        [
-          "plumbing",
           2
         ],
         [
-          "general",
+          "plumbing",
+          1
+        ],
+        [
+          "mechanical",
+          1
+        ],
+        [
+          "exterior",
           1
         ]
       ],
       "construction_heat_score": 23,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 12,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 5,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6407,7 +6295,47 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10466",
+      "market": "New York City, NY",
+      "borough": "Bronx",
+      "zip": "10466",
+      "neighborhood": "Wakefield-Woodlawn",
+      "area_name": "Wakefield-Woodlawn",
+      "recent_permit_volume": 7,
+      "previous_permit_volume": 10,
+      "recent_activity_growth": -0.3,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 676650,
+      "average_declared_value": 96664,
+      "dominant_trade_categories": [
+        [
+          "new_build",
+          3
+        ],
+        [
+          "roofing",
+          1
+        ],
+        [
+          "exterior",
+          1
+        ],
+        [
+          "solar",
+          1
+        ]
+      ],
+      "construction_heat_score": 23,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 7,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6439,7 +6367,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6479,7 +6407,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6519,7 +6447,43 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 10,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11413",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11413",
+      "neighborhood": "Springfield Gardens (South)-Brookville",
+      "area_name": "Springfield Gardens (South)-Brookville",
+      "recent_permit_volume": 4,
+      "previous_permit_volume": 4,
+      "recent_activity_growth": 0,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 166027,
+      "average_declared_value": 41507,
+      "dominant_trade_categories": [
+        [
+          "roofing",
+          2
+        ],
+        [
+          "demolition",
+          1
+        ],
+        [
+          "plumbing",
+          1
+        ]
+      ],
+      "construction_heat_score": 23,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 4,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6555,7 +6519,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6587,7 +6551,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6615,7 +6579,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6643,7 +6607,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6675,7 +6639,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6703,7 +6667,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6735,7 +6699,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6763,7 +6727,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6795,7 +6759,47 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11230",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11230",
+      "neighborhood": "Mapleton-Midwood (West)",
+      "area_name": "Mapleton-Midwood (West)",
+      "recent_permit_volume": 12,
+      "previous_permit_volume": 29,
+      "recent_activity_growth": -0.59,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 943482,
+      "average_declared_value": 78623,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          5
+        ],
+        [
+          "mechanical",
+          3
+        ],
+        [
+          "plumbing",
+          2
+        ],
+        [
+          "general",
+          1
+        ]
+      ],
+      "construction_heat_score": 22,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 12,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6827,7 +6831,47 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10312",
+      "market": "New York City, NY",
+      "borough": "Staten Island",
+      "zip": "10312",
+      "neighborhood": "Annadale-Huguenot-Prince's Bay-Woodrow",
+      "area_name": "Annadale-Huguenot-Prince's Bay-Woodrow",
+      "recent_permit_volume": 8,
+      "previous_permit_volume": 14,
+      "recent_activity_growth": -0.43,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 454660,
+      "average_declared_value": 56833,
+      "dominant_trade_categories": [
+        [
+          "plumbing",
+          4
+        ],
+        [
+          "remodel",
+          2
+        ],
+        [
+          "mechanical",
+          1
+        ],
+        [
+          "exterior",
+          1
+        ]
+      ],
+      "construction_heat_score": 22,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 8,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6867,7 +6911,79 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10460",
+      "market": "New York City, NY",
+      "borough": "Bronx",
+      "zip": "10460",
+      "neighborhood": "West Farms",
+      "area_name": "West Farms",
+      "recent_permit_volume": 3,
+      "previous_permit_volume": 3,
+      "recent_activity_growth": 0,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 54500,
+      "average_declared_value": 18167,
+      "dominant_trade_categories": [
+        [
+          "exterior",
+          2
+        ],
+        [
+          "mechanical",
+          1
+        ]
+      ],
+      "construction_heat_score": 22,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 3,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11106",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11106",
+      "neighborhood": "Astoria (Central)",
+      "area_name": "Astoria (Central)",
+      "recent_permit_volume": 8,
+      "previous_permit_volume": 14,
+      "recent_activity_growth": -0.43,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 480102,
+      "average_declared_value": 60013,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          4
+        ],
+        [
+          "plumbing",
+          2
+        ],
+        [
+          "exterior",
+          1
+        ],
+        [
+          "roofing",
+          1
+        ]
+      ],
+      "construction_heat_score": 22,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 8,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6907,7 +7023,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6939,7 +7055,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6971,7 +7087,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -6999,7 +7115,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7031,7 +7147,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7063,7 +7179,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7095,7 +7211,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7127,7 +7243,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7159,7 +7275,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7191,7 +7307,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7227,7 +7343,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7259,7 +7375,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7287,7 +7403,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7319,7 +7435,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7351,7 +7467,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7379,123 +7495,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10312",
-      "market": "New York City, NY",
-      "borough": "Staten Island",
-      "zip": "10312",
-      "neighborhood": "Annadale-Huguenot-Prince's Bay-Woodrow",
-      "area_name": "Annadale-Huguenot-Prince's Bay-Woodrow",
-      "recent_permit_volume": 8,
-      "previous_permit_volume": 15,
-      "recent_activity_growth": -0.47,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 454660,
-      "average_declared_value": 56833,
-      "dominant_trade_categories": [
-        [
-          "plumbing",
-          4
-        ],
-        [
-          "remodel",
-          2
-        ],
-        [
-          "mechanical",
-          1
-        ],
-        [
-          "exterior",
-          1
-        ]
-      ],
-      "construction_heat_score": 21,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11106",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11106",
-      "neighborhood": "Astoria (Central)",
-      "area_name": "Astoria (Central)",
-      "recent_permit_volume": 8,
-      "previous_permit_volume": 15,
-      "recent_activity_growth": -0.47,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 480102,
-      "average_declared_value": 60013,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          4
-        ],
-        [
-          "plumbing",
-          2
-        ],
-        [
-          "exterior",
-          1
-        ],
-        [
-          "roofing",
-          1
-        ]
-      ],
-      "construction_heat_score": 21,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11413",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11413",
-      "neighborhood": "Springfield Gardens (South)-Brookville",
-      "area_name": "Springfield Gardens (South)-Brookville",
-      "recent_permit_volume": 4,
-      "previous_permit_volume": 5,
-      "recent_activity_growth": -0.2,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 166027,
-      "average_declared_value": 41507,
-      "dominant_trade_categories": [
-        [
-          "roofing",
-          2
-        ],
-        [
-          "demolition",
-          1
-        ],
-        [
-          "plumbing",
-          1
-        ]
-      ],
-      "construction_heat_score": 21,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7523,7 +7523,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7551,7 +7551,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7579,7 +7579,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7607,7 +7607,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7635,7 +7635,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7663,7 +7663,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7691,7 +7691,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7719,7 +7719,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7747,7 +7747,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7775,7 +7775,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7803,7 +7803,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7831,7 +7831,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7859,7 +7859,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7887,7 +7887,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7915,7 +7915,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7943,7 +7943,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7971,7 +7971,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -7999,7 +7999,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8027,7 +8027,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8055,7 +8055,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8083,7 +8083,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8111,7 +8111,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8139,7 +8139,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8167,7 +8167,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8195,7 +8195,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8223,7 +8223,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8251,7 +8251,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8279,7 +8279,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8307,7 +8307,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8335,7 +8335,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8363,7 +8363,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8391,7 +8391,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8419,7 +8419,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8447,7 +8447,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8479,7 +8479,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8507,7 +8507,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8535,7 +8535,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8563,7 +8563,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8591,7 +8591,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8619,7 +8619,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8647,7 +8647,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8675,7 +8675,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8703,7 +8703,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8731,7 +8731,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8759,7 +8759,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8787,7 +8787,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8815,7 +8815,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8843,7 +8843,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8871,7 +8871,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8899,7 +8899,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8927,7 +8927,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8955,7 +8955,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -8983,7 +8983,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9011,7 +9011,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9039,7 +9039,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9067,7 +9067,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9095,7 +9095,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9123,7 +9123,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9151,7 +9151,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9179,7 +9179,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9207,7 +9207,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9235,7 +9235,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9263,7 +9263,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9291,7 +9291,43 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10463",
+      "market": "New York City, NY",
+      "borough": "Bronx",
+      "zip": "10463",
+      "neighborhood": "Riverdale-Spuyten Duyvil",
+      "area_name": "Riverdale-Spuyten Duyvil",
+      "recent_permit_volume": 10,
+      "previous_permit_volume": 18,
+      "recent_activity_growth": -0.44,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 404000,
+      "average_declared_value": 40400,
+      "dominant_trade_categories": [
+        [
+          "exterior",
+          6
+        ],
+        [
+          "remodel",
+          3
+        ],
+        [
+          "mechanical",
+          1
+        ]
+      ],
+      "construction_heat_score": 20,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 10,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9331,7 +9367,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 9,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9371,43 +9407,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10472",
-      "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10472",
-      "neighborhood": "Soundview-Bruckner-Bronx River",
-      "area_name": "Soundview-Bruckner-Bronx River",
-      "recent_permit_volume": 6,
-      "previous_permit_volume": 11,
-      "recent_activity_growth": -0.45,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 1072400,
-      "average_declared_value": 178733,
-      "dominant_trade_categories": [
-        [
-          "mechanical",
-          4
-        ],
-        [
-          "roofing",
-          1
-        ],
-        [
-          "exterior",
-          1
-        ]
-      ],
-      "construction_heat_score": 20,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9419,8 +9419,8 @@
       "neighborhood": "Gravesend (East)-Homecrest",
       "area_name": "Gravesend (East)-Homecrest",
       "recent_permit_volume": 8,
-      "previous_permit_volume": 23,
-      "recent_activity_growth": -0.65,
+      "previous_permit_volume": 25,
+      "recent_activity_growth": -0.68,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 685208,
@@ -9447,7 +9447,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9479,7 +9479,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9515,7 +9515,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9547,7 +9547,43 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11214",
+      "market": "New York City, NY",
+      "borough": "Brooklyn",
+      "zip": "11214",
+      "neighborhood": "Gravesend (South)",
+      "area_name": "Gravesend (South)",
+      "recent_permit_volume": 6,
+      "previous_permit_volume": 12,
+      "recent_activity_growth": -0.5,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 500088,
+      "average_declared_value": 83348,
+      "dominant_trade_categories": [
+        [
+          "plumbing",
+          4
+        ],
+        [
+          "exterior",
+          1
+        ],
+        [
+          "mechanical",
+          1
+        ]
+      ],
+      "construction_heat_score": 19,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 6,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9587,7 +9623,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 11,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9627,7 +9663,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9667,7 +9703,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 9,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9699,7 +9735,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 14,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9727,43 +9763,43 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
     {
-      "area_key": "zip:11214",
+      "area_key": "zip:10452",
       "market": "New York City, NY",
-      "borough": "Brooklyn",
-      "zip": "11214",
-      "neighborhood": "Bath Beach",
-      "area_name": "Bath Beach",
-      "recent_permit_volume": 5,
+      "borough": "Bronx",
+      "zip": "10452",
+      "neighborhood": "University Heights (South)-Morris Heights",
+      "area_name": "University Heights (South)-Morris Heights",
+      "recent_permit_volume": 6,
       "previous_permit_volume": 12,
-      "recent_activity_growth": -0.58,
+      "recent_activity_growth": -0.5,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 500088,
-      "average_declared_value": 100018,
+      "project_value_total": 104861,
+      "average_declared_value": 17477,
       "dominant_trade_categories": [
         [
-          "plumbing",
-          3
+          "mechanical",
+          4
         ],
         [
           "exterior",
           1
         ],
         [
-          "mechanical",
+          "roofing",
           1
         ]
       ],
       "construction_heat_score": 18,
-      "confidence_score": 0.81,
-      "source_count": 2,
-      "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 6,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9775,55 +9811,19 @@
       "neighborhood": "Coney Island-Sea Gate",
       "area_name": "Coney Island-Sea Gate",
       "recent_permit_volume": 5,
-      "previous_permit_volume": 10,
-      "recent_activity_growth": -0.5,
+      "previous_permit_volume": 9,
+      "recent_activity_growth": -0.44,
       "complaint_count": 0,
       "violation_count": 0,
-      "project_value_total": 1130331,
-      "average_declared_value": 226066,
+      "project_value_total": 1180930,
+      "average_declared_value": 236186,
       "dominant_trade_categories": [
-        [
-          "exterior",
-          3
-        ],
-        [
-          "mechanical",
-          1
-        ],
         [
           "general",
-          1
-        ]
-      ],
-      "construction_heat_score": 18,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10463",
-      "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10463",
-      "neighborhood": "Bedford Park",
-      "area_name": "Bedford Park",
-      "recent_permit_volume": 8,
-      "previous_permit_volume": 18,
-      "recent_activity_growth": -0.56,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 207000,
-      "average_declared_value": 25875,
-      "dominant_trade_categories": [
-        [
-          "exterior",
-          5
+          2
         ],
         [
-          "remodel",
+          "exterior",
           2
         ],
         [
@@ -9834,8 +9834,44 @@
       "construction_heat_score": 18,
       "confidence_score": 0.77,
       "source_count": 1,
-      "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "record_count": 5,
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10472",
+      "market": "New York City, NY",
+      "borough": "Bronx",
+      "zip": "10472",
+      "neighborhood": "Soundview-Bruckner-Bronx River",
+      "area_name": "Soundview-Bruckner-Bronx River",
+      "recent_permit_volume": 6,
+      "previous_permit_volume": 14,
+      "recent_activity_growth": -0.57,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 1072400,
+      "average_declared_value": 178733,
+      "dominant_trade_categories": [
+        [
+          "mechanical",
+          4
+        ],
+        [
+          "roofing",
+          1
+        ],
+        [
+          "exterior",
+          1
+        ]
+      ],
+      "construction_heat_score": 18,
+      "confidence_score": 0.81,
+      "source_count": 2,
+      "record_count": 6,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9871,43 +9907,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10452",
-      "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10452",
-      "neighborhood": "University Heights (South)-Morris Heights",
-      "area_name": "University Heights (South)-Morris Heights",
-      "recent_permit_volume": 6,
-      "previous_permit_volume": 13,
-      "recent_activity_growth": -0.54,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 104861,
-      "average_declared_value": 17477,
-      "dominant_trade_categories": [
-        [
-          "mechanical",
-          4
-        ],
-        [
-          "exterior",
-          1
-        ],
-        [
-          "roofing",
-          1
-        ]
-      ],
-      "construction_heat_score": 17,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9939,7 +9939,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -9951,8 +9951,8 @@
       "neighborhood": "Bedford-Stuyvesant (West)",
       "area_name": "Bedford-Stuyvesant (West)",
       "recent_permit_volume": 8,
-      "previous_permit_volume": 28,
-      "recent_activity_growth": -0.71,
+      "previous_permit_volume": 29,
+      "recent_activity_growth": -0.72,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 135080,
@@ -9979,7 +9979,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 8,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10011,7 +10011,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10051,7 +10051,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10083,7 +10083,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10115,7 +10115,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10147,7 +10147,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10179,7 +10179,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10207,7 +10207,39 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:10465",
+      "market": "New York City, NY",
+      "borough": "Bronx",
+      "zip": "10465",
+      "neighborhood": "Throgs Neck-Schuylerville",
+      "area_name": "Throgs Neck-Schuylerville",
+      "recent_permit_volume": 3,
+      "previous_permit_volume": 6,
+      "recent_activity_growth": -0.5,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 984313,
+      "average_declared_value": 328104,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          2
+        ],
+        [
+          "roofing",
+          1
+        ]
+      ],
+      "construction_heat_score": 16,
+      "confidence_score": 0.77,
+      "source_count": 1,
+      "record_count": 3,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10243,7 +10275,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10275,7 +10307,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10307,7 +10339,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10339,7 +10371,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10367,39 +10399,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:10465",
-      "market": "New York City, NY",
-      "borough": "Bronx",
-      "zip": "10465",
-      "neighborhood": "Throgs Neck-Schuylerville",
-      "area_name": "Throgs Neck-Schuylerville",
-      "recent_permit_volume": 3,
-      "previous_permit_volume": 7,
-      "recent_activity_growth": -0.57,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 984313,
-      "average_declared_value": 328104,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          2
-        ],
-        [
-          "roofing",
-          1
-        ]
-      ],
-      "construction_heat_score": 15,
-      "confidence_score": 0.77,
-      "source_count": 1,
-      "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10435,7 +10435,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10463,7 +10463,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10475,8 +10475,8 @@
       "neighborhood": "Brownsville",
       "area_name": "Brownsville",
       "recent_permit_volume": 5,
-      "previous_permit_volume": 37,
-      "recent_activity_growth": -0.86,
+      "previous_permit_volume": 39,
+      "recent_activity_growth": -0.87,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 8286850,
@@ -10503,7 +10503,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 5,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10515,7 +10515,7 @@
       "neighborhood": "East New York (North)",
       "area_name": "East New York (North)",
       "recent_permit_volume": 6,
-      "previous_permit_volume": 47,
+      "previous_permit_volume": 46,
       "recent_activity_growth": -0.87,
       "complaint_count": 0,
       "violation_count": 0,
@@ -10539,7 +10539,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10567,7 +10567,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10603,7 +10603,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 10,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10631,7 +10631,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10659,7 +10659,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10687,7 +10687,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10715,7 +10715,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10743,7 +10743,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10771,7 +10771,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10799,7 +10799,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10827,7 +10827,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10855,7 +10855,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10883,7 +10883,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10911,7 +10911,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10939,7 +10939,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10967,7 +10967,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -10995,7 +10995,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11023,7 +11023,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11055,7 +11055,7 @@
       "confidence_score": 0.81,
       "source_count": 2,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11083,7 +11083,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11119,7 +11119,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11147,7 +11147,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11175,7 +11175,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 7,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11207,7 +11207,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11243,7 +11243,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11255,8 +11255,8 @@
       "neighborhood": "Laurelton",
       "area_name": "Laurelton",
       "recent_permit_volume": 2,
-      "previous_permit_volume": 6,
-      "recent_activity_growth": -0.67,
+      "previous_permit_volume": 7,
+      "recent_activity_growth": -0.71,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 60536,
@@ -11275,7 +11275,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11311,7 +11311,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11339,7 +11339,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 9,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11371,7 +11371,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11407,7 +11407,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11439,7 +11439,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11471,7 +11471,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11503,7 +11503,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 4,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11535,7 +11535,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11563,7 +11563,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11591,7 +11591,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11627,7 +11627,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 6,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11659,7 +11659,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11687,7 +11687,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11715,7 +11715,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11747,7 +11747,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11779,7 +11779,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11811,7 +11811,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11843,7 +11843,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11871,7 +11871,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11899,7 +11899,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11911,8 +11911,8 @@
       "neighborhood": "West New Brighton-Silver Lake-Grymes Hill",
       "area_name": "West New Brighton-Silver Lake-Grymes Hill",
       "recent_permit_volume": 1,
-      "previous_permit_volume": 8,
-      "recent_activity_growth": -0.88,
+      "previous_permit_volume": 7,
+      "recent_activity_growth": -0.86,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 46950,
@@ -11927,7 +11927,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11939,8 +11939,8 @@
       "neighborhood": "University Heights (South)-Morris Heights",
       "area_name": "University Heights (South)-Morris Heights",
       "recent_permit_volume": 1,
-      "previous_permit_volume": 7,
-      "recent_activity_growth": -0.86,
+      "previous_permit_volume": 10,
+      "recent_activity_growth": -0.9,
       "complaint_count": 0,
       "violation_count": 0,
       "project_value_total": 0,
@@ -11955,7 +11955,7 @@
       "confidence_score": 0.77,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -11983,7 +11983,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12011,7 +12011,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12039,7 +12039,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12075,7 +12075,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12107,7 +12107,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12135,7 +12135,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12163,7 +12163,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12195,7 +12195,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12223,7 +12223,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12251,7 +12251,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12279,7 +12279,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12307,7 +12307,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 2,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12335,7 +12335,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12363,7 +12363,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12391,7 +12391,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12419,7 +12419,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 3,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12447,7 +12447,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12475,7 +12475,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12503,7 +12503,35 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
+      "recent_start": "2025-12-30",
+      "previous_start": "2025-07-03"
+    },
+    {
+      "area_key": "zip:11427",
+      "market": "New York City, NY",
+      "borough": "Queens",
+      "zip": "11427",
+      "neighborhood": null,
+      "area_name": "Queens ZIP 11427",
+      "recent_permit_volume": 1,
+      "previous_permit_volume": 12,
+      "recent_activity_growth": -0.92,
+      "complaint_count": 0,
+      "violation_count": 0,
+      "project_value_total": 3510,
+      "average_declared_value": 3510,
+      "dominant_trade_categories": [
+        [
+          "remodel",
+          1
+        ]
+      ],
+      "construction_heat_score": 4,
+      "confidence_score": 0.72,
+      "source_count": 1,
+      "record_count": 1,
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12531,7 +12559,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12559,7 +12587,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     },
@@ -12587,35 +12615,7 @@
       "confidence_score": 0.72,
       "source_count": 1,
       "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
-      "recent_start": "2025-12-30",
-      "previous_start": "2025-07-03"
-    },
-    {
-      "area_key": "zip:11427",
-      "market": "New York City, NY",
-      "borough": "Queens",
-      "zip": "11427",
-      "neighborhood": null,
-      "area_name": "Queens ZIP 11427",
-      "recent_permit_volume": 1,
-      "previous_permit_volume": 16,
-      "recent_activity_growth": -0.94,
-      "complaint_count": 0,
-      "violation_count": 0,
-      "project_value_total": 3510,
-      "average_declared_value": 3510,
-      "dominant_trade_categories": [
-        [
-          "remodel",
-          1
-        ]
-      ],
-      "construction_heat_score": 3,
-      "confidence_score": 0.72,
-      "source_count": 1,
-      "record_count": 1,
-      "generated_at": "2026-06-28T02:27:07.797Z",
+      "generated_at": "2026-06-28T04:52:27.483Z",
       "recent_start": "2025-12-30",
       "previous_start": "2025-07-03"
     }

@@ -577,6 +577,9 @@ function buildTopAreas(heatAreas, activities, generatedAt) {
     const avgJob = area.average_declared_value ? compactCurrency(area.average_declared_value) : "N/A";
 
     return {
+      area_key: area.area_key,
+      area_name: area.area_name,
+      borough: area.borough,
       id: slugify(`${displayName}-${zipLabel}`),
       rank: index + 1,
       name: displayName,
@@ -619,11 +622,34 @@ function buildTopAreas(heatAreas, activities, generatedAt) {
 }
 
 function buildSampleProjects(activities, topAreas, generatedAt) {
-  const topAreaKeys = new Set(topAreas.map((area) => area.id));
-  const projects = activities
+  const topAreaKeys = new Set(topAreas.map((area) => area.area_key).filter(Boolean));
+  const byArea = groupBy(
+    activities.filter((activity) => activity.address || activity.description),
+    (activity) => activity.area_key,
+  );
+  const selected = new Map();
+
+  for (const area of topAreas.slice(0, 10)) {
+    const areaActivities = byArea.get(area.area_key) ?? [];
+    for (const activity of rankedPreviewActivities(areaActivities).slice(0, 12)) {
+      selected.set(activity.id, activity);
+    }
+  }
+
+  for (const activity of rankedPreviewActivities(activities).slice(0, 100)) {
+    selected.set(activity.id, activity);
+  }
+
+  for (const activity of activities
     .filter((activity) => activity.address || activity.description)
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
-    .slice(0, 40)
+    .slice(0, 80)) {
+    selected.set(activity.id, activity);
+  }
+
+  const projects = Array.from(selected.values())
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "") || (b.declared_value ?? 0) - (a.declared_value ?? 0))
+    .slice(0, 180)
     .map((activity) => ({
       project_id: activity.project_id || activity.permit_number || activity.id,
       permit_number: activity.permit_number,
@@ -640,11 +666,15 @@ function buildSampleProjects(activities, topAreas, generatedAt) {
       declared_value_label: activity.declared_value ? compactCurrency(activity.declared_value) : "N/A",
       status: activity.status,
       contractor_name: activity.contractor_name,
+      lat: activity.lat,
+      lon: activity.lon,
+      bbl: activity.bbl,
+      bin: activity.bin,
       source_name: activity.source_name,
       source_dataset_id: activity.source_dataset_id,
       source_url: activity.source_url,
       confidence_score: activity.confidence_score,
-      in_top_area: topAreaKeys.has(slugify(`${activity.area_name}-${activity.zip || "NYC"}`)),
+      in_top_area: topAreaKeys.has(activity.area_key),
     }));
 
   return {
@@ -660,6 +690,20 @@ function buildSampleProjects(activities, topAreas, generatedAt) {
       labelCategory(project.trade_category),
     ]),
   };
+}
+
+function rankedPreviewActivities(activities) {
+  return activities
+    .filter((activity) => activity.address || activity.description)
+    .sort((a, b) => {
+      const coordDelta = Number(Boolean(b.lat && b.lon)) - Number(Boolean(a.lat && a.lon));
+      if (coordDelta) return coordDelta;
+      const companyDelta = Number(Boolean(b.contractor_name)) - Number(Boolean(a.contractor_name));
+      if (companyDelta) return companyDelta;
+      const valueDelta = (b.declared_value ?? 0) - (a.declared_value ?? 0);
+      if (valueDelta) return valueDelta;
+      return (b.date ?? "").localeCompare(a.date ?? "");
+    });
 }
 
 function ensureArea(areas, record) {
