@@ -64,6 +64,74 @@ const minimumValueOptions = [
   ["1000000", "$1M+"],
 ];
 
+const moneyPathOptions = [
+  {
+    id: "projects",
+    label: "Find projects to bid",
+    shortLabel: "Project leads",
+    summaryLabel: "Project signals in view",
+    cta: "Get project + company list",
+    packetLabel: "Project + Company List",
+    reportNoun: "project + company list",
+    mapTitle: "Project leads in the current map view",
+    description: "Find active filings, scopes, values, and project players worth bidding or servicing.",
+    audience: "Good for GCs, subs, estimators, expediters, and service firms.",
+    action: "Filter by work type, value, status, and date, then unlock the list.",
+  },
+  {
+    id: "companies",
+    label: "Find companies to call",
+    shortLabel: "Companies to call",
+    summaryLabel: "Companies to call",
+    cta: "Unlock company activity packet",
+    packetLabel: "Company Activity Packet",
+    reportNoun: "company activity packet",
+    mapTitle: "Active companies in this area",
+    description: "See contractors, applicants, owners, and project players appearing in recent public records.",
+    audience: "Good for suppliers, distributors, manufacturers, reps, and B2B service providers.",
+    action: "Start with visible companies, then unlock every related record and source trail.",
+  },
+  {
+    id: "areas",
+    label: "Find hot neighborhoods",
+    shortLabel: "Hot neighborhoods",
+    summaryLabel: "Hot zones in view",
+    cta: "Create neighborhood intelligence packet",
+    packetLabel: "Neighborhood Intelligence Packet",
+    reportNoun: "neighborhood intelligence packet",
+    mapTitle: "Neighborhoods heating up",
+    description: "Spot where activity, project value, and permit categories are concentrating.",
+    audience: "Good for brokers, real estate pros, contractors, suppliers, and local operators.",
+    action: "Use hot zones to focus outreach, canvassing, territory planning, or watchlists.",
+  },
+  {
+    id: "properties",
+    label: "Track repeat properties",
+    shortLabel: "Repeat properties",
+    summaryLabel: "Repeat properties to watch",
+    cta: "Unlock property activity packet",
+    packetLabel: "Property Activity Packet",
+    reportNoun: "property activity packet",
+    mapTitle: "Properties with repeat activity",
+    description: "Find buildings with multiple records, related permits, source details, and activity patterns.",
+    audience: "Good for property managers, investors, brokers, lenders, service firms, and compliance teams.",
+    action: "Watch repeat-activity buildings and follow the companies connected to them.",
+  },
+  {
+    id: "value",
+    label: "Find high-value filings",
+    shortLabel: "High-value work",
+    summaryLabel: "High-value filings in view",
+    cta: "View high-value project packet",
+    packetLabel: "High-Value Project Packet",
+    reportNoun: "high-value project packet",
+    mapTitle: "High-value work moving now",
+    description: "Find projects with larger declared values and the people attached to them.",
+    audience: "Good for commercial subs, suppliers, brokers, developers, lenders, and deal teams.",
+    action: "Prioritize high-value records and unlock the source-backed project list.",
+  },
+];
+
 const NYC_CENTER = [-73.975, 40.715];
 const NYC_BOUNDS = [
   [-74.28, 40.47],
@@ -178,6 +246,7 @@ function App() {
   const [projectType, setProjectType] = useState("all");
   const [minimumValue, setMinimumValue] = useState("0");
   const [borough, setBorough] = useState("all");
+  const [moneyPathId, setMoneyPathId] = useState("projects");
 
   useEffect(() => {
     let cancelled = false;
@@ -329,6 +398,7 @@ function App() {
     ? Math.max(0, selectedArea.recordCount - selectedAreaProjects.length)
     : 0;
   const topDiscovery = selectedArea ?? areas[0];
+  const moneyPath = moneyPathOptions.find((path) => path.id === moneyPathId) ?? moneyPathOptions[0];
   const querySummary = useMemo(
     () => buildQuerySummary(query, filteredProjects, areas),
     [areas, filteredProjects, query],
@@ -421,6 +491,9 @@ function App() {
         <Hero
           citySummary={citySummary}
           lockedCount={lockedCount}
+          moneyPath={moneyPath}
+          onMoneyPathChange={setMoneyPathId}
+          onOpenReport={() => setProModalOpen(true)}
           onQueryChange={setQuery}
           onSearch={runSearch}
           onTour={startHotspotTour}
@@ -449,6 +522,7 @@ function App() {
               <MapExplorer
                 areas={areas}
                 focusTarget={mapFocus}
+                moneyPath={moneyPath}
                 onOpenReport={() => setProModalOpen(true)}
                 onProjectClick={selectProject}
                 onSelectArea={(area) => selectArea(area)}
@@ -466,6 +540,7 @@ function App() {
             <PreviewBlock
               areaProjects={selectedAreaProjects}
               lockedCount={lockedCount}
+              moneyPath={moneyPath}
               onOpenReport={() => setProModalOpen(true)}
               onProjectClick={selectProject}
               projects={previewProjects}
@@ -474,6 +549,7 @@ function App() {
 
             <ProjectsTable
               lockedCount={lockedCount}
+              moneyPath={moneyPath}
               noAreaMatches={!selectedAreaProjects.length}
               onOpenReport={() => setProModalOpen(true)}
               onProjectClick={selectProject}
@@ -485,12 +561,14 @@ function App() {
             <CompaniesSection
               companies={selectedAreaCompanies.length ? selectedAreaCompanies : companies.slice(0, 6)}
               isAreaSpecific={Boolean(selectedAreaCompanies.length)}
+              moneyPath={moneyPath}
               onCompanyClick={setSelectedCompany}
               onOpenReport={() => setProModalOpen(true)}
               selectedArea={selectedArea}
             />
 
             <PropertiesSection
+              moneyPath={moneyPath}
               onOpenReport={() => setProModalOpen(true)}
               properties={properties.slice(0, 6)}
             />
@@ -501,7 +579,9 @@ function App() {
               selectedArea={selectedArea}
             />
 
-            <ReportsSection onOpenReport={() => setProModalOpen(true)} selectedArea={selectedArea} />
+            <MoneyExplainer moneyPath={moneyPath} />
+
+            <ReportsSection moneyPath={moneyPath} onOpenReport={() => setProModalOpen(true)} selectedArea={selectedArea} />
           </section>
         </div>
 
@@ -512,6 +592,7 @@ function App() {
         <AreaModal
           companies={selectedAreaCompanies}
           lockedCount={lockedCount}
+          moneyPath={moneyPath}
           onClose={() => setAreaModalOpen(false)}
           onOpenReport={() => setProModalOpen(true)}
           onProjectClick={setSelectedProject}
@@ -522,6 +603,7 @@ function App() {
 
       {selectedProject ? (
         <ProjectModal
+          moneyPath={moneyPath}
           onClose={() => setSelectedProject(null)}
           onOpenReport={() => setProModalOpen(true)}
           project={selectedProject}
@@ -531,13 +613,14 @@ function App() {
       {selectedCompany ? (
         <CompanyModal
           company={selectedCompany}
+          moneyPath={moneyPath}
           onClose={() => setSelectedCompany(null)}
           onOpenReport={() => setProModalOpen(true)}
         />
       ) : null}
 
       {proModalOpen ? (
-        <ProAccessModal onClose={() => setProModalOpen(false)} selectedArea={selectedArea} />
+        <ProAccessModal moneyPath={moneyPath} onClose={() => setProModalOpen(false)} selectedArea={selectedArea} />
       ) : null}
     </div>
   );
@@ -580,6 +663,9 @@ function Sidebar({ activeSection, onNavigate }) {
 function Hero({
   citySummary,
   lockedCount,
+  moneyPath,
+  onMoneyPathChange,
+  onOpenReport,
   onQueryChange,
   onSearch,
   onTour,
@@ -592,10 +678,10 @@ function Hero({
   return (
     <header className="intel-header">
       <div className="header-copy">
-        <h1>Find active NYC construction projects, companies, and hot zones.</h1>
+        <h1>Find active NYC construction projects, companies to call, and hot zones before your competitors do.</h1>
         <p>
-          We found {compactCurrency(citySummary.value)} in declared construction activity from {number(citySummary.records)}
-          {" "}public NYC records, with {number(citySummary.companyCount)} companies identified and {number(citySummary.areaCount)} hot zones mapped.
+          We turn public DOB permits, filings, project values, company names, properties, and neighborhood activity
+          into maps, reports, and target lists you can act on.
         </p>
       </div>
       <form className="search-panel" onSubmit={(event) => {
@@ -620,38 +706,77 @@ function Hero({
         ) : null}
       </form>
       <div className="found-panel" aria-label="What we found">
-        <Metric label="Construction records found" value={number(citySummary.records)} />
-        <Metric label="Declared value found" value={compactCurrency(citySummary.value)} />
-        <Metric label="Companies identified" value={number(citySummary.companyCount)} />
-        <Metric label="Hot zones mapped" value={number(citySummary.areaCount)} />
+        <Metric label="Project signals found" value={number(citySummary.records)} />
+        <Metric label="Money moving" value={compactCurrency(citySummary.value)} />
+        <Metric label="Companies to investigate" value={number(citySummary.companyCount)} />
+        <Metric label="Hot zones to explore" value={number(citySummary.areaCount)} />
+      </div>
+      <div className="money-path-panel" aria-label="Choose your money path">
+        <div className="money-path-heading">
+          <span>Choose your money path</span>
+          <strong>{moneyPath.mapTitle}</strong>
+        </div>
+        <div className="money-path-grid">
+          {moneyPathOptions.map((path) => (
+            <button
+              className={`money-path-card ${moneyPath.id === path.id ? "active" : ""}`}
+              key={path.id}
+              type="button"
+              onClick={() => onMoneyPathChange(path.id)}
+            >
+              <strong>{path.label}</strong>
+              <span>{path.description}</span>
+            </button>
+          ))}
+        </div>
       </div>
       <div className="top-discovery-card">
         <div>
-          <span>Top discovery</span>
-          <h2>{selectedArea?.name ?? "Chelsea-Hudson Yards"} report preview</h2>
+          <span>Top opportunity found</span>
+          <h2>{selectedArea?.name ?? "Chelsea-Hudson Yards"}</h2>
           <p>
-            Hottest area: {number(selectedArea?.recordCount)} records, {compactCurrency(selectedArea?.declaredValue)},{" "}
-            {number(selectedAreaCompanies.length)} companies visible, {number(lockedCount)} locked records.
+            {number(selectedArea?.recordCount)} public construction records, {compactCurrency(selectedArea?.declaredValue)}
+            {" "}declared value, {number(selectedAreaCompanies.length)} companies visible, {number(lockedCount)} locked records.
           </p>
+          <ul>
+            <li>Find active project players</li>
+            <li>Build a call list</li>
+            <li>Spot repeat-activity properties</li>
+            <li>Track high-value filings</li>
+          </ul>
         </div>
         <div className="discovery-actions">
           <button className="secondary-action" type="button" onClick={onTour}>
             <Play aria-hidden="true" />
             {tourActive ? "Touring hotspots" : "Tour this week's hotspots"}
           </button>
-          <button className="primary-action" type="button" onClick={onSearch}>
+          <button className="secondary-action" type="button" onClick={onSearch}>
             <Target aria-hidden="true" />
             View on map
           </button>
+          <button className="primary-action" type="button" onClick={onOpenReport}>
+            <LockKeyhole aria-hidden="true" />
+            {moneyPath.cta}
+          </button>
         </div>
       </div>
-      <div className="use-strip">
-        <span>Use this to find:</span>
-        <strong>active projects</strong>
-        <strong>companies to call</strong>
-        <strong>hot neighborhoods</strong>
-        <strong>repeat-activity properties</strong>
-        <strong>high-value filings</strong>
+      <div className="how-use-strip">
+        <article>
+          <strong>Contractors & subs</strong>
+          <span>Find active projects, GCs, owners, and properties worth calling.</span>
+        </article>
+        <article>
+          <strong>Suppliers & distributors</strong>
+          <span>See which contractors are active and where reps should focus.</span>
+        </article>
+        <article>
+          <strong>Real estate pros</strong>
+          <span>Spot neighborhoods and properties with rising construction activity.</span>
+        </article>
+        <article>
+          <strong>Developers & investors</strong>
+          <span>Track filings, high-value projects, repeat properties, and market pressure.</span>
+        </article>
       </div>
     </header>
   );
@@ -717,6 +842,7 @@ function Filters({
 function MapExplorer({
   areas,
   focusTarget,
+  moneyPath,
   onOpenReport,
   onProjectClick,
   onSelectArea,
@@ -738,8 +864,9 @@ function MapExplorer({
     <div className="map-explorer">
       <div className="map-toolbar">
         <div>
-          <span>Live map view</span>
-          <h2>Explore NYC construction activity</h2>
+          <span>Live money map</span>
+          <h2>{moneyPath.mapTitle}</h2>
+          <p>{moneyPath.action}</p>
         </div>
         <button className="secondary-action" type="button" onClick={onTour}>
           <Navigation aria-hidden="true" />
@@ -747,7 +874,7 @@ function MapExplorer({
         </button>
       </div>
       <div className="map-live-summary">
-        <PreviewMetric label="Records in view" value={number(recordsInView)} />
+        <PreviewMetric label={moneyPath.summaryLabel} value={number(recordsInView)} />
         <PreviewMetric label="Declared value in view" value={compactCurrency(valueInView)} />
         <PreviewMetric label="Companies found" value={number(companiesInView)} />
         <PreviewMetric label="Hottest area in view" value={hottestArea?.name ?? "NYC"} />
@@ -764,6 +891,7 @@ function MapExplorer({
         />
         <SelectedReportPreview
           companies={selectedAreaCompanies}
+          moneyPath={moneyPath}
           onOpenReport={onOpenReport}
           projects={selectedAreaProjects}
           selectedArea={selectedArea}
@@ -771,6 +899,7 @@ function MapExplorer({
       </div>
       <RecordsDrawer
         lockedCount={selectedArea ? Math.max(0, selectedArea.recordCount - selectedAreaProjects.length) : 0}
+        moneyPath={moneyPath}
         onOpenReport={onOpenReport}
         onProjectClick={onProjectClick}
         projects={selectedAreaProjects.length ? selectedAreaProjects : projects.slice(0, 12)}
@@ -904,15 +1033,15 @@ function InteractiveNycMap({
   );
 }
 
-function SelectedReportPreview({ companies, onOpenReport, projects, selectedArea }) {
+function SelectedReportPreview({ companies, moneyPath, onOpenReport, projects, selectedArea }) {
   if (!selectedArea) return null;
   const topCompany = companies[0]?.name ?? "Company list locked";
   const topProperty = projects[0]?.address ?? "Property list locked";
 
   return (
     <aside className="map-report-panel">
-      <span>{selectedArea.name} report preview</span>
-      <h2>Unlock the {number(selectedArea.recordCount)}-record {selectedArea.name} report.</h2>
+      <span>{selectedArea.name} opportunity preview</span>
+      <h2>Unlock the {selectedArea.name} {moneyPath.packetLabel}.</h2>
       <dl>
         <div>
           <dt>Records found</dt>
@@ -939,20 +1068,30 @@ function SelectedReportPreview({ companies, onOpenReport, projects, selectedArea
           <dd>{topProperty}</dd>
         </div>
       </dl>
+      <div className="ways-to-use">
+        <h3>Ways to use this area</h3>
+        <ul>
+          <li><strong>Call active companies</strong><span>See contractors, applicants, owners, and project players tied to recent filings.</span></li>
+          <li><strong>Find projects to bid or service</strong><span>Filter by work type, value, status, and date.</span></li>
+          <li><strong>Watch repeat-activity properties</strong><span>Find buildings with multiple permits or project activity.</span></li>
+          <li><strong>Track high-value filings</strong><span>Use declared values to prioritize the records worth attention.</span></li>
+        </ul>
+      </div>
+      <OpportunityBreakdown categories={selectedArea.topCategories} />
       <button className="primary-action" type="button" onClick={onOpenReport}>
         <LockKeyhole aria-hidden="true" />
-        Unlock full {selectedArea.name} report
+        {moneyPath.cta}
       </button>
     </aside>
   );
 }
 
-function RecordsDrawer({ lockedCount, onOpenReport, onProjectClick, projects, selectedArea }) {
+function RecordsDrawer({ lockedCount, moneyPath, onOpenReport, onProjectClick, projects, selectedArea }) {
   return (
     <div className="records-drawer">
       <div>
         <span>Records in current map view</span>
-        <h3>Free preview: {projects.slice(0, 8).length} of {number(selectedArea?.recordCount ?? projects.length)} records</h3>
+        <h3>{moneyPath.shortLabel}: {projects.slice(0, 8).length} free of {number(selectedArea?.recordCount ?? projects.length)}</h3>
       </div>
       <div className="drawer-records">
         {projects.slice(0, 8).map((project) => (
@@ -965,14 +1104,14 @@ function RecordsDrawer({ lockedCount, onOpenReport, onProjectClick, projects, se
       {lockedCount > 0 ? (
         <button className="drawer-lock" type="button" onClick={onOpenReport}>
           <LockKeyhole aria-hidden="true" />
-          {number(lockedCount)} more records found - unlock full report
+          {number(lockedCount)} more records found - {moneyPath.cta.toLowerCase()}
         </button>
       ) : null}
     </div>
   );
 }
 
-function PreviewBlock({ areaProjects, lockedCount, onOpenReport, onProjectClick, projects, selectedArea }) {
+function PreviewBlock({ areaProjects, lockedCount, moneyPath, onOpenReport, onProjectClick, projects, selectedArea }) {
   if (!selectedArea) return null;
   const visibleCount = areaProjects.length;
   const previewRecords = areaProjects.length ? areaProjects.slice(0, 3) : projects.slice(0, 3);
@@ -980,10 +1119,11 @@ function PreviewBlock({ areaProjects, lockedCount, onOpenReport, onProjectClick,
   return (
     <section className="preview-block" aria-label="Free intelligence preview">
       <div className="preview-copy">
-        <h2>We found {number(selectedArea.recordCount)} public construction records in {selectedArea.name}.</h2>
+        <h2>{selectedArea.name}: {number(selectedArea.recordCount)} project signals you can act on.</h2>
         <p>
           {compactCurrency(selectedArea.declaredValue)} in declared project value, {categorySentence(selectedArea.topCategories)},
-          and {trendText(selectedArea.activityGrowth)} versus the prior period.
+          and {trendText(selectedArea.activityGrowth)} versus the prior period. Use it to find who to call, what to bid,
+          and which properties to watch.
         </p>
       </div>
       <div className="preview-proof">
@@ -1001,14 +1141,34 @@ function PreviewBlock({ areaProjects, lockedCount, onOpenReport, onProjectClick,
       </div>
       <button className="primary-action" type="button" onClick={onOpenReport}>
         <LockKeyhole aria-hidden="true" />
-        Unlock the {number(selectedArea.recordCount)}-record {selectedArea.name} report
+        {moneyPath.cta}
       </button>
     </section>
   );
 }
 
+function OpportunityBreakdown({ categories = [] }) {
+  const visibleCategories = categories.slice(0, 4);
+  if (!visibleCategories.length) return null;
+
+  return (
+    <div className="sell-opportunity">
+      <h3>What can be sold here?</h3>
+      <ul>
+        {visibleCategories.map(([category, count]) => (
+          <li key={category}>
+            <strong>{categoryLabel(category)}</strong>
+            <span>{number(count)} records - {salesAngle(category)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function ProjectsTable({
   lockedCount,
+  moneyPath,
   noAreaMatches,
   onOpenReport,
   onProjectClick,
@@ -1021,13 +1181,13 @@ function ProjectsTable({
       <SectionTitle
         eyebrow="Project / Permit Records"
         title={`Free preview: ${projects.length} of ${number(selectedArea?.recordCount ?? projects.length)} records`}
-        copy="Sample DOB permit and filing records are visible for free. Full source links, exports, related records, and all area records unlock in the report."
+        copy={`Sample DOB permit and filing records are visible for free. Full source links, exports, related records, and the complete ${moneyPath.reportNoun} unlock in the packet.`}
       />
 
       {noAreaMatches ? (
         <div className="source-warning">
           No exact sample rows for {selectedArea?.name} are included in the free preview. Showing latest NYC records.
-          The full report unlocks the selected area&apos;s full record list.
+          The packet unlocks the selected area&apos;s full record list.
         </div>
       ) : null}
 
@@ -1077,7 +1237,7 @@ function ProjectsTable({
               <tr className="locked-row">
                 <td colSpan="9">
                   <LockKeyhole aria-hidden="true" />
-                  {number(lockedCount)} more public records found in this area - unlock full report.
+                  {number(lockedCount)} more public records found in this area - {moneyPath.cta.toLowerCase()}.
                   <button type="button" onClick={onOpenReport}>Unlock</button>
                 </td>
               </tr>
@@ -1089,13 +1249,13 @@ function ProjectsTable({
   );
 }
 
-function CompaniesSection({ companies, isAreaSpecific, onCompanyClick, onOpenReport, selectedArea }) {
+function CompaniesSection({ companies, isAreaSpecific, moneyPath, onCompanyClick, onOpenReport, selectedArea }) {
   return (
     <section className="section-panel" id="companies" aria-labelledby="companies-title">
       <SectionTitle
-        eyebrow="Companies"
-        title={isAreaSpecific ? `Companies identified in ${selectedArea.name}` : "Top companies in the free NYC preview"}
-        copy="Company roles are inferred from public permit/applicant fields. Full company matching, aliases, and source trails unlock in the report."
+        eyebrow="Sales Targets"
+        title={isAreaSpecific ? `Companies to call in ${selectedArea.name}` : "Companies to call in the free NYC preview"}
+        copy="These companies appear in recent public construction records. Unlock the full packet to see all records, source links, activity patterns, and exportable contact research."
       />
       <div className="company-grid">
         {companies.slice(0, 6).map((company) => (
@@ -1123,21 +1283,21 @@ function CompaniesSection({ companies, isAreaSpecific, onCompanyClick, onOpenRep
       </div>
       {!isAreaSpecific ? (
         <div className="locked-note">
-          Area-specific company ranking for {selectedArea?.name} is locked behind the full report when the free preview does not expose enough rows.
-          <button type="button" onClick={onOpenReport}>Unlock company activity report</button>
+          Area-specific company ranking for {selectedArea?.name} is locked behind the {moneyPath.packetLabel} when the free preview does not expose enough rows.
+          <button type="button" onClick={onOpenReport}>{moneyPath.cta}</button>
         </div>
       ) : null}
     </section>
   );
 }
 
-function PropertiesSection({ onOpenReport, properties }) {
+function PropertiesSection({ moneyPath, onOpenReport, properties }) {
   return (
     <section className="section-panel" id="properties" aria-labelledby="properties-title">
       <SectionTitle
         eyebrow="Properties"
         title="Repeat-activity property preview"
-        copy="The current public preview shows recent project addresses. BBL/BIN, PLUTO parcel context, and related records unlock in the property report."
+        copy="The current public preview shows recent project addresses. BBL/BIN, PLUTO parcel context, related records, and watchlist context unlock in the property activity packet."
       />
       <div className="property-list">
         {properties.map((property) => (
@@ -1157,7 +1317,7 @@ function PropertiesSection({ onOpenReport, properties }) {
               </div>
             </dl>
             <button className="text-action" type="button" onClick={onOpenReport}>
-              Unlock property report
+              {moneyPath.id === "properties" ? moneyPath.cta : "Unlock property activity packet"}
               <ExternalLink aria-hidden="true" />
             </button>
           </article>
@@ -1212,20 +1372,46 @@ function AreasSection({ areas, onSelectArea, selectedArea }) {
   );
 }
 
-function ReportsSection({ onOpenReport, selectedArea }) {
+function MoneyExplainer({ moneyPath }) {
+  return (
+    <section className="section-panel money-explainer" aria-labelledby="money-explainer-title">
+      <SectionTitle
+        eyebrow="How this turns into money"
+        title="Find the activity, see who is behind it, then unlock the packet."
+        copy={`${moneyPath.description} ${moneyPath.audience}`}
+      />
+      <div className="money-step-grid">
+        <article>
+          <strong>1. Find where activity is happening</strong>
+          <p>Use the map, filters, and tour to see where records, value, companies, and hot zones are clustering.</p>
+        </article>
+        <article>
+          <strong>2. See the projects and companies behind it</strong>
+          <p>Open project details, preview active companies, and identify properties with recent public construction activity.</p>
+        </article>
+        <article>
+          <strong>3. Unlock the packet and act</strong>
+          <p>Export the list, build outreach, create a watchlist, or turn the area into a weekly territory brief.</p>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function ReportsSection({ moneyPath, onOpenReport, selectedArea }) {
   const reports = [
-    ["Full area report", "All records, source links, categories, companies, properties, and source coverage."],
-    ["Project list export", "CSV-ready permit and filing records with filterable project context."],
-    ["Company activity report", "Company roles, active neighborhoods, project categories, and trend direction."],
-    ["Weekly NYC Construction Heat Index", "Recurring monitor for hot zones, record spikes, high-value filings, and watchlist changes."],
+    ["Project Packet", "All records, values, descriptions, source links, and project details for the area."],
+    ["Company Packet", "Active companies, where they are working, work categories, source records, and trend direction."],
+    ["Property Packet", "Buildings with repeat activity, permits, values, source links, and related records."],
+    ["Weekly NYC Money Map / Heat Index", "Recurring monitor for hot zones, record spikes, high-value filings, and watchlist changes."],
   ];
 
   return (
     <section className="section-panel report-section" id="reports" aria-labelledby="reports-title">
       <SectionTitle
-        eyebrow="Reports"
-        title={`Unlock full ${selectedArea?.name ?? "NYC"} report`}
-        copy={`Start with the ${selectedArea?.name ?? "NYC"} report, then expand to companies, properties, and weekly watchlists.`}
+        eyebrow="Packets"
+        title={`Unlock the ${selectedArea?.name ?? "NYC"} ${moneyPath.packetLabel}`}
+        copy={`Start with the ${selectedArea?.name ?? "NYC"} packet, then expand to companies, properties, exports, and weekly watchlists.`}
       />
       <div className="report-options">
         {reports.map(([title, copy]) => (
@@ -1241,7 +1427,7 @@ function ReportsSection({ onOpenReport, selectedArea }) {
       <div className="report-actions">
         <button className="primary-action" type="button" onClick={onOpenReport}>
           <LockKeyhole aria-hidden="true" />
-          Unlock full report
+          {moneyPath.cta}
         </button>
         <button className="secondary-action" type="button" onClick={onOpenReport}>
           Request Pro Beta Access
@@ -1295,7 +1481,7 @@ function SelectedAreaPanel({ companies, onOpenArea, onOpenReport, projects, sele
       </dl>
       <div className="panel-actions">
         <button className="secondary-action" type="button" onClick={onOpenArea}>View sample records</button>
-        <button className="primary-action" type="button" onClick={onOpenReport}>Unlock full area report</button>
+        <button className="primary-action" type="button" onClick={onOpenReport}>Unlock project + company list</button>
       </div>
     </section>
   );
@@ -1304,33 +1490,43 @@ function SelectedAreaPanel({ companies, onOpenArea, onOpenReport, projects, sele
 function UnlockPanel({ onOpenReport, selectedArea }) {
   return (
     <section className="unlock-card" aria-label="Unlock deeper intelligence">
-      <h2>Unlock deeper intelligence</h2>
+      <h2>Unlock the project + company packet</h2>
       <p>
-        Full report for {selectedArea?.name ?? "NYC"} includes all records, company names, CSV export,
+        The {selectedArea?.name ?? "NYC"} packet includes all records, company names, CSV export,
         related records, source links, and watchlist alerts.
       </p>
       <ul>
-        <li><LockKeyhole aria-hidden="true" /> Full area report</li>
-        <li><LockKeyhole aria-hidden="true" /> Full project list</li>
-        <li><LockKeyhole aria-hidden="true" /> Company/activity report</li>
+        <li><LockKeyhole aria-hidden="true" /> Area intelligence packet</li>
+        <li><LockKeyhole aria-hidden="true" /> Project + company list</li>
+        <li><LockKeyhole aria-hidden="true" /> Company activity packet</li>
         <li><LockKeyhole aria-hidden="true" /> CSV export</li>
-        <li><LockKeyhole aria-hidden="true" /> Weekly heat index</li>
+        <li><LockKeyhole aria-hidden="true" /> Weekly NYC money map / heat index</li>
       </ul>
-      <button className="primary-action" type="button" onClick={onOpenReport}>Unlock full report</button>
+      <button className="primary-action" type="button" onClick={onOpenReport}>Unlock project + company list</button>
       <button className="secondary-action" type="button" onClick={onOpenReport}>Request Pro Beta Access</button>
     </section>
   );
 }
 
-function AreaModal({ companies, lockedCount, onClose, onOpenReport, onProjectClick, projects, selectedArea }) {
+function AreaModal({ companies, lockedCount, moneyPath, onClose, onOpenReport, onProjectClick, projects, selectedArea }) {
   return (
-    <Modal onClose={onClose} title={`${selectedArea.name} Intelligence`}>
+    <Modal onClose={onClose} title={`${selectedArea.name} Opportunity Intelligence`}>
       <div className="modal-metrics">
         <Metric label="Heat Score" value={selectedArea.score} />
         <Metric label="Records found" value={number(selectedArea.recordCount)} />
         <Metric label="Declared value" value={compactCurrency(selectedArea.declaredValue)} />
         <Metric label="Activity trend" value={trendText(selectedArea.activityGrowth)} />
       </div>
+      <div className="ways-to-use modal-way-list">
+        <h3>Ways to use this area</h3>
+        <ul>
+          <li><strong>Call active companies</strong><span>Use visible companies as the start of a source-backed call list.</span></li>
+          <li><strong>Find projects to bid or service</strong><span>Use type, value, status, and source records to prioritize outreach.</span></li>
+          <li><strong>Watch repeat-activity properties</strong><span>Find buildings that keep showing up in public construction records.</span></li>
+          <li><strong>Track high-value filings</strong><span>Follow where declared value is moving in this area.</span></li>
+        </ul>
+      </div>
+      <OpportunityBreakdown categories={selectedArea.topCategories} />
       <div className="detail-grid">
         <Detail label="Top project types" value={categorySentence(selectedArea.topCategories)} />
         <Detail label="Top companies/applicants" value={companies.map((company) => company.name).slice(0, 3).join(", ") || NOT_AVAILABLE} />
@@ -1349,7 +1545,7 @@ function AreaModal({ companies, lockedCount, onClose, onOpenReport, onProjectCli
       </div>
       {lockedCount > 0 ? (
         <div className="locked-note">
-          {number(lockedCount)} additional public records are available in the full area report.
+          {number(lockedCount)} additional public records are available in the {moneyPath.packetLabel}.
         </div>
       ) : null}
       <div className="modal-actions">
@@ -1358,14 +1554,14 @@ function AreaModal({ companies, lockedCount, onClose, onOpenReport, onProjectCli
           Export preview
         </button>
         <button className="primary-action" type="button" onClick={onOpenReport}>
-          Unlock full area report
+          {moneyPath.cta}
         </button>
       </div>
     </Modal>
   );
 }
 
-function ProjectModal({ onClose, onOpenReport, project }) {
+function ProjectModal({ moneyPath, onClose, onOpenReport, project }) {
   return (
     <Modal onClose={onClose} title="Project Detail">
       <div className="project-heading">
@@ -1388,8 +1584,8 @@ function ProjectModal({ onClose, onOpenReport, project }) {
         <p>{project.description || NOT_AVAILABLE}</p>
       </div>
       <div className="detail-grid">
-        <Detail label="Related records at same property" value="Unlock full project/property report" />
-        <Detail label="Nearby records" value="Unlock full project/property report" />
+        <Detail label="Money angle" value="Use this record to identify the project, work type, company/applicant, source trail, and nearby activity." />
+        <Detail label="Related records nearby" value={`Unlock the ${moneyPath.packetLabel}`} />
       </div>
       <div className="modal-actions">
         {project.source_url ? (
@@ -1399,14 +1595,14 @@ function ProjectModal({ onClose, onOpenReport, project }) {
           </a>
         ) : null}
         <button className="primary-action" type="button" onClick={onOpenReport}>
-          Unlock full project/property report
+          {moneyPath.cta}
         </button>
       </div>
     </Modal>
   );
 }
 
-function CompanyModal({ company, onClose, onOpenReport }) {
+function CompanyModal({ company, moneyPath, onClose, onOpenReport }) {
   return (
     <Modal onClose={onClose} title="Company Intelligence">
       <div className="project-heading">
@@ -1426,21 +1622,21 @@ function CompanyModal({ company, onClose, onOpenReport }) {
       </div>
       <div className="modal-actions">
         <button className="primary-action" type="button" onClick={onOpenReport}>
-          Unlock company intelligence report
+          {moneyPath.id === "companies" ? moneyPath.cta : "Unlock company activity packet"}
         </button>
       </div>
     </Modal>
   );
 }
 
-function ProAccessModal({ onClose, selectedArea }) {
+function ProAccessModal({ moneyPath, onClose, selectedArea }) {
   return (
     <Modal onClose={onClose} title="Request Pro Beta Access">
       <div className="unlock-intro">
-        <h3>Unlock full {selectedArea?.name ?? "NYC"} intelligence.</h3>
+        <h3>Unlock the {selectedArea?.name ?? "NYC"} {moneyPath.packetLabel}.</h3>
         <p>
-          The beta report path will include all public records, source links, company/activity profiles,
-          property context, CSV export, and weekly watchlist alerts.
+          Includes public records, project values, company/applicant names, source links, repeat-activity properties,
+          CSV export, contact research workflow, and weekly watchlist alerts.
         </p>
       </div>
       <form className="beta-form" onSubmit={(event) => event.preventDefault()}>
@@ -1459,10 +1655,10 @@ function ProAccessModal({ onClose, selectedArea }) {
         <label>
           Use case
           <select defaultValue="area">
-            <option value="area">Neighborhood / area reports</option>
-            <option value="company">Company activity tracking</option>
-            <option value="project">Project list export</option>
-            <option value="watchlist">Weekly watchlist alerts</option>
+            <option value="area">Neighborhood intelligence packet</option>
+            <option value="company">Company activity packet</option>
+            <option value="project">Project + company list</option>
+            <option value="watchlist">Weekly NYC money map / heat index</option>
           </select>
         </label>
         <button className="primary-action" type="submit">Request Pro Beta Access</button>
@@ -1783,6 +1979,22 @@ function categoryLabel(category) {
 function categorySentence(categories = []) {
   if (!categories.length) return NOT_AVAILABLE;
   return categories.slice(0, 3).map(([category, count]) => `${categoryLabel(category)} (${count})`).join(", ");
+}
+
+function salesAngle(category) {
+  const angles = {
+    demolition: "good for demolition contractors, hauling, environmental, site prep, and redevelopment tracking.",
+    electrical: "good for electrical contractors, lighting vendors, switchgear suppliers, and building-service firms.",
+    exterior: "good for facade restoration, scaffolding, compliance, waterproofing, and exterior contractors.",
+    general: "good for GCs, subs, expediters, building services, and suppliers watching active work.",
+    mechanical: "good for HVAC contractors, mechanical subs, equipment suppliers, controls, and service firms.",
+    new_build: "good for developers, GCs, subs, materials suppliers, lenders, and brokerage teams.",
+    plumbing: "good for plumbing contractors, supply houses, service firms, and mechanical trade partners.",
+    remodel: "good for GCs, subs, materials, architects, expediters, and interior trade outreach.",
+    roofing: "good for roofers, waterproofing, exterior contractors, solar installers, and suppliers.",
+    solar: "good for solar installers, roofers, electricians, financing partners, and equipment suppliers.",
+  };
+  return angles[category] ?? "good for contractors, suppliers, service firms, and market watchers.";
 }
 
 function trendText(value) {
